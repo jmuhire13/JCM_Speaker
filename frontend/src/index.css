@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens: our palette and CHII's fonts, defined once and used by name.
+  Example: bg-cream, text-ink, text-ember, font-display.
+*/
+@theme {
+  --color-cream: #f3eee2;
+  --color-ink: #1f1a1d;
+  --color-ember: #e4572e;
+  --color-green-deep: #29362b;
+  --color-sand: #e9e2d0;
+  --color-muted: #5a5148;
+  --color-soft: #3a332d;
+  --color-line: #d9d0be;
+  --color-line-strong: #c9bfa9;
+  --color-on-green: #dde2d8;
+  --color-on-green-label: #c9d2c5;
+  --color-on-ink: #cfc8ba;
+  --color-on-ink-label: #b9b1a2;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-hero: 'Anton', sans-serif;
+  --font-body: 'Space Grotesk Variable', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ember);
+    outline-offset: 3px;
+  }
+}
+
+/*
+  "Gate": a section marked .gate is hidden for a moment while its animation
+  prepares, so visitors never see text jump. If JavaScript fails or is slow,
+  this fallback reveals it anyway after 2.5 seconds. Text is never lost.
+*/
+html.js .gate {
+  visibility: hidden;
+  animation: gate-fallback 0s linear 2.5s forwards;
+}
+
+@keyframes gate-fallback {
+  to {
+    visibility: visible;
+  }
+}
+
+/* Footer band: two identical halves slide left by exactly one half, then loop. */
+.marquee-track {
+  animation: marquee 45s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Lenis (smooth scroll) recommended base styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
