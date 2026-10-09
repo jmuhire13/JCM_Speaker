@@ -6,7 +6,8 @@ import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 import Button from './Button'
 import { hero, site } from '../content/site'
-import heroPhoto from '../assets/photos/speaker-crowd.jpg'
+// TEMPORARY real portrait from a public source, only 450px wide. See PHOTOS_USED.md.
+import heroPhoto from '../assets/photos/real-portrait.jpg'
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP)
 
@@ -111,10 +112,10 @@ export default function Hero() {
           <img
             src={heroPhoto}
             alt={hero.photoAlt}
-            width="1600"
-            height="1067"
+            width="450"
+            height="500"
             fetchPriority="high"
-            className="hero-photo size-full object-cover object-[72%_50%]"
+            className="hero-photo size-full object-cover object-[50%_30%]"
           />
         </div>
       </div>
