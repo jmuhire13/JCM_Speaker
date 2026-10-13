@@ -10,7 +10,7 @@ const linkBase =
   'font-body text-[15px] font-medium border-b-2 pb-1 transition-colors'
 
 // Pages whose opening is dark: until you scroll, the bar switches to light text.
-const darkOpenings = ['/speaking', '/trusted-by', '/beyond-the-stage']
+const darkOpenings = ['/speaking', '/trusted-by', '/beyond-the-stage', '/connect']
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -95,7 +95,7 @@ export default function Navbar() {
                   isActive
                     ? `border-ember ${onDark ? 'text-cream' : 'text-ink'}`
                     : onDark
-                      ? 'text-on-ink hover:border-cream hover:text-cream border-transparent'
+                      ? `${pathname === '/connect' ? 'text-cream' : 'text-on-ink'} hover:border-cream hover:text-cream border-transparent`
                       : 'text-soft hover:border-ink hover:text-ink border-transparent'
                 }`
               }

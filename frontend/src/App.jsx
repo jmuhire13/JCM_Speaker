@@ -10,6 +10,7 @@ import Speaking from './pages/Speaking'
 import MyStory from './pages/MyStory'
 import BeyondTheStage from './pages/BeyondTheStage'
 import TrustedBy from './pages/TrustedBy'
+import Connect from './pages/Connect'
 import ComingSoon from './pages/ComingSoon'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -54,6 +55,7 @@ function App() {
         <Route path="/my-story" element={<MyStory />} />
         <Route path="/beyond-the-stage" element={<BeyondTheStage />} />
         <Route path="/trusted-by" element={<TrustedBy />} />
+        <Route path="/connect" element={<Connect />} />
         <Route path="*" element={<ComingSoon />} />
       </Routes>
       <Footer />

@@ -8,6 +8,8 @@
   --color-cream: #f3eee2;
   --color-ink: #1f1a1d;
   --color-ember: #e4572e;
+  /* A deeper ember for backgrounds behind small cream text (about 4.8:1 contrast). The brief lists it as an alternative ember. */
+  --color-ember-deep: #c9431f;
   --color-green-deep: #29362b;
   --color-sand: #e9e2d0;
   --color-muted: #5a5148;
@@ -35,11 +37,25 @@
     color: var(--color-ink);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    /* Tints the browser's own controls (such as the date picker) in our green, not default blue. */
+    accent-color: var(--color-green-deep);
   }
 
+  /*
+    Keyboard focus ring: ink outside, cream inside. The two tones keep it visible on any
+    background (light, dark or ember) without shouting in a loud colour.
+  */
   :focus-visible {
-    outline: 3px solid var(--color-ember);
-    outline-offset: 3px;
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-cream);
+  }
+
+  /* Choice chips hide their real radio button, so the chip shows the ring instead. */
+  .chip:has(input:focus-visible) {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-cream);
   }
 }
 
