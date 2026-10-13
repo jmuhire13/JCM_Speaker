@@ -3,14 +3,11 @@ import useReveal from '../lib/useReveal'
 import { proof } from '../content/site'
 import { testimonialsHeading } from '../content/trusted'
 
-// Shows only real, named testimonials from `proof.testimonials` in content/site.js.
-// With none, it renders nothing. We never invent proof.
-export default function Testimonials() {
+// The section itself. It is a separate component so its animation only starts when there is
+// something on the page to animate (an animation pointed at nothing logs warnings).
+function TestimonialsSection({ quotes }) {
   const root = useRef(null)
   useReveal(root, '.quote-reveal', { y: 40, stagger: 0.15 })
-
-  const quotes = proof.testimonials.slice(0, 3)
-  if (quotes.length === 0) return null
 
   return (
     <section ref={root} className="bg-cream">
@@ -33,4 +30,12 @@ export default function Testimonials() {
       </div>
     </section>
   )
+}
+
+// Shows only real, named testimonials from `proof.testimonials` in content/site.js.
+// With none, it renders nothing. We never invent proof.
+export default function Testimonials() {
+  const quotes = proof.testimonials.slice(0, 3)
+  if (quotes.length === 0) return null
+  return <TestimonialsSection quotes={quotes} />
 }

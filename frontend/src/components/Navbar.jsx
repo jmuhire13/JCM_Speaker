@@ -69,6 +69,7 @@ export default function Navbar() {
   }, [open])
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
         scrolled ? 'bg-cream/95 border-line border-b backdrop-blur' : 'bg-transparent'
@@ -117,8 +118,11 @@ export default function Navbar() {
           <Menu className="size-8" />
         </button>
       </div>
+    </header>
 
-      {/* Mobile panel */}
+      {/* Mobile panel. It lives OUTSIDE the header on purpose: once the header gets its blurred
+          background (backdrop-filter), a fixed child would be sized to the header instead of
+          the whole screen. */}
       <div
         ref={panel}
         inert={!open}
@@ -154,6 +158,6 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   )
 }
