@@ -1,0 +1,19 @@
+// Tells Cloudflare how to publish the site (read by "wrangler", Cloudflare's deploy tool).
+{
+  // The site's name on Cloudflare. It becomes part of the temporary address
+  // (for example jcmuhire-site.<account>.workers.dev). Lowercase letters, numbers, dashes.
+  "name": "jcmuhire-site",
+
+  // The date this config was written for. Cloudflare uses it to keep behaviour stable.
+  "compatibility_date": "2026-10-13",
+
+  "assets": {
+    // The folder that "npm run build" creates: the finished website files.
+    "directory": "./dist",
+
+    // Our site changes pages inside the browser (React Router). If someone opens or refreshes
+    // an address like /speaking, there is no file with that name, so serve the main page and
+    // let the site show the right page. Without this, refreshing any page except Home breaks.
+    "not_found_handling": "single-page-application"
+  }
+}

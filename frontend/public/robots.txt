@@ -1,0 +1,6 @@
+# STAGING ONLY. The site is not public yet, so ask search engines to stay away.
+# BEFORE LAUNCH: replace this whole file with the two lines below (see "Launch checklist" in CLAUDE.md):
+#   User-agent: *
+#   Allow: /
+User-agent: *
+Disallow: /
