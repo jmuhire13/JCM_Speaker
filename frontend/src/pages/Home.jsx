@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import Hero from '../components/Hero'
+import HomeVideo from '../components/HomeVideo'
 import Bridge from '../components/Bridge'
 import Audiences from '../components/Audiences'
 import Themes from '../components/Themes'
@@ -23,6 +24,7 @@ export default function Home() {
         />
       </Helmet>
       <Hero />
+      <HomeVideo />
       <Bridge />
       <Audiences />
       <Themes />

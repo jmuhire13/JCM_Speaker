@@ -23,6 +23,9 @@ import wedding from '../assets/photos/real-wedding-2021.jpg'
 import awards from '../assets/photos/real-aya-2016.jpg'
 import portrait from '../assets/photos/real-portrait.jpg'
 
+// The years that slide behind the opening (taken from the timeline below).
+export const ghostYears = ['2015', '2016', '2018', '2019', '2020', '2021', '2022']
+
 export const storyHero = {
   label: 'My Story',
   // provisional: wording suggested by us, taken from his bio ("leadership through lived experience")

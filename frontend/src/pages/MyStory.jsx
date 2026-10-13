@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import StoryHero from '../components/StoryHero'
 import Timeline from '../components/Timeline'
 import Today from '../components/Today'
+import VideoSection from '../components/VideoSection'
 import Invitation from '../components/Invitation'
 import { storyHero } from '../content/story'
 
@@ -16,6 +17,7 @@ export default function MyStory() {
       </Helmet>
       <StoryHero />
       <Timeline />
+      <VideoSection />
       <Today />
       <Invitation />
     </>

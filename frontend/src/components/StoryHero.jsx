@@ -1,88 +1,56 @@
 import { useRef } from 'react'
-import gsap from 'gsap'
-import { SplitText } from 'gsap/SplitText'
-import { useGSAP } from '@gsap/react'
-import { storyHero } from '../content/story'
+import useHeroReveal from '../lib/useHeroReveal'
+import { ghostYears, storyHero } from '../content/story'
 
-gsap.registerPlugin(SplitText, useGSAP)
-
+// My Story opens with "ghost years": outlined numerals of his timeline slide slowly across
+// the bottom, behind the headline. The portrait sits on an ember offset block.
 export default function StoryHero() {
   const root = useRef(null)
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia()
-
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        const rest = gsap
-          .timeline({ paused: true })
-          .from('.sh-label', { y: 20, opacity: 0, duration: 0.7, ease: 'power3.out' }, 0)
-          .from(
-            '.sh-after',
-            { y: 30, opacity: 0, duration: 0.9, stagger: 0.14, ease: 'power3.out' },
-            0.6,
-          )
-
-        let started = false
-        SplitText.create('.sh-title', {
-          type: 'lines',
-          mask: 'lines',
-          autoSplit: true,
-          onSplit(self) {
-            gsap.set(root.current, { visibility: 'visible' })
-            if (!started) {
-              started = true
-              rest.play()
-            }
-            return gsap.from(self.lines, {
-              yPercent: 110,
-              duration: 1.1,
-              stagger: 0.1,
-              ease: 'power4.out',
-            })
-          },
-        })
-      })
-
-      mm.add('(prefers-reduced-motion: reduce)', () => {
-        gsap.set(root.current, { visibility: 'visible' })
-      })
-
-      return () => mm.revert()
-    },
-    { scope: root },
-  )
+  useHeroReveal(root)
 
   const { portrait } = storyHero
+  const years = `${ghostYears.join('  ·  ')}  ·  `
 
   return (
-    <section
-      ref={root}
-      className="gate mx-auto max-w-[1400px] px-5 pt-36 pb-20 md:px-10 md:pt-48 md:pb-32"
-    >
-      <div className={portrait ? 'grid items-end gap-12 md:grid-cols-[1.4fr_1fr]' : ''}>
+    <section ref={root} className="gate bg-cream relative min-h-svh overflow-hidden">
+      <div className="relative z-10 mx-auto grid max-w-[1400px] items-center gap-12 px-5 pt-36 pb-44 md:grid-cols-[1.3fr_1fr] md:px-10 md:pt-44 md:pb-72">
         <div>
-          <p className="sh-label font-body text-muted text-[13px] tracking-[0.14em] uppercase">
+          <p className="ph-label font-body text-muted text-[13px] tracking-[0.14em] uppercase">
             {storyHero.label}
           </p>
-          <h1 className="sh-title font-hero text-ink mt-6 text-[clamp(3rem,9vw,9rem)] leading-[0.95] text-balance uppercase">
+          <h1 className="ph-title font-hero text-ink mt-6 text-[clamp(3rem,8vw,8rem)] leading-[0.95] text-balance uppercase">
             {storyHero.headline}
           </h1>
-          <p className="sh-after text-soft mt-10 max-w-3xl text-xl leading-relaxed md:text-2xl">
+          <p className="ph-after text-soft mt-10 max-w-2xl text-xl leading-relaxed md:text-2xl">
             {storyHero.intro}
           </p>
         </div>
 
         {/* Appears once a real portrait is set in content/story.js */}
         {portrait && (
-          <div className="sh-after aspect-[4/5] w-full overflow-hidden rounded-[220px_220px_6px_6px] md:max-w-[460px] md:justify-self-end">
+          <div className="ph-after relative mx-auto w-full max-w-[26rem] md:ml-auto">
+            <div aria-hidden="true" className="bg-ember absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
             <img
               src={portrait.src}
               alt={portrait.alt}
-              className="size-full object-cover"
+              className="relative aspect-[4/5] w-full rounded-[6px] object-cover object-[50%_30%]"
             />
           </div>
         )}
+      </div>
+
+      {/* Ghost years: decorative */}
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-6 overflow-hidden whitespace-nowrap">
+        <div className="slide-left-slow flex w-max">
+          {[0, 1].map((n) => (
+            <p
+              key={n}
+              className="font-hero [-webkit-text-stroke:2px_rgba(31,26,29,0.28)] pr-10 text-[clamp(6rem,15vw,14rem)] leading-none text-transparent"
+            >
+              {years.repeat(2)}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -76,6 +76,59 @@ html.js .gate {
   }
 }
 
+/*
+  Slow ambient motion for page openings. Each pair of copies sits side by side or one
+  above the other, and slides by exactly one copy, so the loop has no visible jump.
+*/
+.drift-up {
+  animation: drift-up 90s linear infinite;
+}
+.drift-down {
+  animation: drift-down 110s linear infinite;
+}
+.slide-left-slow {
+  animation: slide-left 80s linear infinite;
+}
+.slide-right-slow {
+  animation: slide-right 95s linear infinite;
+}
+
+@keyframes drift-up {
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes drift-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slide-left {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes slide-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift-up,
+  .drift-down,
+  .slide-left-slow,
+  .slide-right-slow {
+    animation: none;
+  }
+}
+
 /* Lenis (smooth scroll) recommended base styles */
 html.lenis,
 html.lenis body {

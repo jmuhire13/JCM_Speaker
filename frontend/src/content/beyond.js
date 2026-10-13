@@ -18,6 +18,7 @@ import support from '../assets/photos/beyond-support.jpg'
 export const beyondHero = {
   label: 'Beyond the Stage',
   headline: 'His work doesn’t end when the applause does.',
+  accent: 'applause',
   // added by us
   intro:
     'A talk is where the story is told. The work after it is where belonging gets built: community, conversation and action.',

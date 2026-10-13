@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Menu, X } from 'lucide-react'
@@ -9,9 +9,14 @@ import { navLinks, site } from '../content/site'
 const linkBase =
   'font-body text-[15px] font-medium border-b-2 pb-1 transition-colors'
 
+// Pages whose opening is dark: until you scroll, the bar switches to light text.
+const darkOpenings = ['/speaking', '/trusted-by', '/beyond-the-stage']
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
+  const onDark = !scrolled && darkOpenings.includes(pathname)
   const panel = useRef(null)
   const tl = useRef(null)
   const closeBtn = useRef(null)
@@ -70,7 +75,12 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
-        <Link to="/" className="font-display text-ink text-3xl tracking-wide">
+        <Link
+          to="/"
+          className={`font-display text-3xl tracking-wide transition-colors ${
+            onDark ? 'text-cream' : 'text-ink'
+          }`}
+        >
           {site.name}
         </Link>
 
@@ -82,15 +92,17 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `${linkBase} ${
                   isActive
-                    ? 'border-ember text-ink'
-                    : 'text-soft hover:border-ink hover:text-ink border-transparent'
+                    ? `border-ember ${onDark ? 'text-cream' : 'text-ink'}`
+                    : onDark
+                      ? 'text-on-ink hover:border-cream hover:text-cream border-transparent'
+                      : 'text-soft hover:border-ink hover:text-ink border-transparent'
                 }`
               }
             >
               {l.label}
             </NavLink>
           ))}
-          <Button to={site.inviteTo} className="!py-3 !text-sm">
+          <Button to={site.inviteTo} variant={onDark ? 'cream' : 'ink'} className="!py-3 !text-sm">
             {site.inviteLabel}
           </Button>
         </nav>
@@ -100,7 +112,7 @@ export default function Navbar() {
           aria-label="Open menu"
           aria-expanded={open}
           onClick={() => setOpen(true)}
-          className="text-ink md:hidden"
+          className={`md:hidden ${onDark ? 'text-cream' : 'text-ink'}`}
         >
           <Menu className="size-8" />
         </button>
