@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import MyStory from './pages/MyStory'
+import BeyondTheStage from './pages/BeyondTheStage'
 import ComingSoon from './pages/ComingSoon'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -48,6 +49,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/my-story" element={<MyStory />} />
+        <Route path="/beyond-the-stage" element={<BeyondTheStage />} />
         <Route path="*" element={<ComingSoon />} />
       </Routes>
       <Footer />
