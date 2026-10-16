@@ -32,6 +32,10 @@ import africaYouthAwards from '../assets/logos/africa-youth-awards.webp'
 import globalYouthConnect from '../assets/logos/global-youth-connect.webp'
 import csed from '../assets/logos/csed.webp'
 import effect250 from '../assets/logos/250-effect.webp'
+import huzaPress from '../assets/logos/huza-press.webp'
+import peaceBuilding from '../assets/logos/peace-building-institute.webp'
+import defendDefenders from '../assets/logos/defenddefenders.webp'
+import usEmbassyKigali from '../assets/logos/us-embassy-kigali.webp'
 
 export const logos = [
   { name: 'UNESCO', src: unesco },
@@ -54,4 +58,8 @@ export const logos = [
   { name: 'Global Youth Connect', src: globalYouthConnect },
   { name: 'CSED', src: csed },
   { name: '250 Effect', src: effect250 },
+  { name: 'Huza Press', src: huzaPress },
+  { name: 'Peacebuilding Institute', src: peaceBuilding },
+  { name: 'DefendDefenders', src: defendDefenders },
+  { name: 'U.S. Embassy Kigali', src: usEmbassyKigali },
 ]
