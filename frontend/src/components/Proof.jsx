@@ -33,7 +33,7 @@ export default function Proof() {
           ))}
         </ul>
 
-        <ul className="mt-16 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-24 md:grid-cols-4 lg:grid-cols-6">
+        <ul className="mt-16 grid grid-cols-2 gap-3 sm:grid-cols-3 md:mt-24 md:grid-cols-4 lg:grid-cols-5">
           {logos.map((logo) => (
             <li
               key={logo.name}

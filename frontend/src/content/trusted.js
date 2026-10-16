@@ -20,12 +20,12 @@ export const trustedHero = {
   label: 'Trusted By',
   headline: 'The rooms he has been invited into.',
   accent: 'rooms',
-  intro: 'Organisations that have hosted Jean Claude, and the honours his work has earned.',
+  intro: 'Organisations that have hosted, worked with, or honoured Jean Claude, and the honours his work has earned.',
 }
 
 export const hosted = {
-  heading: 'Hosted by',
-  intro: 'These organisations have welcomed him to speak and to take part.',
+  heading: 'Worked with',
+  intro: 'Hosts, partners and programmes that have welcomed him, worked with him, or honoured his work.',
 }
 
 // Example: { 'African Union': 'Keynote speaker, 2022' } (only once the owner confirms it)

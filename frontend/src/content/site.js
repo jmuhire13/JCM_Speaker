@@ -76,7 +76,7 @@ export const themes = {
 export const proof = {
   label: 'Track record',
   heading: 'Trusted by',
-  intro: 'Organisations that have hosted Jean Claude.',
+  intro: 'Organisations that have hosted, worked with, or honoured Jean Claude.',
   // Taken from the owner's story (content/source/my-story.md). Keep the wording faithful.
   facts: [
     {
