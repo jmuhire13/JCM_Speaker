@@ -88,7 +88,7 @@ export default function ConnectForm() {
       <div className={card} role="status">
         <h2 className="font-hero text-5xl uppercase">Thank you.</h2>
         <p className="text-soft mt-4 text-lg leading-relaxed">
-          Your invitation is on its way. {reply.promise}
+          Your request is on its way. {reply.promise}
         </p>
       </div>
     )

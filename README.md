@@ -1,6 +1,6 @@
 # Jean Claude Muhire: speaker website
 
-The website for **Jean Claude Muhire**, a speaker, storyteller and community builder. Its single job is to get him invited to speak by NGOs, hospitals and schools. Every page leads to one action: **"Invite Jean Claude to speak"**.
+The website for **Jean Claude Muhire**, a speaker, storyteller and community builder. Its single job is to get him invited to speak by NGOs, hospitals and schools. Every page leads to one action: **"Book Jean Claude"**.
 
 Core idea: *Leadership Through Lived Experience*.
 

@@ -1,4 +1,4 @@
-// Words for the Connect page (the destination of every "Invite Jean Claude to speak" button).
+// Words for the Connect page (the destination of every "Book Jean Claude" button).
 //
 // PROVISIONAL (confirm with the owner):
 //  - The reply promise ("within two working days") and the email address (contact@jcmuhire.com,
@@ -16,7 +16,7 @@ export const connectHero = {
 }
 
 export const connectForm = {
-  title: 'Invite Jean Claude to speak',
+  title: 'Book Jean Claude',
   fields: {
     name: 'Your name',
     organisation: 'Organisation',
@@ -26,7 +26,7 @@ export const connectForm = {
     message: 'Tell us about your event',
   },
   audienceOptions: ['NGO', 'Hospital', 'School', 'Something else'],
-  submit: 'Invite Jean Claude to speak',
+  submit: 'Book Jean Claude',
   privacy: 'We use your details only to reply to your enquiry.',
 }
 

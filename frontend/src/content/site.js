@@ -5,7 +5,7 @@ export const site = {
   name: 'Jean Claude Muhire',
   // The owner's revised roles line (Adjusted_MY_STORY.md, Oct 2026)
   roles: 'Lived Experience Advocate · Community Builder · Social Impact Leader',
-  inviteLabel: 'Invite Jean Claude to speak',
+  inviteLabel: 'Book Jean Claude',
   inviteTo: '/connect',
 }
 
