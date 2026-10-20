@@ -3,7 +3,8 @@
 
 export const site = {
   name: 'Jean Claude Muhire',
-  roles: 'Speaker · Storyteller · Community Builder',
+  // The owner's revised roles line (Adjusted_MY_STORY.md, Oct 2026)
+  roles: 'Lived Experience Advocate · Community Builder · Social Impact Leader',
   inviteLabel: 'Invite Jean Claude to speak',
   inviteTo: '/connect',
 }
@@ -123,7 +124,7 @@ export const socials = [
 
 export const footer = {
   // provisional: placeholder address, to be confirmed by the owner
-  email: 'hello@jcmuhire.com',
+  email: 'contact@jcmuhire.com',
   site: 'jcmuhire.com',
   marquee: 'Leadership Through Lived Experience',
 }

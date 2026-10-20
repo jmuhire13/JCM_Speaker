@@ -24,14 +24,18 @@ import awards from '../assets/photos/real-aya-2016.jpg'
 import portrait from '../assets/photos/real-portrait.jpg'
 
 // The years that slide behind the opening (taken from the timeline below).
-export const ghostYears = ['2015', '2016', '2018', '2019', '2020', '2021', '2022']
+export const ghostYears = ['2012', '2015', '2016', '2018', '2019', '2020', '2021', '2022']
 
 export const storyHero = {
   label: 'My Story',
-  // provisional: wording suggested by us, taken from his bio ("leadership through lived experience")
-  headline: 'Leadership through lived experience',
+  // The owner's own title and bio (his feedback file Adjusted_MY_STORY.md, Oct 2026).
+  // One line each in the big headline.
+  headline: ['Community services worker', 'Non-profit leader', 'Advocate'],
   intro:
-    'Jean Claude Muhire is a speaker, storyteller, community builder, and advocate for people living with chronic illness. He speaks about leadership through lived experience, resilience, community, and the power of turning personal stories into action.',
+    'Jean Claude Muhire is a college-trained community services worker, dedicated non-profit leader, and chronic illness advocate. His work is grounded in two connected areas: Lived Experience, including chronic illness, resilience, belonging, and the realities of navigating systems not always built with care in mind, and Community Action, including advocacy, servant leadership, and the power of turning personal stories into support, awareness, and collective responsibility.',
+  // Short version for the search-result and share-preview description (his first sentence).
+  description:
+    'Jean Claude Muhire is a college-trained community services worker, dedicated non-profit leader, and chronic illness advocate.',
   // TEMPORARY real portrait, public source (Policy Center for the New South, also used on the
   // Love the Kids Rwanda team page). Only 450px wide, so it is soft on large screens.
   // Replace with the full-resolution original. See PHOTOS_USED.md.
@@ -39,15 +43,35 @@ export const storyHero = {
 }
 
 export const timeline = {
-  // provisional: heading written by us
-  heading: 'How he got here',
+  // The owner's own heading (Adjusted_MY_STORY.md, Oct 2026)
+  heading: 'How did he get there?',
   items: [
+    {
+      // Owner's own text (Adjusted_MY_STORY.md). No photo yet: an item with `photo: null`
+      // shows a typographic panel instead. Add a real photo here when he supplies one.
+      small: 'Born',
+      big: '90s',
+      title: 'Born and raised',
+      place: 'Butare, Rwanda',
+      text: 'Jean Claude was born and raised in rural southern Rwanda, where he completed his primary and secondary education. He lost his biological mother at the age of 12 and was raised by his single grandmother during the difficult years following the 1994 Genocide against the Tutsi. Those early experiences brought hardship, but they also helped shape who he is today, strengthening his resilience, compassion, and commitment to serving others.',
+      photo: null,
+      panelWord: 'Butare',
+    },
+    {
+      small: 'Beginning',
+      big: '2012',
+      title: 'Humanitarian and social work',
+      place: 'Kigali, Rwanda',
+      text: 'Jean Claude’s commitment to community service began in 2012, when he served full-time as a volunteer responsible for communication and correspondence at the former Kimisagara Orphanage, which supported more than 250 orphans and vulnerable children in Rwanda. Although he was admitted to the University of Rwanda to study chemistry, his passion for serving others continued to pull him toward community work. During that time, he was also trained as a peer educator and facilitator with Kimisagara Youth Center, contributing to youth-focused efforts to raise awareness and prevent HIV/AIDS and drug abuse in partnership with Rwanda’s Ministry of Youth.',
+      photo: null,
+      panelWord: 'Kigali',
+    },
     {
       small: 'Founded',
       big: '2015',
       title: 'Love the Kids Rwanda',
       place: 'Rwanda',
-      text: 'In 2015, Jean Claude founded Love the Kids Rwanda, a registered non-profit organization that provides scholarships for children from vulnerable families to attend school in Rwanda. Over the years, the organization has supported hundreds of young people, including students who have gone on to complete high school and university.',
+      text: 'In 2015, Jean Claude founded Love the Kids Rwanda, a registered non-profit organization that provides scholarships for children from vulnerable families to attend school in Rwanda. Over the years, the organization has supported more than 250 young people, including students who have gone on to complete high school and university.',
       photo: children, // TEMPORARY real photo, public source (New Times, 25 Jan 2020). Permission and a sharp original needed. See PHOTOS_USED.md.
       photoPos: 'object-[50%_50%]',
       photoAlt: 'Children supported by Love the Kids Rwanda, posing for a group photo',

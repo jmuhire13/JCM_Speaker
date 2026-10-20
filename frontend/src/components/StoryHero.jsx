@@ -18,10 +18,14 @@ export default function StoryHero() {
           <p className="ph-label font-body text-muted text-[13px] tracking-[0.14em] uppercase">
             {storyHero.label}
           </p>
-          <h1 className="ph-title font-hero text-ink mt-6 text-[clamp(3rem,8vw,8rem)] leading-[0.95] text-balance uppercase">
-            {storyHero.headline}
+          <h1 className="ph-title font-hero text-ink mt-6 text-[clamp(2.5rem,6vw,6rem)] leading-[0.95] uppercase">
+            {storyHero.headline.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </h1>
-          <p className="ph-after text-soft mt-10 max-w-2xl text-xl leading-relaxed md:text-2xl">
+          <p className="ph-after text-soft mt-10 max-w-2xl text-lg leading-relaxed md:text-xl">
             {storyHero.intro}
           </p>
         </div>

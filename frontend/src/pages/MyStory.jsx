@@ -11,9 +11,9 @@ export default function MyStory() {
     <>
       <Helmet>
         <title>My Story | Jean Claude Muhire</title>
-        <meta name="description" content={storyHero.intro} />
+        <meta name="description" content={storyHero.description} />
         <meta property="og:title" content="My Story | Jean Claude Muhire" />
-        <meta property="og:description" content={storyHero.intro} />
+        <meta property="og:description" content={storyHero.description} />
       </Helmet>
       <StoryHero />
       <Timeline />

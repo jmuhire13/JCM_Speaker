@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Jean Claude Muhire | Speaker, Storyteller, Community Builder</title>
+        <title>Jean Claude Muhire | Lived Experience Advocate, Community Builder, Social Impact Leader</title>
         <meta
           name="description"
           content="Leadership through lived experience. Jean Claude Muhire shares stories that foster belonging, strengthen connections, and inspire action for NGOs, hospitals and schools."

@@ -1,7 +1,7 @@
 // Words for the Connect page (the destination of every "Invite Jean Claude to speak" button).
 //
 // PROVISIONAL (confirm with the owner):
-//  - The reply promise ("within two working days") and the email address (hello@jcmuhire.com,
+//  - The reply promise ("within two working days") and the email address (contact@jcmuhire.com,
 //    in content/site.js `footer.email`) are placeholders from the brief.
 //  - The privacy sentence below is our wording. The owner must confirm it is true and that a
 //    privacy policy exists before launch.

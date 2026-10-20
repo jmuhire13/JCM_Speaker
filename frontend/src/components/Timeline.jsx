@@ -92,12 +92,24 @@ export default function Timeline() {
                     mediaLeft ? 'md:col-start-1 md:-mr-[3.5vw]' : 'md:col-start-3 md:-ml-[3.5vw]'
                   }`}
                 >
-                  <img
-                    src={item.photo}
-                    alt={item.photoAlt}
-                    loading="lazy"
-                    className={`size-full object-cover ${item.photoPos}`}
-                  />
+                  {item.photo ? (
+                    <img
+                      src={item.photo}
+                      alt={item.photoAlt}
+                      loading="lazy"
+                      className={`size-full object-cover ${item.photoPos}`}
+                    />
+                  ) : (
+                    // No photo yet: a quiet panel with the place name, until he supplies a real photo.
+                    <div
+                      aria-hidden="true"
+                      className="bg-green-deep flex size-full items-center justify-center overflow-hidden"
+                    >
+                      <span className="font-hero [-webkit-text-stroke:2px_rgba(243,238,226,0.45)] text-[clamp(4rem,11vw,9rem)] leading-none text-transparent uppercase">
+                        {item.panelWord}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 <div
