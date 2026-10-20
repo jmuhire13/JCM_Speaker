@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import useReveal from '../lib/useReveal'
 import { closing } from '../content/site'
 import { directContact, nextSteps } from '../content/connect'
+import SocialLinks from './SocialLinks'
 
 // Three plain steps, then the direct email (and the summary download once it exists).
 export default function NextSteps() {
@@ -48,6 +49,7 @@ export default function NextSteps() {
               {closing.summaryLabel}
             </a>
           )}
+          <SocialLinks className="text-ink hover:bg-ink hover:text-cream border-ink/30" />
         </div>
       </div>
     </section>

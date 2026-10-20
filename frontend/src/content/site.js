@@ -112,6 +112,15 @@ export const closing = {
   summaryLabel: 'Sharing this with your director? Download the one-page summary',
 }
 
+// Jean Claude's own accounts (given by the owner, Oct 2026). `icon` names a key in
+// components/SocialLinks.jsx.
+export const socials = [
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/muhire-j-claude/', icon: 'linkedin' },
+  { name: 'X (Twitter)', href: 'https://x.com/jc1muhire', icon: 'x' },
+  { name: 'Facebook', href: 'https://www.facebook.com/jc1muhire', icon: 'facebook' },
+  { name: 'Instagram', href: 'https://www.instagram.com/jc1muhire', icon: 'instagram' },
+]
+
 export const footer = {
   // provisional: placeholder address, to be confirmed by the owner
   email: 'hello@jcmuhire.com',

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { footer, navLinks, site } from '../content/site'
+import SocialLinks from './SocialLinks'
 
 const marqueeText = `${footer.marquee} · `.repeat(6)
 const year = new Date().getFullYear()
@@ -44,6 +45,9 @@ export default function Footer() {
             </a>
           </p>
           <p className="text-on-ink-label">{footer.site}</p>
+          <div className="pt-3">
+            <SocialLinks />
+          </div>
         </div>
       </div>
 
