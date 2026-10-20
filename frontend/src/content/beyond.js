@@ -24,12 +24,25 @@ export const beyondHero = {
     'A talk is where the story is told. The work after it is where belonging gets built: community, conversation and action.',
 }
 
+// Order, titles and descriptions are the owner's own wording (his feedback file,
+// Adjusted_BEYOND_THE_STAGE.md, Oct 2026). The titles are long on purpose: keep them as he wrote them.
 export const projects = [
   {
     number: '01',
+    label: 'Launched by Jean Claude in 2025 · Ottawa',
+    title: 'Supporting newcomers, immigrants, and refugees living with chronic illnesses in Canada',
+    text: 'Drawing on his experience as a newcomer and as someone with a history of chronic kidney disease, Jean Claude launched Sounds From a New Home (SFNH), a community-based health and social services initiative that supports newcomers, immigrants, and refugees living with chronic illness in Ottawa through storytelling, counselling, peer education, and community events.',
+    tags: [],
+    link: null,
+    photo: support, // provisional stock photo
+    photoPos: 'object-[50%_45%]',
+    photoAlt: 'Two people holding each other’s hands on a table (provisional stock photo)',
+  },
+  {
+    number: '02',
     label: 'Founded by Jean Claude in 2015',
-    title: 'Love the Kids Rwanda',
-    text: 'Love the Kids Rwanda is a registered non-profit organization that provides scholarships for children from vulnerable families to attend school in Rwanda. Over the years, the organization has supported hundreds of young people, including students who have gone on to complete high school and university.',
+    title: 'Keeping vulnerable children in schools through Love the Kids Rwanda',
+    text: 'In 2015, Jean Claude founded Love the Kids Rwanda, a registered non-profit, non-governmental organization that provides scholarships to children from vulnerable families to attend school in Rwanda. Over the years, the organization has supported more than 250 young people, including students who have gone on to complete high school and university.',
     // The charity's own three programmes (https://lovethekidsrwanda.org/our-work)
     tags: ['Education & Child Development', 'Community Transformation', 'Family Strengthening'],
     link: { href: 'https://lovethekidsrwanda.org/', label: 'Visit Love the Kids Rwanda' },
@@ -38,34 +51,25 @@ export const projects = [
     photoAlt: 'Children supported by Love the Kids Rwanda, posing for a group photo',
   },
   {
-    number: '02',
-    label: '2015',
-    title: 'Liza',
-    text: 'A film about a girl who loses both parents at 12 and goes to live in an orphanage. Jean Claude made it for the 2015 Global Dialogues contest, where he was among 20 Rwandans selected. He is best known for it, a film on violence against young girls and women.',
-    tags: [],
+    number: '03',
+    label: 'Film 2015 · Short story 2017',
+    title: 'Sharing stories that confront gender based violence in Rwanda',
+    // Owner's wording, except that we left out the sentence describing the plot of Liza in
+    // detail (it names child abuse; a booker may be put off). Restore if the owner wants it.
+    text: 'Jean Claude is a storyteller who uses writing and film to speak out against gender-based violence. His film Liza, released in October 2015, and his short story I Leave You Today, published by Huza Press in July 2017, brought public attention to violence against girls and women in Rwanda. Liza follows a young girl who is orphaned at age 12 and goes to live in an orphanage. I Leave You Today explores domestic abuse from a woman’s perspective. The Global Dialogues Trust recognized both works.',
+    tags: ['Film: Liza', 'Short story: I Leave You Today', 'Huza Press'],
     link: null,
     photo: film, // provisional stock photo
     photoPos: 'object-[50%_50%]',
     photoAlt: 'A film clapperboard lying on a surface (provisional stock photo)',
   },
-  {
-    number: '03',
-    label: 'Ongoing',
-    title: 'Living with chronic illness',
-    text: 'Jean Claude is an advocate for people living with chronic illness. He reminds audiences that no one should have to face their hardest moments alone, and that support from others can help people survive, heal, and move forward.',
-    tags: [],
-    link: null,
-    photo: support, // provisional stock photo
-    photoPos: 'object-[50%_45%]',
-    photoAlt: 'Two people holding each other’s hands on a table (provisional stock photo)',
-  },
 ]
 
-// From his public bio only (Policy Center for the New South). Confirm with the owner.
-export const alsoBeyond = ['Author of I Leave You Today']
+// Nothing extra now: I Leave You Today is part of project 03.
+export const alsoBeyond = []
 
 export const impact = [
   { big: '2015', small: 'Love the Kids Rwanda founded' },
-  { big: '3', small: 'Programmes: education, community and family' },
-  { big: 'Hundreds', small: 'Of young people supported' },
+  { big: '250+', small: 'Young people supported through scholarships' },
+  { big: '2025', small: 'Sounds From a New Home launched in Ottawa' },
 ]

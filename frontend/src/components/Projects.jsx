@@ -84,7 +84,7 @@ export default function Projects() {
               <p className="font-body text-muted mt-5 text-[13px] tracking-[0.14em] uppercase">
                 {p.label}
               </p>
-              <h2 className="font-hero text-ink mt-3 text-[clamp(2.25rem,5vw,4.75rem)] leading-[0.95] text-balance uppercase">
+              <h2 className="font-hero text-ink mt-3 text-[clamp(1.75rem,3.4vw,3.25rem)] leading-[1] text-balance uppercase">
                 {p.title}
               </h2>
               <p className="text-soft mt-6 max-w-xl text-lg leading-relaxed md:text-xl">{p.text}</p>

@@ -12,7 +12,7 @@ export const connectHero = {
   label: 'Connect',
   headline: 'Bring the story to your stage.',
   accent: 'your stage',
-  intro: 'Tell us about your event. The more you share, the better Jean Claude can shape the talk to your room.',
+  intro: 'Tell us about your event. The more you share, the better Jean Claude can shape the presentation to your room.',
 }
 
 export const connectForm = {
@@ -40,7 +40,7 @@ export const nextSteps = {
   items: [
     { number: '01', title: 'You send the form', text: 'It takes two minutes.' },
     { number: '02', title: 'Jean Claude replies', text: reply.promise },
-    { number: '03', title: 'You shape it together', text: 'He tailors the talk to your room and your people.' },
+    { number: '03', title: 'You shape it together', text: 'He tailors the presentation to your room and your people.' },
   ],
 }
 

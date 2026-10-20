@@ -2,8 +2,8 @@ import { useRef } from 'react'
 import useReveal from '../lib/useReveal'
 import { talks, talksSection } from '../content/speaking'
 
-// The four talks as big stacked blocks: an outlined number, a huge title, and one line.
-// Titles are provisional (see content/speaking.js).
+// The four topic presentations as big stacked blocks: an outlined number, a huge title,
+// a description and what the audience leaves with (words in content/speaking.js).
 export default function Talks() {
   const root = useRef(null)
   useReveal(root, '.talk-reveal', { y: 50, stagger: 0.12 })
@@ -28,7 +28,12 @@ export default function Talks() {
               <h3 className="font-hero text-ink text-[clamp(2.25rem,5vw,4.75rem)] leading-[0.95] text-balance uppercase">
                 {talk.title}
               </h3>
-              <p className="text-soft text-lg leading-relaxed md:text-xl">{talk.text}</p>
+              <div>
+                <p className="text-soft text-lg leading-relaxed md:text-xl">{talk.text}</p>
+                <p className="text-ink mt-5 text-lg leading-relaxed font-medium italic md:text-xl">
+                  {talk.leave}
+                </p>
+              </div>
             </li>
           ))}
         </ol>
