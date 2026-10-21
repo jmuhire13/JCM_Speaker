@@ -13,7 +13,7 @@ export default function ImpactStrip() {
         <ul className="grid gap-12 md:grid-cols-3 md:gap-10">
           {impact.map((item) => (
             <li key={item.big} className="impact-reveal">
-              <p className="font-hero text-ember text-[clamp(3rem,6.2vw,5.5rem)] leading-none">
+              <p className="font-hero text-gold text-[clamp(3rem,6.2vw,5.5rem)] leading-none">
                 {item.big}
               </p>
               <p className="text-on-ink mt-4 max-w-xs text-lg leading-relaxed md:text-xl">

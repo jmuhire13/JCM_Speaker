@@ -4,14 +4,14 @@ import useHeroReveal from '../lib/useHeroReveal'
 import ConnectForm from './ConnectForm'
 import { connectHero } from '../content/connect'
 
-// Connect opens on deep ember, the colour we have only used for accents so far. This is the
+// Connect opens on deep gold, a colour used nowhere else on the site. This is the
 // page where the action happens, so it gets the boldest background on the site.
 export default function ConnectHero() {
   const root = useRef(null)
   useHeroReveal(root)
 
   return (
-    <section ref={root} className="gate bg-ember-deep text-cream relative overflow-hidden">
+    <section ref={root} className="gate bg-gold-deep text-cream relative overflow-hidden">
       <div className="mx-auto grid min-h-svh max-w-[1400px] items-center gap-12 px-5 pt-32 pb-20 md:grid-cols-[1.05fr_1fr] md:px-10">
         <div>
           <p className="ph-label font-body text-cream text-[13px] tracking-[0.14em] uppercase">

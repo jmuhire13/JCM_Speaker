@@ -21,7 +21,7 @@ export default function Themes({ showHeading = true }) {
               key={item.title}
               className="theme-reveal border-line-strong group grid gap-3 border-t py-8 last:border-b md:grid-cols-[1fr_1.4fr] md:gap-10 md:py-10"
             >
-              <h3 className="font-display text-ink group-hover:text-ember text-4xl tracking-wide transition-colors duration-300 md:text-6xl">
+              <h3 className="font-display text-ink group-hover:text-gold-deep text-4xl tracking-wide transition-colors duration-300 md:text-6xl">
                 {item.title}
               </h3>
               <p className="text-soft self-center text-lg leading-relaxed md:text-xl">

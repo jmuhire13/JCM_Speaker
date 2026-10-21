@@ -25,7 +25,7 @@ export default function Proof() {
         <ul className="mt-16 grid gap-10 border-t border-white/15 pt-10 md:mt-24 md:grid-cols-3">
           {proof.facts.map((fact) => (
             <li key={fact.year} className="proof-reveal">
-              <p className="font-hero text-ember text-6xl md:text-7xl">{fact.year}</p>
+              <p className="font-hero text-gold text-6xl md:text-7xl">{fact.year}</p>
               <p className="text-on-ink mt-3 max-w-sm text-base leading-relaxed md:text-lg">
                 {fact.text}
               </p>

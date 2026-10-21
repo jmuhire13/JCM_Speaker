@@ -93,7 +93,9 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `${linkBase} ${
                   isActive
-                    ? `border-ember ${onDark ? 'text-cream' : 'text-ink'}`
+                    ? onDark
+                      ? 'border-gold text-cream'
+                      : 'border-gold-deep text-ink'
                     : onDark
                       ? `${pathname === '/connect' ? 'text-cream' : 'text-on-ink'} hover:border-cream hover:text-cream border-transparent`
                       : 'text-soft hover:border-ink hover:text-ink border-transparent'

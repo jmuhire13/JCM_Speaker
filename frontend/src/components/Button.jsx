@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 // The one reusable button. "ink" is the default; "cream" is for dark bands.
-// On hover an ember layer wipes in from the left.
+// On hover a gold layer wipes in from the left.
 // With a `to` it is a link; without one it is a real <button> (use that one in forms).
 const variants = {
   ink: 'bg-ink text-cream',
@@ -23,9 +23,9 @@ export default function Button({
     <>
       <span
         aria-hidden="true"
-        className="bg-ember absolute inset-0 origin-right scale-x-0 transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100"
+        className="bg-gold absolute inset-0 origin-right scale-x-0 transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100"
       />
-      <span className="relative transition-colors duration-500 group-hover:text-white">
+      <span className="relative transition-colors duration-500 group-hover:text-ink">
         {children}
       </span>
     </>

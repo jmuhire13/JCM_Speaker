@@ -124,7 +124,7 @@ export default function Hero() {
           headline already says it. */}
       <p
         aria-hidden="true"
-        className="hero-live font-hero [-webkit-text-stroke:2px_#e4572e] pointer-events-none absolute right-[-1vw] bottom-[1svh] text-[clamp(5rem,26vw,9rem)] leading-none text-transparent uppercase select-none md:right-[3vw] md:bottom-[3svh] md:text-[clamp(8rem,15vw,16rem)]"
+        className="hero-live font-hero [-webkit-text-stroke:2px_#e8b23a] pointer-events-none absolute right-[-1vw] bottom-[1svh] text-[clamp(5rem,26vw,9rem)] leading-none text-transparent uppercase select-none md:right-[3vw] md:bottom-[3svh] md:text-[clamp(8rem,15vw,16rem)]"
       >
         {hero.highlight}
       </p>
@@ -136,7 +136,7 @@ export default function Hero() {
           </p>
 
           <h1 className="hero-title font-hero text-cream mt-6 text-[clamp(2.5rem,5vw,5.75rem)] leading-[0.95] uppercase">
-            {hero.headline} <span className="text-ember">{hero.highlight}</span>
+            {hero.headline} <span className="text-gold">{hero.highlight}</span>
           </h1>
 
           <p className="hero-after text-on-ink mt-8 max-w-xl text-lg leading-relaxed md:text-xl">
@@ -149,7 +149,7 @@ export default function Hero() {
             </Button>
             <Link
               to={hero.secondaryTo}
-              className="text-cream decoration-ember text-[15px] font-medium underline underline-offset-4"
+              className="text-cream decoration-gold text-[15px] font-medium underline underline-offset-4"
             >
               {hero.secondaryLabel}
             </Link>

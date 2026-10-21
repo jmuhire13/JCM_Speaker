@@ -25,7 +25,7 @@ export default function Invitation() {
           {closing.summaryUrl && (
             <a
               href={closing.summaryUrl}
-              className="text-cream decoration-ember text-[15px] font-medium underline underline-offset-4"
+              className="text-cream decoration-gold text-[15px] font-medium underline underline-offset-4"
             >
               {closing.summaryLabel}
             </a>

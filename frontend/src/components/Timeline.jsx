@@ -82,7 +82,7 @@ export default function Timeline() {
                   <span className="font-display text-on-ink-label text-lg tracking-widest uppercase md:text-2xl">
                     {item.small}
                   </span>
-                  <span className="font-hero text-ember text-[clamp(2.5rem,5.5vw,5.5rem)] leading-none whitespace-nowrap">
+                  <span className="font-hero text-gold text-[clamp(2.5rem,5.5vw,5.5rem)] leading-none whitespace-nowrap">
                     {item.big}
                   </span>
                 </div>
@@ -122,7 +122,7 @@ export default function Timeline() {
                   </h3>
                   {item.place && (
                     <p className="font-display text-on-ink-label mt-3 flex items-center gap-2 text-xl uppercase md:text-2xl">
-                      <MapPin className="text-ember size-5" aria-hidden="true" />
+                      <MapPin className="text-gold size-5" aria-hidden="true" />
                       {item.place}
                     </p>
                   )}

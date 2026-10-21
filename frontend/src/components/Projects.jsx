@@ -80,7 +80,7 @@ export default function Projects() {
             </div>
 
             <div className="proj-text">
-              <p className="font-hero text-ember text-6xl leading-none md:text-7xl">{p.number}</p>
+              <p className="font-hero text-gold-deep text-6xl leading-none md:text-7xl">{p.number}</p>
               <p className="font-body text-muted mt-5 text-[13px] tracking-[0.14em] uppercase">
                 {p.label}
               </p>
@@ -107,7 +107,7 @@ export default function Projects() {
                   href={p.link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink decoration-ember mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4"
+                  className="text-ink decoration-gold-deep mt-8 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4"
                 >
                   {p.link.label}
                   <ArrowUpRight className="size-4" aria-hidden="true" />

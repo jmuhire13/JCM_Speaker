@@ -3,7 +3,7 @@ import useHeroReveal from '../lib/useHeroReveal'
 import { ghostYears, storyHero } from '../content/story'
 
 // My Story opens with "ghost years": outlined numerals of his timeline slide slowly across
-// the bottom, behind the headline. The portrait sits on an ember offset block.
+// the bottom, behind the headline. The portrait sits on a gold offset block.
 export default function StoryHero() {
   const root = useRef(null)
   useHeroReveal(root)
@@ -33,7 +33,7 @@ export default function StoryHero() {
         {/* Appears once a real portrait is set in content/story.js */}
         {portrait && (
           <div className="ph-after relative mx-auto w-full max-w-[26rem] md:ml-auto">
-            <div aria-hidden="true" className="bg-ember absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
+            <div aria-hidden="true" className="bg-gold absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
             <img
               src={portrait.src}
               alt={portrait.alt}

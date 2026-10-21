@@ -36,7 +36,7 @@ export default function NextSteps() {
           </p>
           <a
             href={`mailto:${directContact.email}`}
-            className="font-display text-ink decoration-ember text-3xl underline underline-offset-4 md:text-4xl"
+            className="font-display text-ink decoration-gold-deep text-3xl underline underline-offset-4 md:text-4xl"
           >
             {directContact.email}
           </a>
@@ -44,7 +44,7 @@ export default function NextSteps() {
           {closing.summaryUrl && (
             <a
               href={closing.summaryUrl}
-              className="text-ink decoration-ember text-[15px] font-medium underline underline-offset-4"
+              className="text-ink decoration-gold-deep text-[15px] font-medium underline underline-offset-4"
             >
               {closing.summaryLabel}
             </a>

@@ -4,7 +4,7 @@ import useReveal from '../lib/useReveal'
 import VideoCard from './VideoCard'
 import { featuredVideo } from '../content/videos'
 
-// The video slot under the Home hero: a sand band, the video large on an ember offset block,
+// The video slot under the Home hero: a sand band, the video large on a gold offset block,
 // and a short statement beside it. Until a real stage reel exists it shows a feature about his
 // story, labelled honestly. Swap `featuredVideo` in content/videos.js.
 // The statement is drawn from his bio ("no one should have to face their hardest moments alone").
@@ -16,7 +16,7 @@ export default function HomeVideo() {
     <section ref={root} className="bg-sand">
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 py-24 md:grid-cols-[1.5fr_1fr] md:gap-16 md:px-10 md:py-36">
         <div className="hv-reveal relative">
-          <div aria-hidden="true" className="bg-ember absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
+          <div aria-hidden="true" className="bg-gold absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
           <div className="relative">
             <VideoCard {...featuredVideo} caption={false} />
           </div>
@@ -34,7 +34,7 @@ export default function HomeVideo() {
           </p>
           <Link
             to="/my-story"
-            className="hv-reveal decoration-ember mt-8 inline-block text-[15px] font-medium underline underline-offset-4"
+            className="hv-reveal decoration-gold-deep mt-8 inline-block text-[15px] font-medium underline underline-offset-4"
           >
             Read and watch more of his story
           </Link>

@@ -40,7 +40,7 @@ export default function VideoSection({ background = 'bg-cream' }) {
                   href={`https://www.youtube.com/watch?v=${v.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink decoration-ember mt-6 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4"
+                  className="text-ink decoration-gold-deep mt-6 inline-flex items-center gap-2 text-[15px] font-medium underline underline-offset-4"
                 >
                   Watch on YouTube
                   <ArrowUpRight className="size-4" aria-hidden="true" />

@@ -138,7 +138,7 @@ export const footer = {
   // provisional: placeholder address, to be confirmed by the owner
   email: 'contact@jcmuhire.com',
   site: 'jcmuhire.com',
-  // The closing line above the footer columns (accent word is shown in ember)
+  // The closing line above the footer columns (accent word is shown in gold)
   statement: 'Leadership through lived experience.',
   statementAccent: 'lived experience.',
   // The slim moving band: key ideas from his own bio

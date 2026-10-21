@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
 
       {/* Slowly scrolling band. Decorative, hidden from screen readers. */}
-      <div aria-hidden="true" className="bg-ember text-ink overflow-hidden py-2.5 whitespace-nowrap">
+      <div aria-hidden="true" className="bg-gold text-ink overflow-hidden py-2.5 whitespace-nowrap">
         <div className="marquee-track flex w-max">
           <p className="font-display pr-6 text-[clamp(1.25rem,2.2vw,1.75rem)] leading-none tracking-[0.12em] uppercase">
             {marqueeText}

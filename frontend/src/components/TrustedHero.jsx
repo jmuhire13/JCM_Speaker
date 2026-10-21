@@ -45,7 +45,7 @@ export default function TrustedHero() {
           {trustedHero.label}
         </p>
         <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-end md:gap-14">
-          <p className="ph-after font-hero text-ember text-[clamp(8rem,26vw,22rem)] leading-[0.78]">
+          <p className="ph-after font-hero text-gold text-[clamp(8rem,26vw,22rem)] leading-[0.78]">
             {logos.length}
           </p>
           <div className="pb-2">

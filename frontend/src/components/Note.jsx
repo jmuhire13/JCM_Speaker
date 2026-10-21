@@ -15,7 +15,7 @@ export default function Note() {
         </p>
         <Link
           to={note.to}
-          className="note-reveal decoration-ember mt-10 inline-block text-[15px] font-medium underline underline-offset-4"
+          className="note-reveal decoration-gold-deep mt-10 inline-block text-[15px] font-medium underline underline-offset-4"
         >
           {note.linkLabel}
         </Link>

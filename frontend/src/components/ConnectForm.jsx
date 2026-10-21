@@ -43,7 +43,7 @@ function Field({ id, label, error, hint, children }) {
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} role="alert" className="text-ember-deep mt-1.5 text-sm font-medium">
+        <p id={`${id}-error`} role="alert" className="text-error mt-1.5 text-sm font-medium">
           {error}
         </p>
       )}
@@ -71,7 +71,7 @@ export default function ConnectForm() {
     onChange: set(key),
     'aria-invalid': errors[key] ? 'true' : undefined,
     'aria-describedby': errors[key] ? `${key}-error` : undefined,
-    className: `${inputClass} ${errors[key] ? 'border-ember-deep' : 'border-line-strong'}`,
+    className: `${inputClass} ${errors[key] ? 'border-error' : 'border-line-strong'}`,
   })
 
   async function onSubmit(e) {
@@ -131,7 +131,7 @@ export default function ConnectForm() {
           <button
             type="button"
             onClick={() => setStatus('idle')}
-            className="decoration-ember text-[15px] font-medium underline underline-offset-4"
+            className="decoration-gold-deep text-[15px] font-medium underline underline-offset-4"
           >
             Go back and edit
           </button>
@@ -173,7 +173,7 @@ export default function ConnectForm() {
                   className={`chip cursor-pointer border px-4 py-3 text-sm font-medium transition-colors select-none ${
                     selected
                       ? 'bg-green-deep text-cream border-green-deep'
-                      : `bg-white text-ink hover:border-ink ${errors.audience ? 'border-ember-deep' : 'border-line-strong'}`
+                      : `bg-white text-ink hover:border-ink ${errors.audience ? 'border-error' : 'border-line-strong'}`
                   }`}
                 >
                   <input
@@ -193,7 +193,7 @@ export default function ConnectForm() {
             })}
           </div>
           {errors.audience && (
-            <p id="audience-error" role="alert" className="text-ember-deep mt-1.5 text-sm font-medium">
+            <p id="audience-error" role="alert" className="text-error mt-1.5 text-sm font-medium">
               {errors.audience}
             </p>
           )}

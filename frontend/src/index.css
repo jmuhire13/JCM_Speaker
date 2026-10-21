@@ -2,14 +2,19 @@
 
 /*
   Design tokens: our palette and CHII's fonts, defined once and used by name.
-  Example: bg-cream, text-ink, text-ember, font-display.
+  Example: bg-cream, text-ink, text-gold, font-display.
 */
 @theme {
   --color-cream: #f3eee2;
   --color-ink: #1f1a1d;
-  --color-ember: #e4572e;
-  /* A deeper ember for backgrounds behind small cream text (about 4.8:1 contrast). The brief lists it as an alternative ember. */
-  --color-ember-deep: #c9431f;
+  /* The accent: warm gold (the sun in the Rwandan flag). Chosen by the owner's feedback, replacing
+     the earlier orange "ember". Use it on dark bands (ink, green) and for big shapes. */
+  --color-gold: #e8b23a;
+  /* A deeper gold for big numbers and thin lines on cream or sand, and for a background behind
+     cream text. About 4.8:1 contrast with cream in both directions. */
+  --color-gold-deep: #8a6100;
+  /* Form errors keep their own red, so they never read as part of the brand accent. */
+  --color-error: #b3261e;
   --color-green-deep: #29362b;
   --color-sand: #e9e2d0;
   --color-muted: #5a5148;
@@ -43,7 +48,7 @@
 
   /*
     Keyboard focus ring: ink outside, cream inside. The two tones keep it visible on any
-    background (light, dark or ember) without shouting in a loud colour.
+    background (light, dark or gold) without shouting in a loud colour.
   */
   :focus-visible {
     outline: 2px solid var(--color-ink);

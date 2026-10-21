@@ -20,7 +20,7 @@ export default function Recognitions() {
               key={`${item.year}-${item.text}`}
               className="rec-reveal grid items-center gap-2 border-t border-white/20 py-7 last:border-b md:grid-cols-[1fr_2fr] md:gap-10 md:py-9"
             >
-              <p className="font-hero text-ember text-5xl leading-none md:text-6xl">{item.year}</p>
+              <p className="font-hero text-gold text-5xl leading-none md:text-6xl">{item.year}</p>
               <p className="font-display text-cream text-3xl leading-tight uppercase md:text-5xl">
                 {item.text}
               </p>

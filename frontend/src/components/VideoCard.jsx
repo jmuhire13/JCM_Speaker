@@ -33,7 +33,7 @@ export default function VideoCard({ id, label, note, tone = 'light', caption = t
               loading="lazy"
               className="size-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
             />
-            <span className="bg-ember absolute top-1/2 left-1/2 flex size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-white transition duration-300 group-hover:scale-110 md:size-24">
+            <span className="bg-gold absolute top-1/2 left-1/2 flex size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-ink transition duration-300 group-hover:scale-110 md:size-24">
               <Play className="size-8 translate-x-0.5 fill-current md:size-10" aria-hidden="true" />
             </span>
           </button>

@@ -79,7 +79,7 @@ export default function Bridge() {
             <span key={line} className={`block overflow-hidden py-[0.04em] ${offsets[i]}`}>
               <span
                 className={`bridge-line block ${
-                  i === bridge.lines.length - 1 ? 'text-ember' : ''
+                  i === bridge.lines.length - 1 ? 'text-gold' : ''
                 }`}
               >
                 {line}
