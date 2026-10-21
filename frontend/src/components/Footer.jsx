@@ -42,7 +42,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-[1.5fr_1fr_1.2fr] md:gap-10 md:px-10 md:py-20">
         <div>
           <Link to="/" aria-label={`${site.name}, home`} className="text-cream inline-block">
-            <Logo className="[&_.logo-mark]:h-12" />
+            <Logo className="[&_.logo-mark]:size-12" />
           </Link>
           <p className="text-on-ink-label mt-5 max-w-xs leading-relaxed">{site.roles}</p>
         </div>
