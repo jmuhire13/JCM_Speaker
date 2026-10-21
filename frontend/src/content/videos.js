@@ -15,7 +15,12 @@
 //  sqjSPmyxTrI  "NAMUHAYE IMPYIKO NONE MBAYE UMUGORE WE | Muhire na Marie Reine BYABARENZE | Ubu baritegura UBUKWE"
 //  Qmg91xO26ms  "UBUKWE BWA YA COUPLE YAHANYE IMPYIKO | AMARANGAMUTIMA YARI MENSHI | MUHIRE NA MARIE REINE BARUSHINZE"
 
-const note = 'Interview in Kinyarwanda · ISIMBI TV'
+const note = 'Interview in Kinyarwanda'
+
+// Shown under every video, linked to the original on YouTube. The videos belong to this channel,
+// so the credit must stay visible. Ask ISIMBI TV for permission, and take a video out of the list
+// below straight away if they ask.
+export const videoCredit = { prefix: 'Video from', channel: 'ISIMBI TV', suffix: 'on YouTube' }
 
 export const videos = [
   { id: '_7TwZ2QfoEE', label: 'When doctors discouraged them', note },

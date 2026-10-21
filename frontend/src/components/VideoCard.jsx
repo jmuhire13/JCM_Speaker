@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Play } from 'lucide-react'
+import { ArrowUpRight, Play } from 'lucide-react'
+import { videoCredit } from '../content/videos'
 
 // A YouTube video that costs nothing until someone presses play.
 // It first shows a still thumbnail. Only on click does it load YouTube's privacy-friendly
@@ -39,6 +40,22 @@ export default function VideoCard({ id, label, note, tone = 'light', caption = t
           </button>
         )}
       </div>
+      {/* Credit to the channel that owns the video, always visible, linked to the original */}
+      <p className={`mt-3 text-sm ${dark ? 'text-on-ink-label' : 'text-muted'}`}>
+        {videoCredit.prefix}{' '}
+        <a
+          href={`https://www.youtube.com/watch?v=${id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`underline underline-offset-4 ${
+            dark ? 'decoration-gold hover:text-cream' : 'decoration-gold-deep hover:text-ink'
+          }`}
+        >
+          {videoCredit.channel} {videoCredit.suffix}
+          <ArrowUpRight className="ml-1 inline size-3.5" aria-hidden="true" />
+          <span className="sr-only">(opens in a new tab)</span>
+        </a>
+      </p>
       <figcaption className={caption ? 'mt-4' : 'sr-only'}>
         <p className={`font-display text-2xl tracking-wide uppercase md:text-3xl ${dark ? 'text-cream' : 'text-ink'}`}>
           {label}
