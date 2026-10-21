@@ -13,15 +13,15 @@
 //    recorded words. Replace them with his words from the planned conversation
 //    (what it taught him, what he believes, what he helps audiences see).
 //  - `storyHero.portrait` is empty on purpose. Set it to a real portrait.
-import children from '../assets/photos/real-ltkr-children.webp'
-import mountains from '../assets/photos/story-2018-mountains.jpg'
-import paris from '../assets/photos/story-2019-paris.jpg'
-import hospital from '../assets/photos/story-2020-hospital.jpg'
+import children from '../assets/photos/beyond-children.jpg'
+import appalachian from '../assets/photos/story-2018-appalachian.jpg'
+import prize from '../assets/photos/story-2019-prize.jpg'
+import diagnosis from '../assets/photos/story-2020-diagnosis.jpg'
 import flight from '../assets/photos/story-flight.jpg'
 import canada from '../assets/photos/story-2022-canada.jpg'
-import wedding from '../assets/photos/real-wedding-2021.jpg'
+import wedding from '../assets/photos/story-wedding.jpg'
 import awards from '../assets/photos/real-aya-2016.jpg'
-import portrait from '../assets/photos/real-portrait.jpg'
+import portrait from '../assets/photos/jc-portrait-casual.jpg'
 
 // The years that slide behind the opening (taken from the timeline below).
 export const ghostYears = ['2012', '2015', '2016', '2018', '2019', '2020', '2021', '2022']
@@ -39,7 +39,7 @@ export const storyHero = {
   // TEMPORARY real portrait, public source (Policy Center for the New South, also used on the
   // Love the Kids Rwanda team page). Only 450px wide, so it is soft on large screens.
   // Replace with the full-resolution original. See PHOTOS_USED.md.
-  portrait: { src: portrait, alt: 'Portrait of Jean Claude Muhire' },
+  portrait: { src: portrait, alt: 'Jean Claude Muhire smiling, in a black leather jacket' },
 }
 
 export const timeline = {
@@ -72,9 +72,9 @@ export const timeline = {
       title: 'Love the Kids Rwanda',
       place: 'Rwanda',
       text: 'In 2015, Jean Claude founded Love the Kids Rwanda, a registered non-profit organization that provides scholarships for children from vulnerable families to attend school in Rwanda. Over the years, the organization has supported more than 250 young people, including students who have gone on to complete high school and university.',
-      photo: children, // TEMPORARY real photo, public source (New Times, 25 Jan 2020). Permission and a sharp original needed. See PHOTOS_USED.md.
-      photoPos: 'object-[50%_50%]',
-      photoAlt: 'Children supported by Love the Kids Rwanda, posing for a group photo',
+      photo: children, // Owner's own photo (Beyond The Stage - 02). Children: confirm the charity's permission.
+      photoPos: 'object-[50%_55%]',
+      photoAlt: 'Children in yellow shirts playing a circle game, at a Love the Kids Rwanda gathering',
     },
     {
       // From public sources (Policy Center for the New South bio). Confirm with the owner.
@@ -93,9 +93,9 @@ export const timeline = {
       title: 'Mandela Washington Fellow',
       place: 'North Carolina, USA',
       text: 'His selection as a Mandela Washington Fellow through the U.S. Department of State’s Young African Leaders Initiative at Appalachian State University in North Carolina in 2018.',
-      photo: mountains,
-      photoPos: 'object-[50%_50%]',
-      photoAlt: 'Forested mountain ridges in morning light (provisional stock photo)',
+      photo: appalachian, // Owner's own photo (rephotoswebsite IMG_1339)
+      photoPos: 'object-[30%_60%]',
+      photoAlt: 'Jean Claude Muhire standing beside the Appalachian State University sign',
     },
     {
       small: 'Prize',
@@ -103,9 +103,9 @@ export const timeline = {
       title: 'Human Rights Prize',
       place: 'Paris',
       text: 'A laureate of the French Government’s Human Rights Prize in Paris in 2019.',
-      photo: paris,
-      photoPos: 'object-[35%_50%]',
-      photoAlt: 'The Eiffel Tower at dusk between dark buildings (provisional stock photo)',
+      photo: prize, // Owner's own photo (My Story - 2019, Human Rights Prize)
+      photoPos: 'object-[55%_55%]',
+      photoAlt: 'Jean Claude Muhire speaking at a lectern at the French Ministry of Justice, where the 2019 Human Rights Prize was presented',
     },
     {
       small: 'Diagnosis',
@@ -113,9 +113,9 @@ export const timeline = {
       title: 'Final-stage kidney disease',
       place: null,
       text: 'In 2020, Jean Claude learned that he had reached the final stage of chronic kidney disease. Doctors told him that a kidney transplant was his only path forward, but the surgery could not be performed in his home country. With limited access to specialized care, his condition posed a serious risk to his life.',
-      photo: hospital,
-      photoPos: 'object-[50%_50%]',
-      photoAlt: 'A quiet hospital corridor ending in a window (provisional stock photo)',
+      photo: diagnosis, // Owner's own photo (My Story - 2020, Diagnosis)
+      photoPos: 'object-[50%_72%]',
+      photoAlt: 'Jean Claude Muhire resting during a dialysis session in hospital',
     },
     {
       // The year (2020) follows from New Times, 15 Aug 2021, which reports the surgery
@@ -136,9 +136,9 @@ export const timeline = {
       title: 'A wedding',
       place: null,
       text: 'On August 12, 2021, Jean Claude and Marie Reine held their civil wedding.',
-      photo: wedding, // TEMPORARY real photo, public source (New Times, 15 Aug 2021, credit "Courtesy"). Ask the couple for the original. See PHOTOS_USED.md.
-      photoPos: 'object-[50%_30%]',
-      photoAlt: 'Jean Claude Muhire and Marie Reine at their civil wedding in August 2021',
+      photo: wedding, // Owner's own photo (My Story - 2020, Wedding). His file says 2020, our card says Aug 12, 2021: confirm the date.
+      photoPos: 'object-[50%_68%]',
+      photoAlt: 'Jean Claude Muhire lifting his bride’s veil during their wedding ceremony',
     },
     {
       small: 'Moved',

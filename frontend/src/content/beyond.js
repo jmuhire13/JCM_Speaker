@@ -11,8 +11,8 @@
 //  - The Liza and advocacy photos are Unsplash stand-ins. The Love the Kids Rwanda photo is a
 //    TEMPORARY public photo of the charity's children (permission needed). See PHOTOS_USED.md.
 //  - The intro line is written by us (marked "added" in the brief).
-import children from '../assets/photos/real-ltkr-children.webp'
-import film from '../assets/photos/beyond-film.jpg'
+import children from '../assets/photos/beyond-children.jpg'
+import library from '../assets/photos/beyond-library.jpg'
 import support from '../assets/photos/beyond-support.jpg'
 
 export const beyondHero = {
@@ -46,9 +46,9 @@ export const projects = [
     // The charity's own three programmes (https://lovethekidsrwanda.org/our-work)
     tags: ['Education & Child Development', 'Community Transformation', 'Family Strengthening'],
     link: { href: 'https://lovethekidsrwanda.org/', label: 'Visit Love the Kids Rwanda' },
-    photo: children, // TEMPORARY real photo (New Times, 25 Jan 2020). Permission needed.
-    photoPos: 'object-[50%_50%]',
-    photoAlt: 'Children supported by Love the Kids Rwanda, posing for a group photo',
+    photo: children, // Owner's own photo (his file "Beyond The Stage - 02"). Children: confirm the charity's permission.
+    photoPos: 'object-[50%_55%]',
+    photoAlt: 'Children in yellow shirts playing a circle game at a Love the Kids Rwanda gathering',
   },
   {
     number: '03',
@@ -59,9 +59,9 @@ export const projects = [
     text: 'Jean Claude is a storyteller who uses writing and film to speak out against gender-based violence. His film Liza, released in October 2015, and his short story I Leave You Today, published by Huza Press in July 2017, brought public attention to violence against girls and women in Rwanda. Liza follows a young girl who is orphaned at age 12 and goes to live in an orphanage. I Leave You Today explores domestic abuse from a woman’s perspective. The Global Dialogues Trust recognized both works.',
     tags: ['Film: Liza', 'Short story: I Leave You Today', 'Huza Press'],
     link: null,
-    photo: film, // provisional stock photo
-    photoPos: 'object-[50%_50%]',
-    photoAlt: 'A film clapperboard lying on a surface (provisional stock photo)',
+    photo: library, // Owner's own photo (his file "Beyond The Stage - 03")
+    photoPos: 'object-[60%_40%]',
+    photoAlt: 'Jean Claude Muhire browsing books in a library during a conference',
   },
 ]
 

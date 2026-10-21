@@ -4,16 +4,16 @@
 //  - Formats come from the brief and are still provisional. The four topic presentations
 //    are now the owner's own wording (see below).
 //  - The intro line is written by us (marked "added" in the brief).
-//  - The tiles behind the opening are stock stand-ins (see PHOTOS_USED.md). Replace with
-//    photos of him speaking to real audiences when they exist.
-import ngo from '../assets/photos/audience-ngo.jpg'
-import hospital from '../assets/photos/audience-hospital.jpg'
-import school from '../assets/photos/audience-school.jpg'
-import seated from '../assets/photos/audience-seated.jpg'
-import support from '../assets/photos/beyond-support.jpg'
-import mountains from '../assets/photos/story-2018-mountains.jpg'
-import paris from '../assets/photos/story-2019-paris.jpg'
-import canada from '../assets/photos/story-2022-canada.jpg'
+//  - The tiles behind the opening are now the owner's own photos (TEDx, a lectern, the Atlantic
+//    Dialogues, the 2019 prize, events). Swap in newer stage photos when he has them.
+import tedx from '../assets/photos/speaking-tedx.jpg'
+import speech from '../assets/photos/speaking-speech.jpg'
+import adel from '../assets/photos/speaking-adel-morocco.jpg'
+import prize from '../assets/photos/story-2019-prize.jpg'
+import library from '../assets/photos/beyond-library.jpg'
+import boone from '../assets/photos/story-boone-conversation.jpg'
+import casual from '../assets/photos/jc-portrait-casual.jpg'
+import appalachian from '../assets/photos/story-2018-appalachian.jpg'
 
 export const speakingHero = {
   label: 'Speaking',
@@ -24,7 +24,7 @@ export const speakingHero = {
 }
 
 // Eight tiles: two per column of the mosaic.
-export const speakingMosaic = [ngo, hospital, school, seated, support, mountains, paris, canada]
+export const speakingMosaic = [tedx, speech, adel, prize, library, boone, casual, appalachian]
 
 export const audienceNeeds = {
   heading: 'What each audience is facing',

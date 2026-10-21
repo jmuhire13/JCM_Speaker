@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react'
 import Button from './Button'
 import { hero, site } from '../content/site'
 // TEMPORARY real portrait from a public source, only 450px wide. See PHOTOS_USED.md.
-import heroPhoto from '../assets/photos/real-portrait.jpg'
+import heroPhoto from '../assets/photos/jc-portrait-studio.jpg'
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP)
 
