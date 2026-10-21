@@ -3,11 +3,24 @@ import Button from './Button'
 import { connectForm, directContact, reply } from '../content/connect'
 import { mailtoHref, submitEnquiry } from '../lib/submitEnquiry'
 
-const empty = { name: '', organisation: '', eventDate: '', audience: '', message: '', website: '' }
+const empty = {
+  name: '',
+  email: '',
+  phone: '',
+  organisation: '',
+  eventDate: '',
+  audience: '',
+  message: '',
+  website: '',
+}
+
+// A simple shape check (something@something.something), not a promise the address exists.
+const looksLikeEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim())
 
 function validate(v) {
   const errors = {}
   if (!v.name.trim()) errors.name = 'Please tell us your name.'
+  if (!looksLikeEmail(v.email)) errors.email = 'Please enter an email address we can reply to.'
   if (!v.organisation.trim()) errors.organisation = 'Please tell us the organisation.'
   if (!v.audience) errors.audience = 'Please choose who the audience is.'
   if (v.message.trim().length < 10) errors.message = 'Please tell us a little about your event.'
@@ -136,8 +149,14 @@ export default function ConnectForm() {
         <Field id="name" label={connectForm.fields.name} error={errors.name}>
           <input type="text" autoComplete="name" {...fieldProps('name')} />
         </Field>
+        <Field id="email" label={connectForm.fields.email} error={errors.email}>
+          <input type="email" autoComplete="email" {...fieldProps('email')} />
+        </Field>
         <Field id="organisation" label={connectForm.fields.organisation} error={errors.organisation}>
           <input type="text" autoComplete="organization" {...fieldProps('organisation')} />
+        </Field>
+        <Field id="phone" label={connectForm.fields.phone}>
+          <input type="tel" autoComplete="tel" {...fieldProps('phone')} />
         </Field>
         <Field id="eventDate" label={connectForm.fields.eventDate} hint={connectForm.fields.eventDateHint}>
           <input type="date" {...fieldProps('eventDate')} aria-describedby="eventDate-hint" />

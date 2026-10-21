@@ -19,6 +19,8 @@ export const connectForm = {
   title: 'Book Jean Claude',
   fields: {
     name: 'Your name',
+    email: 'Your email',
+    phone: 'Phone (optional)',
     organisation: 'Organisation',
     eventDate: 'Event date',
     eventDateHint: 'Leave empty if it is not fixed yet.',
