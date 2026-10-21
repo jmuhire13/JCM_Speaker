@@ -10,7 +10,7 @@ const linkBase =
   'font-body text-[15px] font-medium border-b-2 pb-1 transition-colors'
 
 // Pages whose opening is dark: until you scroll, the bar switches to light text.
-const darkOpenings = ['/speaking', '/trusted-by', '/beyond-the-stage', '/connect']
+const darkOpenings = ['/', '/speaking', '/trusted-by', '/beyond-the-stage', '/connect']
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)

@@ -1,6 +1,18 @@
 // All words on the Home hero and the navigation live here, not inside components,
 // so they can be edited later (by hand, a CMS or an admin panel) without touching the design.
 
+// The faint wall of photos behind the Home opening (decorative). The owner's own photos.
+import tedx from '../assets/photos/speaking-tedx.jpg'
+import speech from '../assets/photos/speaking-speech.jpg'
+import adel from '../assets/photos/speaking-adel-morocco.jpg'
+import prize from '../assets/photos/story-2019-prize.jpg'
+import library from '../assets/photos/beyond-library.jpg'
+import boone from '../assets/photos/story-boone-conversation.jpg'
+import appalachian from '../assets/photos/story-2018-appalachian.jpg'
+import children from '../assets/photos/beyond-children.jpg'
+
+export const heroMosaic = [prize, tedx, children, speech, library, adel, appalachian, boone]
+
 export const site = {
   name: 'Jean Claude Muhire',
   // The owner's revised roles line (Adjusted_MY_STORY.md, Oct 2026)
