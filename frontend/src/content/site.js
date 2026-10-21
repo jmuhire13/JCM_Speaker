@@ -138,7 +138,13 @@ export const footer = {
   // provisional: placeholder address, to be confirmed by the owner
   email: 'contact@jcmuhire.com',
   site: 'jcmuhire.com',
-  marquee: 'Leadership Through Lived Experience',
+  // The closing line above the footer columns (accent word is shown in ember)
+  statement: 'Leadership through lived experience.',
+  statementAccent: 'lived experience.',
+  // The slim moving band: key ideas from his own bio
+  marquee: 'Lived Experience · Community Action · Belonging · Resilience',
+  contactLabel: 'Get in touch',
+  exploreLabel: 'Explore',
 }
 
 export const hero = {

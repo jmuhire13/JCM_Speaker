@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react'
 import { Menu, X } from 'lucide-react'
 import Button from './Button'
 import { navLinks, site } from '../content/site'
+import Logo from './Logo'
 
 const linkBase =
   'font-body text-[15px] font-medium border-b-2 pb-1 transition-colors'
@@ -78,11 +79,10 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
         <Link
           to="/"
-          className={`font-display text-3xl tracking-wide transition-colors ${
-            onDark ? 'text-cream' : 'text-ink'
-          }`}
+          aria-label={`${site.name}, home`}
+          className={`transition-colors ${onDark ? 'text-cream' : 'text-ink'}`}
         >
-          {site.name}
+          <Logo />
         </Link>
 
         <nav aria-label="Main menu" className="hidden items-center gap-8 md:flex">
