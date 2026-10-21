@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { bridge } from '../content/site'
-import texture from '../assets/photos/audience-seated.jpg'
+import texture from '../assets/photos/speaking-tedx.jpg'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -66,7 +66,7 @@ export default function Bridge() {
         alt=""
         aria-hidden="true"
         loading="lazy"
-        className="absolute inset-0 size-full object-cover opacity-[0.1] grayscale"
+        className="absolute inset-0 size-full object-cover opacity-[0.16] grayscale"
       />
 
       <div className="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
