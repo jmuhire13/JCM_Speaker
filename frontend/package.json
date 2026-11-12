@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node tools/prepare-images.mjs && node tools/check-content.mjs",
     "build": "vite build",
+    "check:content": "node tools/check-content.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
@@ -35,6 +37,7 @@
     "sharp": "^0.35.5",
     "svgo": "^4.1.0",
     "vite": "^8.3.0",
-    "vite-plugin-image-optimizer": "^2.0.3"
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "yaml": "^2.9.1"
   }
 }

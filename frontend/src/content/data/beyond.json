@@ -1,0 +1,66 @@
+{
+  "beyondHero": {
+    "label": "Beyond the Stage",
+    "headline": "His work doesn’t end when the applause does.",
+    "accent": "applause",
+    "intro": "A talk is where the story is told. The work after it is where belonging gets built: community, conversation and action."
+  },
+  "projects": [
+    {
+      "label": "Launched by Jean Claude in 2025 · Ottawa",
+      "title": "Supporting newcomers, immigrants, and refugees living with chronic illnesses in Canada",
+      "text": "Drawing on his experience as a newcomer and as someone with a history of chronic kidney disease, Jean Claude launched Sounds From a New Home (SFNH), a community-based health and social services initiative that supports newcomers, immigrants, and refugees living with chronic illness in Ottawa through storytelling, counselling, peer education, and community events.",
+      "tags": [],
+      "link": null,
+      "photo": "/src/assets/photos/beyond-support.jpg",
+      "photoAlt": "Two people holding each other’s hands on a table (provisional stock photo)",
+      "photoFocus": "50% 45%"
+    },
+    {
+      "label": "Founded by Jean Claude in 2015",
+      "title": "Keeping vulnerable children in schools through Love the Kids Rwanda",
+      "text": "In 2015, Jean Claude founded Love the Kids Rwanda, a registered non-profit, non-governmental organization that provides scholarships to children from vulnerable families to attend school in Rwanda. Over the years, the organization has supported more than 250 young people, including students who have gone on to complete high school and university.",
+      "tags": [
+        "Education & Child Development",
+        "Community Transformation",
+        "Family Strengthening"
+      ],
+      "link": {
+        "href": "https://lovethekidsrwanda.org/",
+        "label": "Visit Love the Kids Rwanda"
+      },
+      "photo": "/src/assets/photos/beyond-children.jpg",
+      "photoAlt": "Children in yellow shirts playing a circle game at a Love the Kids Rwanda gathering",
+      "photoFocus": "50% 55%"
+    },
+    {
+      "label": "Film 2015 · Short story 2017",
+      "title": "Sharing stories that confront gender based violence in Rwanda",
+      "text": "Jean Claude is a storyteller who uses writing and film to speak out against gender-based violence. His film Liza, released in October 2015, and his short story I Leave You Today, published by Huza Press in July 2017, brought public attention to violence against girls and women in Rwanda. Liza follows a young girl who is orphaned at age 12 and goes to live in an orphanage. I Leave You Today explores domestic abuse from a woman’s perspective. The Global Dialogues Trust recognized both works.",
+      "tags": [
+        "Film: Liza",
+        "Short story: I Leave You Today",
+        "Huza Press"
+      ],
+      "link": null,
+      "photo": "/src/assets/photos/beyond-library.jpg",
+      "photoAlt": "Jean Claude Muhire browsing books in a library during a conference",
+      "photoFocus": "60% 40%"
+    }
+  ],
+  "alsoBeyond": [],
+  "impact": [
+    {
+      "big": "2015",
+      "small": "Love the Kids Rwanda founded"
+    },
+    {
+      "big": "250+",
+      "small": "Young people supported through scholarships"
+    },
+    {
+      "big": "2025",
+      "small": "Sounds From a New Home launched in Ottawa"
+    }
+  ]
+}

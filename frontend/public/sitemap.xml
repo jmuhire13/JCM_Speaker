@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The list of pages for search engines. Add a line here whenever a page is added to App.jsx. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://jcmuhire.com/</loc></url>
+  <url><loc>https://jcmuhire.com/speaking</loc></url>
+  <url><loc>https://jcmuhire.com/my-story</loc></url>
+  <url><loc>https://jcmuhire.com/beyond-the-stage</loc></url>
+  <url><loc>https://jcmuhire.com/trusted-by</loc></url>
+  <url><loc>https://jcmuhire.com/connect</loc></url>
+  <url><loc>https://jcmuhire.com/privacy</loc></url>
+</urlset>

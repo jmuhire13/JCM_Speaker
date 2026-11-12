@@ -38,7 +38,8 @@ export default function BeyondHero() {
                 <img
                   src={p.photo}
                   alt={p.photoAlt}
-                  className={`aspect-[4/5] w-full object-cover ${p.photoPos}`}
+                  className="aspect-[4/5] w-full object-cover"
+                  style={{ objectPosition: p.photoFocus }}
                 />
               </div>
             </div>

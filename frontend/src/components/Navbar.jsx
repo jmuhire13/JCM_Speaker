@@ -6,12 +6,12 @@ import { Menu, X } from 'lucide-react'
 import Button from './Button'
 import { navLinks, site } from '../content/site'
 import Logo from './Logo'
+import { darkOpenings } from '../lib/darkOpenings'
 
 const linkBase =
   'font-body text-[15px] font-medium border-b-2 pb-1 transition-colors'
 
 // Pages whose opening is dark: until you scroll, the bar switches to light text.
-const darkOpenings = ['/', '/speaking', '/trusted-by', '/beyond-the-stage', '/connect']
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -82,7 +82,7 @@ export default function Navbar() {
           aria-label={`${site.name}, home`}
           className={`transition-colors ${onDark ? 'text-cream' : 'text-ink'}`}
         >
-          <Logo />
+          <Logo showMark={false} />
         </Link>
 
         <nav aria-label="Main menu" className="hidden items-center gap-8 md:flex">

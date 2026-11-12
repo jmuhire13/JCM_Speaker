@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Button from './Button'
 import { connectForm, directContact, reply } from '../content/connect'
 import { mailtoHref, submitEnquiry } from '../lib/submitEnquiry'
@@ -218,7 +219,12 @@ export default function ConnectForm() {
         <Button type="submit" disabled={status === 'sending'}>
           {status === 'sending' ? 'Sending…' : connectForm.submit}
         </Button>
-        <p className="text-muted max-w-xs text-sm">{connectForm.privacy}</p>
+        <p className="text-muted max-w-xs text-sm">
+          {connectForm.privacy}{' '}
+          <Link to={connectForm.privacyTo} className="text-ink decoration-gold-deep underline underline-offset-4">
+            {connectForm.privacyLinkLabel}
+          </Link>
+        </p>
       </div>
     </form>
   )

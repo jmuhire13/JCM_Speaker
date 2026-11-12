@@ -1,0 +1,57 @@
+{
+  "connectHero": {
+    "label": "Connect",
+    "headline": "Bring the story to your stage.",
+    "accent": "your stage",
+    "intro": "Tell us about your event. The more you share, the better Jean Claude can shape the presentation to your room."
+  },
+  "connectForm": {
+    "title": "Book Jean Claude",
+    "fields": {
+      "name": "Your name",
+      "email": "Your email",
+      "phone": "Phone (optional)",
+      "organisation": "Organisation",
+      "eventDate": "Event date",
+      "eventDateHint": "Leave empty if it is not fixed yet.",
+      "audience": "Who is the audience?",
+      "message": "Tell us about your event"
+    },
+    "audienceOptions": [
+      "NGO",
+      "Hospital",
+      "School",
+      "Something else"
+    ],
+    "submit": "Book Jean Claude",
+    "privacy": "We use your details only to reply to your enquiry.",
+    "privacyLinkLabel": "Privacy policy",
+    "privacyTo": "/privacy"
+  },
+  "reply": {
+    "promise": "Jean Claude replies within two working days."
+  },
+  "nextSteps": {
+    "heading": "What happens next",
+    "items": [
+      {
+        "number": "01",
+        "title": "You send the form",
+        "text": "It takes two minutes."
+      },
+      {
+        "number": "02",
+        "title": "Jean Claude replies",
+        "text": "Jean Claude replies within two working days."
+      },
+      {
+        "number": "03",
+        "title": "You shape it together",
+        "text": "He tailors the presentation to your room and your people."
+      }
+    ]
+  },
+  "directContact": {
+    "label": "Prefer email?"
+  }
+}

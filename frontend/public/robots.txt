@@ -2,5 +2,8 @@
 # BEFORE LAUNCH: replace this whole file with the two lines below (see "Launch checklist" in CLAUDE.md):
 #   User-agent: *
 #   Allow: /
+# and keep the Sitemap line at the bottom.
 User-agent: *
 Disallow: /
+
+Sitemap: https://jcmuhire.com/sitemap.xml

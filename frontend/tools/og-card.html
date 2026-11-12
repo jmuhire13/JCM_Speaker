@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+  The share card (the picture shown when a link to the site is pasted into WhatsApp, LinkedIn,
+  email...). This page is NOT part of the website and is not shipped: it is only the drawing
+  the picture is made from.
+
+  To remake the picture after changing this file:
+    1. Run the dev server (npm run dev). You can look at the card at
+       http://localhost:5173/tools/og-card.html
+    2. Capture it at exactly 1200 x 630 with a headless browser (a normal screenshot comes out
+       zoomed on screens set to 125% or 150%):
+         msedge --headless=new --hide-scrollbars --force-device-scale-factor=1
+                --window-size=1200,630 --screenshot=og.png http://localhost:5173/tools/og-card.html
+    3. Convert og.png to JPEG and save it as frontend/public/og-image.jpg
+
+  The words come from content/site.js (name, roles, hero headline). If those change, change
+  them here too.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Share card</title>
+    <link rel="stylesheet" href="/node_modules/@fontsource/anton/latin-400.css" />
+    <link rel="stylesheet" href="/node_modules/@fontsource/bebas-neue/latin-400.css" />
+    <link rel="stylesheet" href="/node_modules/@fontsource-variable/space-grotesk/wght.css" />
+    <style>
+      * { box-sizing: border-box; margin: 0; }
+      body { width: 1200px; height: 630px; overflow: hidden; background: #1f1a1d; }
+      .card { position: relative; width: 1200px; height: 630px; background: #1f1a1d; overflow: hidden; }
+      .photo {
+        position: absolute; right: 10px; bottom: 0; height: 640px; width: auto;
+        mix-blend-mode: lighten;
+        -webkit-mask-image: linear-gradient(to right, transparent, black 22%, black 82%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 22%, black 82%, transparent);
+      }
+      .text { position: absolute; left: 64px; top: 56px; bottom: 56px; width: 700px; display: flex; flex-direction: column; }
+      .brand { display: flex; align-items: center; gap: 16px; color: #f3eee2; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.04em; line-height: 1; }
+      .brand svg { width: 52px; height: 52px; }
+      h1 { margin-top: auto; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 78px; line-height: 0.98; text-transform: uppercase; color: #f3eee2; }
+      h1 span { color: #e8b23a; }
+      .roles { margin-top: 34px; font-family: 'Space Grotesk Variable', sans-serif; font-size: 16px; letter-spacing: 0.1em; white-space: nowrap; text-transform: uppercase; color: #cfc8ba; }
+      .bar { margin-top: 22px; width: 96px; height: 6px; background: #e8b23a; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img class="photo" src="/src/assets/photos/jc-portrait-studio.jpg" alt="" />
+      <div class="text">
+        <div class="brand">
+          <svg viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="12" fill="#f3eee2" />
+            <g stroke="#E8B23A" stroke-width="10">
+              <path d="M22 8V36C22 44 19 50 14 50C12 50 10.5 49.2 9.5 47.8" />
+              <path d="M52.4 18.6A9 19 0 1 0 52.4 45.4" />
+            </g>
+          </svg>
+          Jean Claude Muhire
+        </div>
+        <h1>Leadership isn't something you learn. It's something you <span>live.</span></h1>
+        <p class="roles">Lived Experience Advocate · Community Builder · Social Impact Leader</p>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </body>
+</html>

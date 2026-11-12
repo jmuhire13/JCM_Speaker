@@ -1,0 +1,81 @@
+{
+  "privacy": {
+    "label": "Privacy",
+    "headline": "Your details, plainly.",
+    "accent": "plainly.",
+    "updated": "12 November 2026",
+    "intro": "This page explains what information this website collects, why, and what happens to it. It is short on purpose.",
+    "description": "What information jcmuhire.com collects when you send a booking enquiry, why, and what happens to it.",
+    "sections": [
+      {
+        "title": "Who is responsible",
+        "text": [
+          "This website, jcmuhire.com, is the personal website of Jean Claude Muhire. For any question about your information, write to the address at the bottom of this page."
+        ]
+      },
+      {
+        "title": "What we collect",
+        "text": [
+          "Only what you choose to send.",
+          "When you fill in the booking form, we receive your name, your email address, your phone number if you give one, your organisation, the event date if you give one, the kind of audience, and your message.",
+          "If you write to us by email, we receive your email address and whatever you write."
+        ]
+      },
+      {
+        "title": "Why we collect it",
+        "text": [
+          "To reply to your enquiry and, if you go ahead, to plan the event with you.",
+          "We do not use your details for newsletters or advertising, and we do not sell them or pass them to anyone for their own use."
+        ]
+      },
+      {
+        "title": "Who handles it for us",
+        "text": [
+          "Three services help run this website, and each handles information on our behalf.",
+          "Formspree delivers the booking form to our inbox and keeps a copy of each enquiry. When you send the form, it also receives technical data such as your IP address and browser type.",
+          "Google provides the Gmail inbox where enquiries arrive.",
+          "Cloudflare hosts the website and forwards email sent to our address. Like most hosts, it processes technical data such as your IP address to deliver pages and keep the site secure.",
+          "These companies may store information on servers outside your country."
+        ]
+      },
+      {
+        "title": "Cookies and tracking",
+        "text": [
+          "This website does not set cookies of its own, and it uses no analytics or advertising trackers."
+        ]
+      },
+      {
+        "title": "The video",
+        "text": [
+          "The video on this site belongs to ISIMBI TV and plays from YouTube. Its cover picture is loaded from YouTube’s servers as the page loads the video section, so YouTube can see that your browser asked for it. The player itself loads only when you press play, in YouTube’s privacy-enhanced mode.",
+          "Once you press play, YouTube (Google) may collect information under its own privacy policy."
+        ]
+      },
+      {
+        "title": "Links to other sites",
+        "text": [
+          "This site links to Jean Claude’s social media accounts and to YouTube. Those sites have their own privacy policies, and we do not control them."
+        ]
+      },
+      {
+        "title": "How long we keep it",
+        "text": [
+          "We keep an enquiry for as long as we need it to reply and to plan and deliver an event, and delete it when it is no longer needed. You can ask us to delete yours sooner."
+        ]
+      },
+      {
+        "title": "Your choices",
+        "text": [
+          "You can ask to see the information we hold about you, to have it corrected, or to have it deleted. Write to us and we will reply as soon as we can."
+        ]
+      },
+      {
+        "title": "Changes to this page",
+        "text": [
+          "If this page changes, the date at the top changes with it."
+        ]
+      }
+    ],
+    "contactLabel": "Questions about your information?"
+  }
+}

@@ -75,7 +75,8 @@ export default function Projects() {
                 src={p.photo}
                 alt={p.photoAlt}
                 loading="lazy"
-                className={`h-[118%] w-full object-cover ${p.photoPos}`}
+                className="h-[118%] w-full object-cover"
+                style={{ objectPosition: p.photoFocus }}
               />
             </div>
 

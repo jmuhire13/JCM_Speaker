@@ -5,16 +5,35 @@ import { videoCredit } from '../content/videos'
 // A YouTube video that costs nothing until someone presses play.
 // It first shows a still thumbnail. Only on click does it load YouTube's privacy-friendly
 // player (youtube-nocookie.com). No autoplay on page load, no tracking before a click.
-export default function VideoCard({ id, label, note, tone = 'light', caption = true }) {
+// `offsetBlock` draws a gold block behind the player only, so the credit line under it
+// stays on the page background and never sits half on the block.
+// `cover` chooses the YouTube still shown before play; `start` and `end` (seconds) limit the
+// player to one part of the video. All three are set per video in content/videos.js.
+export default function VideoCard({
+  id,
+  label,
+  note,
+  tone = 'light',
+  caption = true,
+  offsetBlock = false,
+  cover = 'hqdefault',
+  start = null,
+  end = null,
+}) {
   const [playing, setPlaying] = useState(false)
   const dark = tone === 'dark'
+  const range = `${start ? `&start=${start}` : ''}${end ? `&end=${end}` : ''}`
 
   return (
     <figure>
+      <div className="relative">
+        {offsetBlock && (
+          <div aria-hidden="true" className="bg-gold absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
+        )}
       <div className="relative aspect-video overflow-hidden rounded-[6px] bg-black">
         {playing ? (
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`}
+            src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0${range}`}
             title={label}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen
@@ -29,7 +48,7 @@ export default function VideoCard({ id, label, note, tone = 'light', caption = t
             className="group absolute inset-0 size-full"
           >
             <img
-              src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+              src={`https://i.ytimg.com/vi/${id}/${cover}.jpg`}
               alt=""
               loading="lazy"
               className="size-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
@@ -40,8 +59,9 @@ export default function VideoCard({ id, label, note, tone = 'light', caption = t
           </button>
         )}
       </div>
+      </div>
       {/* Credit to the channel that owns the video, always visible, linked to the original */}
-      <p className={`mt-3 text-sm ${dark ? 'text-on-ink-label' : 'text-muted'}`}>
+      <p className={`${offsetBlock ? 'mt-7' : 'mt-3'} text-sm ${dark ? 'text-on-ink-label' : 'text-muted'}`}>
         {videoCredit.prefix}{' '}
         <a
           href={`https://www.youtube.com/watch?v=${id}`}

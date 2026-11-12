@@ -97,7 +97,8 @@ export default function Timeline() {
                       src={item.photo}
                       alt={item.photoAlt}
                       loading="lazy"
-                      className={`size-full object-cover ${item.photoPos}`}
+                      className="size-full object-cover"
+                      style={{ objectPosition: item.photoFocus }}
                     />
                   ) : (
                     // No photo yet: a quiet panel with the place name, until he supplies a real photo.

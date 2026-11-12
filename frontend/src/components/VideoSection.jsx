@@ -29,10 +29,13 @@ export default function VideoSection({ background = 'bg-cream' }) {
                 <VideoCard {...v} caption={false} />
               </div>
               <div>
-                <p className="font-hero [-webkit-text-stroke:2px_#1f1a1d] text-8xl leading-none text-transparent">
-                  {String(i + 1).padStart(2, '0')}
-                </p>
-                <h3 className="font-hero text-ink mt-4 text-[clamp(2rem,4vw,3.75rem)] leading-[0.95] text-balance uppercase">
+                {/* The outlined number only makes sense when there is more than one video */}
+                {videos.length > 1 && (
+                  <p className="font-hero mb-4 [-webkit-text-stroke:2px_#1f1a1d] text-8xl leading-none text-transparent">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                )}
+                <h3 className="font-hero text-inktext-[clamp(2rem,4vw,3.75rem)] leading-[0.95] text-balance uppercase">
                   {v.label}
                 </h3>
                 <p className="text-muted mt-3 text-base">{v.note}</p>

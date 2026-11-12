@@ -1,37 +1,32 @@
-// Videos shown on the site. All three were supplied by the owner's team and are public
-// YouTube videos from the Rwandan channel ISIMBI TV, in Kinyarwanda. They embed through
-// YouTube's privacy-friendly player, loaded only when a visitor clicks play.
+// Videos shown on the site. The data lives in data/videos.json (edited at /admin).
 //
-// PROVISIONAL (confirm with the owner):
-//  - The English labels below are OUR reading of the Kinyarwanda titles. We could not watch
-//    the videos or read a transcript. Correct them if they are wrong.
-//  - These look like news-style features about Jean Claude and Marie Reine (the kidney
-//    donation and the wedding), not him presenting on a stage. They are labelled honestly.
-//    Replace the Home slot with real stage footage when it exists.
-//  - Marie Reine's agreement to show them should be confirmed.
+// The video is a public YouTube video from the Rwandan channel ISIMBI TV, in Kinyarwanda. It
+// plays from YouTube's privacy-friendly player, loaded only when a visitor clicks play.
+// Owner decision (Nov 2026): show only this one video (sqjSPmyxTrI, "NAMUHAYE IMPYIKO NONE
+// MBAYE UMUGORE WE | Muhire na Marie Reine BYABARENZE | Ubu baritegura UBUKWE"). Two others
+// (_7TwZ2QfoEE and Qmg91xO26ms) were removed at his request.
 //
-// Original titles:
-//  _7TwZ2QfoEE  "Nahaye IMPYIKO Fiancé | Abaganga banciye intege ndihambira | Muhire byaramurenze | inkuru yabo yakuriza pe"
-//  sqjSPmyxTrI  "NAMUHAYE IMPYIKO NONE MBAYE UMUGORE WE | Muhire na Marie Reine BYABARENZE | Ubu baritegura UBUKWE"
-//  Qmg91xO26ms  "UBUKWE BWA YA COUPLE YAHANYE IMPYIKO | AMARANGAMUTIMA YARI MENSHI | MUHIRE NA MARIE REINE BARUSHINZE"
+// Notes that still apply to the data (JSON files cannot hold comments):
+//  - PROVISIONAL: the English label is OUR reading of the Kinyarwanda title. It is a news-style
+//    feature about Jean Claude and Marie Reine, not a stage talk, and is labelled honestly.
+//    Marie Reine's agreement should be confirmed.
+//  - `videoCredit` is shown under every video, linked to the original. The video belongs to the
+//    channel, so the credit must stay visible. Remove a video at once if the channel asks.
+//  - `cover` picks the YouTube-made still shown before play: "hqdefault" is the channel's own
+//    thumbnail, "hq1", "hq2", "hq3" are frames from the video. It is loaded from YouTube.
+//  - `start` and `end` (seconds) make the player open and stop at a chosen part. PROVISIONAL:
+//    empty until the owner gives the times. Example: 130 and 170 play 2:10 to 2:50.
+//  - The first video in the list is the one shown on Home.
+import data from './data/videos.json'
 
-const note = 'Interview in Kinyarwanda'
+export const videoCredit = data.videoCredit
 
-// Shown under every video, linked to the original on YouTube. The videos belong to this channel,
-// so the credit must stay visible. Ask ISIMBI TV for permission, and take a video out of the list
-// below straight away if they ask.
-export const videoCredit = { prefix: 'Video from', channel: 'ISIMBI TV', suffix: 'on YouTube' }
-
-export const videos = [
-  { id: '_7TwZ2QfoEE', label: 'When doctors discouraged them', note },
-  { id: 'sqjSPmyxTrI', label: 'The kidney, and the wedding to come', note },
-  { id: 'Qmg91xO26ms', label: 'Their wedding', note },
-]
+export const videos = data.videos.map((v) => ({
+  ...v,
+  cover: v.cover || 'hqdefault',
+  start: v.start || null,
+  end: v.end || null,
+}))
 
 export const featuredVideo = videos[0]
-
-export const videoSection = {
-  heading: 'Watch their story',
-  intro:
-    'Features from ISIMBI TV on the kidney donation and the wedding. They are in Kinyarwanda.',
-}
+export const videoSection = data.videoSection

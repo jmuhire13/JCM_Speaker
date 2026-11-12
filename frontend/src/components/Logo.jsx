@@ -3,10 +3,13 @@ import { site } from '../content/site'
 // The Jean Claude Muhire mark: a bold "JC" in gold on a solid square, the same picture as the
 // browser-tab icon (public/favicon.svg). Drawn as plain paths, so it needs no font. The square
 // takes the text colour (currentColor), so it is ink on cream and cream on dark openings.
-// Pass `showName={false}` for the mark alone.
-export default function Logo({ showName = true, className = '' }) {
+// Pass `showName={false}` for the mark alone, or `showMark={false}` for the name alone.
+// Owner decision (Nov 2026): the navbar shows the name only, like a flat wordmark; the JC mark
+// is kept for the browser tab and the footer.
+export default function Logo({ showName = true, showMark = true, className = '' }) {
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
+      {showMark && (
       <svg
         viewBox="0 0 64 64"
         className="logo-mark size-9 shrink-0"
@@ -21,6 +24,7 @@ export default function Logo({ showName = true, className = '' }) {
           <path d="M52.4 18.6A9 19 0 1 0 52.4 45.4" />
         </g>
       </svg>
+      )}
       {showName && (
         <span className="font-display text-2xl tracking-wide md:text-3xl">{site.name}</span>
       )}

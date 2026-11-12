@@ -78,6 +78,9 @@ export default function Footer() {
           <p>
             © {year} {site.name}
           </p>
+          <Link to={footer.privacyTo} className="hover:text-cream underline-offset-4 transition-colors hover:underline">
+            {footer.privacyLabel}
+          </Link>
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

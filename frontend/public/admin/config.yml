@@ -1,0 +1,536 @@
+# Settings for the owner's editor (Decap CMS), opened at /admin/.
+#
+# Every field listed here matches one value in the data files in frontend/src/content/data/.
+# The two must stay in step: run `npm run check:content` (it also runs before every build).
+# Fields with `widget: hidden` are technical values the owner should not change (page
+# addresses, for example). They are listed so the editor keeps them when it saves.
+
+backend:
+  name: github
+  repo: jmuhire13/JCM_Speaker
+  branch: main
+  # The small sign-in helper (the Cloudflare Worker "jcmuhire-editor-auth", code in
+  # auth-helper/index.js). See OWNER_EDITOR.md, "One-time setup".
+  base_url: https://jcmuhire-editor-auth.jcmuhire-speaker.workers.dev
+  commit_messages:
+    create: 'Editor: add {{collection}} "{{slug}}"'
+    update: 'Editor: update {{slug}}'
+    delete: 'Editor: delete {{slug}}'
+    uploadMedia: 'Editor: upload {{path}}'
+    deleteMedia: 'Editor: delete {{path}}'
+
+# On a developer's computer only (ignored on the live site): edit local files without signing
+# in. Run `npx decap-server` from the repository root, then open /admin/index.html.
+local_backend: true
+
+site_url: https://jcmuhire.com
+display_url: https://jcmuhire.com
+logo_url: /favicon.svg
+
+# Photos the owner uploads are saved here. Large ones are made smaller automatically when the
+# site is built (tools/prepare-images.mjs).
+media_folder: frontend/src/assets/photos
+public_folder: /src/assets/photos
+
+editor:
+  preview: false
+
+collections:
+  - name: content
+    label: Website content
+    description: Each entry is one page, or one list used across the site. Open one, change the words or photos, then press Publish. The live site updates a few minutes later.
+    editor:
+      preview: false
+    files:
+      # ------------------------------------------------------------------ Home and shared
+      - name: site
+        label: Home page, menu and footer
+        file: frontend/src/content/data/site.json
+        fields:
+          - label: Name and main button
+            name: site
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Roles line, name: roles, widget: string, hint: 'Shown above the Home headline and in the footer.' }
+              - { label: Main button text, name: inviteLabel, widget: string }
+              - { name: inviteTo, widget: hidden }
+          - { name: navLinks, widget: hidden }
+          - label: Home opening
+            name: hero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Headline, name: headline, widget: string, hint: 'Everything except the last word.' }
+              - { label: Highlighted last word, name: highlight, widget: string, hint: 'Shown in gold.' }
+              - { label: Line under the headline, name: subtitle, widget: text }
+              - { label: Second link text, name: secondaryLabel, widget: string }
+              - { name: secondaryTo, widget: hidden }
+              - { label: Portrait description, name: photoAlt, widget: string, hint: 'Read aloud to visitors who cannot see the photo.' }
+          - label: Photo wall behind the Home opening
+            name: heroMosaic
+            widget: list
+            collapsed: true
+            hint: 'Eight photos work best. They appear small and dim.'
+            field: { label: Photo, name: photo, widget: image }
+          - label: Green statement band
+            name: bridge
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - label: Statement lines
+                name: lines
+                widget: list
+                hint: 'One short line each. Four lines fit best.'
+                field: { label: Line, name: line, widget: string }
+              - { label: Paragraph, name: paragraph, widget: text }
+          - label: Who he speaks to
+            name: audiences
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - label: Audiences
+                name: items
+                widget: list
+                allow_add: false
+                summary: '{{fields.name}}'
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Text, name: text, widget: text }
+                  - { label: Photo description, name: photoAlt, widget: string }
+          - label: What your people walk away with
+            name: themes
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Themes
+                name: items
+                widget: list
+                summary: '{{fields.title}}'
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Text, name: text, widget: text }
+          - label: Track record and testimonials
+            name: proof
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Heading, name: heading, widget: string }
+              - { label: Intro, name: intro, widget: text }
+              - label: Facts
+                name: facts
+                widget: list
+                summary: '{{fields.year}}: {{fields.text}}'
+                fields:
+                  - { label: Year, name: year, widget: string }
+                  - { label: Text, name: text, widget: text }
+              - label: Testimonials
+                name: testimonials
+                widget: list
+                required: false
+                hint: 'Only real quotes, from a named person who agreed to be quoted. The section stays hidden while this list is empty.'
+                summary: '{{fields.name}}, {{fields.organisation}}'
+                fields:
+                  - { label: Quote, name: text, widget: text }
+                  - { label: Name, name: name, widget: string }
+                  - { label: Role, name: role, widget: string, required: false }
+                  - { label: Organisation, name: organisation, widget: string, required: false }
+          - label: Personal note
+            name: note
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Text, name: text, widget: text }
+              - { label: Link text, name: linkLabel, widget: string }
+              - { name: to, widget: hidden }
+          - label: Closing invitation (end of every page)
+            name: closing
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Text, name: text, widget: text }
+              - { label: Link to the one-page summary PDF, name: summaryUrl, widget: string, required: false, hint: 'Leave empty until the PDF exists. The download link stays hidden while this is empty.' }
+              - { label: Summary link text, name: summaryLabel, widget: string }
+          - label: Social media accounts
+            name: socials
+            widget: list
+            collapsed: true
+            summary: '{{fields.name}}'
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Address, name: href, widget: string, hint: 'The full address, starting with https://' }
+              - { label: Icon, name: icon, widget: select, options: [linkedin, x, facebook, instagram] }
+          - label: Footer
+            name: footer
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Contact email, name: email, widget: string, hint: 'Shown in the footer, on the Connect page and on the Privacy page.' }
+              - { name: site, widget: hidden }
+              - { label: Closing statement, name: statement, widget: string }
+              - { label: Words of the statement shown in gold, name: statementAccent, widget: string, hint: 'Must be copied exactly from the statement above.' }
+              - { label: Moving band of words, name: marquee, widget: string }
+              - { label: Contact heading, name: contactLabel, widget: string }
+              - { label: Links heading, name: exploreLabel, widget: string }
+              - { label: Privacy link text, name: privacyLabel, widget: string }
+              - { name: privacyTo, widget: hidden }
+
+      # ------------------------------------------------------------------ Speaking
+      - name: speaking
+        label: Speaking page
+        file: frontend/src/content/data/speaking.json
+        fields:
+          - label: Opening
+            name: speakingHero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Headline, name: headline, widget: string }
+              - { label: Words of the headline shown in gold, name: accent, widget: string, hint: 'Must be copied exactly from the headline above.' }
+              - { label: Intro, name: intro, widget: text }
+          - label: Photo wall behind the opening
+            name: speakingMosaic
+            widget: list
+            collapsed: true
+            hint: 'Eight photos work best.'
+            field: { label: Photo, name: photo, widget: image }
+          - label: What each audience is facing
+            name: audienceNeeds
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string, hint: 'The three audiences themselves are edited under Home page, Who he speaks to.' }
+          - label: Topic presentations heading
+            name: talksSection
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Intro, name: intro, widget: text }
+          - label: Topic presentations
+            name: presentations
+            widget: list
+            collapsed: true
+            hint: 'They are numbered 01, 02, 03 in the order listed. Drag to reorder.'
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: text, widget: text }
+              - { label: Audiences leave with, name: leave, widget: text }
+          - label: Formats
+            name: formats
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - label: Formats
+                name: items
+                widget: list
+                field: { label: Format, name: format, widget: string }
+              - { label: Note, name: note, widget: string }
+
+      # ------------------------------------------------------------------ My Story
+      - name: story
+        label: My Story page
+        file: frontend/src/content/data/story.json
+        fields:
+          - label: Opening
+            name: storyHero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - label: Headline lines
+                name: headline
+                widget: list
+                hint: 'One line each.'
+                field: { label: Line, name: line, widget: string }
+              - { label: Bio, name: intro, widget: text }
+              - { label: Short description, name: description, widget: text, hint: 'One sentence. Shown in search results.' }
+              - label: Portrait
+                name: portrait
+                widget: object
+                fields:
+                  - { label: Photo, name: src, widget: image }
+                  - { label: Photo description, name: alt, widget: string }
+          - label: Years sliding behind the opening
+            name: ghostYears
+            widget: list
+            collapsed: true
+            field: { label: Year, name: year, widget: string }
+          - label: Timeline
+            name: timeline
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Moments
+                name: items
+                widget: list
+                hint: 'Oldest first. Drag to reorder.'
+                summary: '{{fields.big}}: {{fields.title}}'
+                fields:
+                  - { label: Small word above the year, name: small, widget: string }
+                  - { label: Year or date, name: big, widget: string, hint: 'Keep it short, for example 2018 or NOV 30.' }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Place, name: place, widget: string, required: false }
+                  - { label: Text, name: text, widget: text }
+                  - { label: Photo, name: photo, widget: image, required: false, hint: 'With no photo, a green panel shows the word below.' }
+                  - { label: Photo description, name: photoAlt, widget: string, required: false }
+                  - { label: Photo focus, name: photoFocus, widget: string, required: false, pattern: ['^\d{1,3}% \d{1,3}%$', 'Two percentages, for example 50% 30%'], hint: 'Which part of the photo stays in view: across, then down. 50% 50% is the centre, 50% 20% is near the top.' }
+                  - { label: Word on the green panel, name: panelWord, widget: string, required: false }
+          - label: Today
+            name: today
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Text, name: text, widget: text }
+              - label: Also
+                name: also
+                widget: list
+                field: { label: Item, name: item, widget: string }
+              - label: Reflections
+                name: reflections
+                widget: list
+                summary: '{{fields.label}}'
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Text, name: text, widget: text }
+
+      # ------------------------------------------------------------------ Beyond the Stage
+      - name: beyond
+        label: Beyond the Stage page
+        file: frontend/src/content/data/beyond.json
+        fields:
+          - label: Opening
+            name: beyondHero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Headline, name: headline, widget: string }
+              - { label: Words of the headline shown in gold, name: accent, widget: string, hint: 'Must be copied exactly from the headline above.' }
+              - { label: Intro, name: intro, widget: text }
+          - label: Projects
+            name: projects
+            widget: list
+            collapsed: true
+            hint: 'They are numbered 01, 02, 03 in the order listed. The first three also appear as photos in the opening.'
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+              - label: Tags
+                name: tags
+                widget: list
+                required: false
+                field: { label: Tag, name: tag, widget: string }
+              - label: Link
+                name: link
+                widget: object
+                required: false
+                fields:
+                  - { label: Address, name: href, widget: string, required: false, hint: 'The full address, starting with https://. Leave empty for no link.' }
+                  - { label: Link text, name: label, widget: string, required: false }
+              - { label: Photo, name: photo, widget: image }
+              - { label: Photo description, name: photoAlt, widget: string }
+              - { label: Photo focus, name: photoFocus, widget: string, required: false, pattern: ['^\d{1,3}% \d{1,3}%$', 'Two percentages, for example 50% 30%'], hint: 'Which part of the photo stays in view: across, then down. 50% 50% is the centre.' }
+          - { name: alsoBeyond, widget: hidden }
+          - label: Numbers strip
+            name: impact
+            widget: list
+            collapsed: true
+            summary: '{{fields.big}}: {{fields.small}}'
+            fields:
+              - { label: Big number, name: big, widget: string }
+              - { label: Caption, name: small, widget: string }
+
+      # ------------------------------------------------------------------ Trusted By
+      - name: trusted
+        label: Trusted By page
+        file: frontend/src/content/data/trusted.json
+        fields:
+          - label: Opening
+            name: trustedHero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Headline, name: headline, widget: string }
+              - { label: Words of the headline shown in gold, name: accent, widget: string, hint: 'Must be copied exactly from the headline above.' }
+              - { label: Intro, name: intro, widget: text }
+          - label: Organisations heading
+            name: hosted
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Intro, name: intro, widget: text }
+          - label: Recognitions
+            name: recognitions
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Honours
+                name: items
+                widget: list
+                hint: 'Newest first.'
+                summary: '{{fields.year}}: {{fields.text}}'
+                fields:
+                  - { label: Year, name: year, widget: string }
+                  - { label: Honour, name: text, widget: string }
+          - { label: Testimonials heading, name: testimonialsHeading, widget: string, hint: 'The testimonials themselves are edited under Home page, Track record and testimonials.' }
+
+      # ------------------------------------------------------------------ Logos
+      - name: logos
+        label: Organisation logos
+        file: frontend/src/content/data/logos.json
+        fields:
+          - label: Organisations
+            name: logos
+            widget: list
+            hint: 'Shown on Home and on Trusted By, in this order. Only show a logo with the organisation''s permission.'
+            summary: '{{fields.name}}'
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Logo, name: src, widget: image, media_folder: /frontend/src/assets/logos, public_folder: /src/assets/logos, hint: 'A small file with little empty space around the logo works best.' }
+              - { label: What he did there, name: note, widget: string, required: false, hint: 'One short line, for example: Keynote speaker, 2022. Shown under the logo on Trusted By. Leave empty to show nothing.' }
+
+      # ------------------------------------------------------------------ Videos
+      - name: videos
+        label: Videos
+        file: frontend/src/content/data/videos.json
+        fields:
+          - label: Section heading (My Story page)
+            name: videoSection
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Intro, name: intro, widget: text }
+          - label: Credit line under every video
+            name: videoCredit
+            widget: object
+            collapsed: true
+            hint: 'The video belongs to the channel, so this credit must stay.'
+            fields:
+              - { label: Words before the channel name, name: prefix, widget: string }
+              - { label: Channel name, name: channel, widget: string }
+              - { label: Words after the channel name, name: suffix, widget: string }
+          - label: Videos
+            name: videos
+            widget: list
+            hint: 'The first video is the one shown on the Home page. Only add videos you own or have permission to show.'
+            summary: '{{fields.label}}'
+            fields:
+              - { label: YouTube video ID, name: id, widget: string, hint: 'The part of the YouTube address after v= (for example sqjSPmyxTrI).' }
+              - { label: Title, name: label, widget: string }
+              - { label: Note, name: note, widget: string }
+              - { label: Cover picture, name: cover, widget: select, default: hqdefault, options: [{ label: "The channel's own cover", value: hqdefault }, { label: Frame from early in the video, value: hq1 }, { label: Frame from the middle of the video, value: hq2 }, { label: Frame from late in the video, value: hq3 }] }
+              - { label: Start at (seconds), name: start, widget: number, value_type: int, min: 0, required: false, hint: 'Leave empty to play from the beginning. 2 minutes 10 seconds is 130.' }
+              - { label: Stop at (seconds), name: end, widget: number, value_type: int, min: 0, required: false, hint: 'Leave empty to play to the end.' }
+
+      # ------------------------------------------------------------------ Connect
+      - name: connect
+        label: Connect page and booking form
+        file: frontend/src/content/data/connect.json
+        fields:
+          - label: Opening
+            name: connectHero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Headline, name: headline, widget: string }
+              - { label: Words of the headline shown in gold, name: accent, widget: string, hint: 'Must be copied exactly from the headline above.' }
+              - { label: Intro, name: intro, widget: text }
+          - label: Booking form words
+            name: connectForm
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Form title, name: title, widget: string }
+              - label: Field labels
+                name: fields
+                widget: object
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Email, name: email, widget: string }
+                  - { label: Phone, name: phone, widget: string }
+                  - { label: Organisation, name: organisation, widget: string }
+                  - { label: Event date, name: eventDate, widget: string }
+                  - { label: Event date hint, name: eventDateHint, widget: string }
+                  - { label: Audience, name: audience, widget: string }
+                  - { label: Message, name: message, widget: string }
+              - label: Audience choices
+                name: audienceOptions
+                widget: list
+                field: { label: Choice, name: choice, widget: string }
+              - { label: Send button text, name: submit, widget: string }
+              - { label: Privacy sentence, name: privacy, widget: string, hint: 'Must stay true. See the Privacy policy page.' }
+              - { label: Privacy link text, name: privacyLinkLabel, widget: string }
+              - { name: privacyTo, widget: hidden }
+          - label: Reply promise
+            name: reply
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Promise, name: promise, widget: string, hint: 'Only promise what you can keep. If you change it, change step 02 below to match.' }
+          - label: What happens next
+            name: nextSteps
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Steps
+                name: items
+                widget: list
+                summary: '{{fields.number}} {{fields.title}}'
+                fields:
+                  - { label: Number, name: number, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Text, name: text, widget: string }
+          - label: Direct email line
+            name: directContact
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string, hint: 'The email address itself is edited under Home page, Footer.' }
+
+      # ------------------------------------------------------------------ Privacy
+      - name: privacy
+        label: Privacy policy page
+        file: frontend/src/content/data/privacy.json
+        fields:
+          - label: Privacy policy
+            name: privacy
+            widget: object
+            hint: 'Everything on this page must be true. If how the site handles people''s details changes, change this page too.'
+            fields:
+              - { label: Small label, name: label, widget: string }
+              - { label: Headline, name: headline, widget: string }
+              - { label: Words of the headline shown in gold, name: accent, widget: string, hint: 'Must be copied exactly from the headline above.' }
+              - { label: Last updated, name: updated, widget: string, hint: 'Change this date whenever you change the page, for example 12 November 2026.' }
+              - { label: Intro, name: intro, widget: text }
+              - { label: Short description, name: description, widget: text, hint: 'One sentence. Shown in search results.' }
+              - label: Sections
+                name: sections
+                widget: list
+                summary: '{{fields.title}}'
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - label: Paragraphs
+                    name: text
+                    widget: list
+                    field: { label: Paragraph, name: paragraph, widget: text }
+              - { label: Line before the contact email, name: contactLabel, widget: string }

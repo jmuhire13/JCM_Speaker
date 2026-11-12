@@ -1,0 +1,124 @@
+{
+  "logos": [
+    {
+      "name": "UNESCO",
+      "src": "/src/assets/logos/unesco.webp",
+      "note": ""
+    },
+    {
+      "name": "African Union",
+      "src": "/src/assets/logos/african-union.webp",
+      "note": ""
+    },
+    {
+      "name": "TEDx",
+      "src": "/src/assets/logos/tedx.webp",
+      "note": ""
+    },
+    {
+      "name": "Mandela Washington Fellowship",
+      "src": "/src/assets/logos/mandela-washington-fellowship.webp",
+      "note": ""
+    },
+    {
+      "name": "Appalachian State University",
+      "src": "/src/assets/logos/appalachian-state.webp",
+      "note": ""
+    },
+    {
+      "name": "Commission nationale consultative des droits de l'homme (CNCDH)",
+      "src": "/src/assets/logos/cncdh.webp",
+      "note": ""
+    },
+    {
+      "name": "Forum de Paris sur la Paix",
+      "src": "/src/assets/logos/paris-peace-forum.webp",
+      "note": ""
+    },
+    {
+      "name": "The Queen's Young Leaders",
+      "src": "/src/assets/logos/queens-young-leaders.webp",
+      "note": ""
+    },
+    {
+      "name": "Front Line Defenders",
+      "src": "/src/assets/logos/front-line-defenders.webp",
+      "note": ""
+    },
+    {
+      "name": "Global Dialogues",
+      "src": "/src/assets/logos/global-dialogues.webp",
+      "note": ""
+    },
+    {
+      "name": "Policy Center for the New South",
+      "src": "/src/assets/logos/policy-center-new-south.webp",
+      "note": ""
+    },
+    {
+      "name": "Town of Boone, North Carolina",
+      "src": "/src/assets/logos/town-of-boone.webp",
+      "note": ""
+    },
+    {
+      "name": "Segal Family Foundation",
+      "src": "/src/assets/logos/segal-family-foundation.webp",
+      "note": ""
+    },
+    {
+      "name": "ONDE Maroc (Observatoire national des droits de l'enfant)",
+      "src": "/src/assets/logos/onde-maroc.webp",
+      "note": ""
+    },
+    {
+      "name": "Kidney Foundation of Canada",
+      "src": "/src/assets/logos/kidney-foundation.webp",
+      "note": ""
+    },
+    {
+      "name": "Rocena Kidney Foundation",
+      "src": "/src/assets/logos/rocena-kidney-foundation.webp",
+      "note": ""
+    },
+    {
+      "name": "Africa Youth Awards",
+      "src": "/src/assets/logos/africa-youth-awards.webp",
+      "note": ""
+    },
+    {
+      "name": "Global Youth Connect",
+      "src": "/src/assets/logos/global-youth-connect.webp",
+      "note": ""
+    },
+    {
+      "name": "CSED",
+      "src": "/src/assets/logos/csed.webp",
+      "note": ""
+    },
+    {
+      "name": "250 Effect",
+      "src": "/src/assets/logos/250-effect.webp",
+      "note": ""
+    },
+    {
+      "name": "Huza Press",
+      "src": "/src/assets/logos/huza-press.webp",
+      "note": ""
+    },
+    {
+      "name": "Peacebuilding Institute",
+      "src": "/src/assets/logos/peace-building-institute.webp",
+      "note": ""
+    },
+    {
+      "name": "DefendDefenders",
+      "src": "/src/assets/logos/defenddefenders.webp",
+      "note": ""
+    },
+    {
+      "name": "U.S. Embassy Kigali",
+      "src": "/src/assets/logos/us-embassy-kigali.webp",
+      "note": ""
+    }
+  ]
+}

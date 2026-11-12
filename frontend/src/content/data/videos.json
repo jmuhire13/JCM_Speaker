@@ -1,0 +1,21 @@
+{
+  "videoSection": {
+    "heading": "Watch their story",
+    "intro": "A feature from ISIMBI TV on the kidney donation. It is in Kinyarwanda."
+  },
+  "videoCredit": {
+    "prefix": "Video from",
+    "channel": "ISIMBI TV",
+    "suffix": "on YouTube"
+  },
+  "videos": [
+    {
+      "id": "sqjSPmyxTrI",
+      "label": "The kidney, and the wedding to come",
+      "note": "Interview in Kinyarwanda",
+      "cover": "hq2",
+      "start": null,
+      "end": null
+    }
+  ]
+}

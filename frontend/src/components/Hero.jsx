@@ -4,7 +4,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
-import { ArrowDown } from 'lucide-react'
 import Button from './Button'
 import TileMosaic from './TileMosaic'
 import { hero, heroMosaic, site } from '../content/site'
@@ -13,8 +12,8 @@ import heroPhoto from '../assets/photos/jc-portrait-studio.jpg'
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP)
 
 // Home opens on a dark stage like Speaking (a faint wall of photos), but with a poster feel:
-// his studio portrait stands large in front, a giant outlined "LIVE." sits behind him, and the
-// headline rises on the left.
+// his studio portrait stands large in front and the headline rises on the left. (The giant
+// outlined "LIVE." and the Scroll cue were removed at the owner's request, Nov 2026.)
 //
 // The portrait was shot on black. `mix-blend-lighten` lets that black take the colour of the
 // stage, so he seems to stand in it. For that to work the photo must sit directly in the
@@ -30,7 +29,6 @@ export default function Hero() {
         const rest = gsap
           .timeline({ paused: true })
           .from('.hero-roles', { y: 20, opacity: 0, duration: 0.7, ease: 'power3.out' }, 0)
-          .from('.hero-live', { opacity: 0, xPercent: 8, duration: 1.6, ease: 'power3.out' }, 0)
           .from('.hero-photo', { opacity: 0, y: 60, duration: 1.4, ease: 'power3.out' }, 0.15)
           .from(
             '.hero-after',
@@ -58,12 +56,7 @@ export default function Hero() {
           },
         })
 
-        // The giant word and the portrait drift at different speeds as you scroll past.
-        gsap.to('.hero-live', {
-          yPercent: 12,
-          ease: 'none',
-          scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
-        })
+        // The portrait drifts slightly as you scroll past.
         gsap.to('.hero-photo', {
           yPercent: -5,
           ease: 'none',
@@ -120,15 +113,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Giant outlined word across his chest, like lettering on a film poster. Decorative: the
-          headline already says it. */}
-      <p
-        aria-hidden="true"
-        className="hero-live font-hero [-webkit-text-stroke:2px_#e8b23a] pointer-events-none absolute right-[-1vw] bottom-[1svh] text-[clamp(5rem,26vw,9rem)] leading-none text-transparent uppercase select-none md:right-[3vw] md:bottom-[3svh] md:text-[clamp(8rem,15vw,16rem)]"
-      >
-        {hero.highlight}
-      </p>
-
       <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pt-32 pb-8 md:px-10 md:pt-40 md:pb-16">
         <div className="max-w-[58rem] md:max-w-[54%]">
           <p className="hero-roles font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">
@@ -156,15 +140,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Room for the portrait on phones, then the scroll cue */}
+        {/* Room for the portrait on phones */}
         <div className="min-h-[44svh] flex-1 md:min-h-0" aria-hidden="true" />
-        <p
-          aria-hidden="true"
-          className="hero-after text-on-ink-label mt-6 hidden items-center gap-2 text-[13px] tracking-[0.14em] uppercase md:flex"
-        >
-          <ArrowDown className="size-4 motion-safe:animate-bounce" />
-          Scroll
-        </p>
       </div>
     </section>
   )

@@ -15,11 +15,8 @@ export default function HomeVideo() {
   return (
     <section ref={root} className="bg-sand">
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 py-24 md:grid-cols-[1.5fr_1fr] md:gap-16 md:px-10 md:py-36">
-        <div className="hv-reveal relative">
-          <div aria-hidden="true" className="bg-gold absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
-          <div className="relative">
-            <VideoCard {...featuredVideo} caption={false} />
-          </div>
+        <div className="hv-reveal">
+          <VideoCard {...featuredVideo} caption={false} offsetBlock />
         </div>
 
         <div>

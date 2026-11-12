@@ -1,0 +1,42 @@
+{
+  "trustedHero": {
+    "label": "Trusted By",
+    "headline": "The rooms he has been invited into.",
+    "accent": "rooms",
+    "intro": "Organisations that have hosted, worked with, or honoured Jean Claude, and the honours his work has earned."
+  },
+  "hosted": {
+    "heading": "Worked with",
+    "intro": "Hosts, partners and programmes that have welcomed him, worked with him, or honoured his work."
+  },
+  "recognitions": {
+    "heading": "Recognised for the work",
+    "items": [
+      {
+        "year": "2019",
+        "text": "Laureate, French Government’s Human Rights Prize, Paris"
+      },
+      {
+        "year": "2018",
+        "text": "Mandela Washington Fellow, Appalachian State University"
+      },
+      {
+        "year": "2016",
+        "text": "Leader of the Year, Africa Youth Awards"
+      },
+      {
+        "year": "2016",
+        "text": "Runner-Up, Queen’s Young Leaders Award"
+      },
+      {
+        "year": "2015",
+        "text": "International Winner, Global Dialogues contest"
+      },
+      {
+        "year": "Honorary",
+        "text": "Citizen of Boone, North Carolina"
+      }
+    ]
+  },
+  "testimonialsHeading": "What organisers say"
+}
