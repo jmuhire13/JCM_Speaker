@@ -13,7 +13,7 @@ export default function StoryHero() {
 
   return (
     <section ref={root} className="gate bg-cream relative min-h-svh overflow-hidden">
-      <div className="relative z-10 mx-auto grid max-w-[1400px] items-center gap-12 px-5 pt-36 pb-44 md:grid-cols-[1.3fr_1fr] md:px-10 md:pt-44 md:pb-72">
+      <div className="relative z-10 mx-auto grid max-w-[1400px] items-center gap-12 px-5 pt-36 pb-44 lg:grid-cols-[1.3fr_1fr] md:px-10 md:pt-44 md:pb-72">
         <div>
           <p className="ph-label font-body text-muted text-[13px] tracking-[0.14em] uppercase">
             {storyHero.label}
@@ -32,7 +32,7 @@ export default function StoryHero() {
 
         {/* Appears once a real portrait is set in content/story.js */}
         {portrait && (
-          <div className="ph-after relative mx-auto w-full max-w-[26rem] md:ml-auto">
+          <div className="ph-after relative mx-auto w-full max-w-[26rem] lg:ml-auto">
             <div aria-hidden="true" className="bg-gold absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
             <img
               src={portrait.src}

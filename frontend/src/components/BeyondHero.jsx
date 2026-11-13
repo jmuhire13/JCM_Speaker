@@ -18,7 +18,7 @@ export default function BeyondHero() {
 
   return (
     <section ref={root} className="gate bg-green-deep relative overflow-hidden">
-      <div className="mx-auto grid min-h-svh max-w-[1400px] items-center gap-12 px-5 pt-32 pb-20 md:grid-cols-[1.1fr_1fr] md:px-10">
+      <div className="mx-auto grid min-h-svh max-w-[1400px] items-center gap-12 px-5 pt-32 pb-20 lg:grid-cols-[1.1fr_1fr] md:px-10">
         <div>
           <p className="ph-label font-body text-on-green-label text-[13px] tracking-[0.14em] uppercase">
             {beyondHero.label}

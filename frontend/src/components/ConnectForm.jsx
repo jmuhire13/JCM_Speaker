@@ -146,7 +146,7 @@ export default function ConnectForm() {
     <form ref={formRef} onSubmit={onSubmit} noValidate className={`${card} relative`}>
       <h2 className="font-display text-4xl tracking-wide uppercase md:text-5xl">{connectForm.title}</h2>
 
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
         <Field id="name" label={connectForm.fields.name} error={errors.name}>
           <input type="text" autoComplete="name" {...fieldProps('name')} />
         </Field>

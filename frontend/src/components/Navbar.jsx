@@ -85,7 +85,7 @@ export default function Navbar() {
           <Logo showMark={false} />
         </Link>
 
-        <nav aria-label="Main menu" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Main menu" className="hidden items-center gap-8 lg:flex">
           {navLinks.map((l) => (
             <NavLink
               key={l.to}
@@ -115,7 +115,7 @@ export default function Navbar() {
           aria-label="Open menu"
           aria-expanded={open}
           onClick={() => setOpen(true)}
-          className={`md:hidden ${onDark ? 'text-cream' : 'text-ink'}`}
+          className={`lg:hidden ${onDark ? 'text-cream' : 'text-ink'}`}
         >
           <Menu className="size-8" />
         </button>
@@ -128,7 +128,7 @@ export default function Navbar() {
       <div
         ref={panel}
         inert={!open}
-        className="bg-ink text-cream fixed inset-0 z-50 md:hidden"
+        className="bg-ink text-cream fixed inset-0 z-50 lg:hidden"
       >
         <button
           ref={closeBtn}

@@ -76,22 +76,22 @@ export default function Hero() {
   return (
     <section
       ref={root}
-      className="gate bg-ink relative flex min-h-svh flex-col overflow-hidden md:h-svh md:min-h-[40rem]"
+      className="gate bg-ink relative flex min-h-svh flex-col overflow-hidden lg:h-svh lg:min-h-[40rem]"
     >
       <TileMosaic tiles={heroMosaic} />
       {/* Keep the wall faint, and darker where the words sit */}
-      <div className="bg-ink/55 absolute inset-0 md:hidden" />
+      <div className="bg-ink/55 absolute inset-0 lg:hidden" />
       <div className="from-ink via-ink/85 to-ink/40 absolute inset-0 bg-gradient-to-r from-30%" />
       <div className="from-ink absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t to-transparent" />
       {/* A solid dark spotlight behind him, so the photo wall never shows through his jacket */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 hidden md:block"
+        className="absolute inset-0 hidden lg:block"
         style={{ background: 'radial-gradient(ellipse 34% 78% at 77% 60%, #1f1a1d 55%, transparent 100%)' }}
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 md:hidden"
+        className="absolute inset-0 lg:hidden"
         style={{ background: 'radial-gradient(ellipse 70% 40% at 50% 80%, #1f1a1d 55%, transparent 100%)' }}
       />
 
@@ -102,7 +102,7 @@ export default function Hero() {
         width="1000"
         height="1500"
         fetchPriority="high"
-        className="hero-photo pointer-events-none absolute right-1/2 bottom-0 h-[52svh] w-auto max-w-none translate-x-1/2 object-contain mix-blend-lighten md:right-[3vw] md:h-[92svh] md:translate-x-0"
+        className="hero-photo pointer-events-none absolute right-1/2 bottom-0 h-[52svh] w-auto max-w-none translate-x-1/2 object-contain mix-blend-lighten lg:right-[3vw] lg:h-[92svh] lg:translate-x-0"
         style={{
           maskImage:
             'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 82%, transparent)',
@@ -114,7 +114,7 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pt-32 pb-8 md:px-10 md:pt-40 md:pb-16">
-        <div className="max-w-[58rem] md:max-w-[54%]">
+        <div className="max-w-[58rem] lg:max-w-[54%]">
           <p className="hero-roles font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">
             {site.roles}
           </p>
@@ -141,7 +141,7 @@ export default function Hero() {
         </div>
 
         {/* Room for the portrait on phones */}
-        <div className="min-h-[44svh] flex-1 md:min-h-0" aria-hidden="true" />
+        <div className="min-h-[44svh] flex-1 lg:min-h-0" aria-hidden="true" />
       </div>
     </section>
   )
