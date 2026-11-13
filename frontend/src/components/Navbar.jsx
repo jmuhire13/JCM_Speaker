@@ -21,6 +21,8 @@ export default function Navbar() {
   const panel = useRef(null)
   const tl = useRef(null)
   const closeBtn = useRef(null)
+  const openBtn = useRef(null)
+  const wasOpen = useRef(false)
 
   // Cream bar with a thin line once the page has moved a little.
   useEffect(() => {
@@ -51,13 +53,19 @@ export default function Navbar() {
 
   useEffect(() => {
     if (!tl.current) return
+    // While the menu is open, everything behind it is "inert": the Tab key and screen readers
+    // cannot reach it (QA D-08). On close, focus goes back to the menu button.
+    const behind = document.querySelectorAll('.skip-link, header, #content, footer')
+    behind.forEach((el) => (el.inert = open))
     if (open) {
+      wasOpen.current = true
       tl.current.timeScale(1).play()
       window.__lenis?.stop()
       closeBtn.current?.focus()
     } else {
       tl.current.timeScale(1.4).reverse()
       window.__lenis?.start()
+      if (wasOpen.current) openBtn.current?.focus()
     }
   }, [open])
 
@@ -111,11 +119,13 @@ export default function Navbar() {
         </nav>
 
         <button
+          ref={openBtn}
           type="button"
           aria-label="Open menu"
           aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen(true)}
-          className={`lg:hidden ${onDark ? 'text-cream' : 'text-ink'}`}
+          className={`-m-1.5 grid size-11 place-items-center lg:hidden ${onDark ? 'text-cream' : 'text-ink'}`}
         >
           <Menu className="size-8" />
         </button>
@@ -127,6 +137,10 @@ export default function Navbar() {
           the whole screen. */}
       <div
         ref={panel}
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
         inert={!open}
         className="bg-ink text-cream fixed inset-0 z-50 lg:hidden"
       >
@@ -135,7 +149,7 @@ export default function Navbar() {
           type="button"
           aria-label="Close menu"
           onClick={() => setOpen(false)}
-          className="absolute top-4 right-5"
+          className="absolute top-3 right-3.5 grid size-11 place-items-center"
         >
           <X className="size-8" />
         </button>

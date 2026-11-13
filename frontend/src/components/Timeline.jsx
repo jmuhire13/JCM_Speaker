@@ -30,7 +30,7 @@ export default function Timeline() {
         )
 
         gsap.utils.toArray('.tl-item').forEach((item) => {
-          gsap
+          const tl = gsap
             .timeline({
               defaults: { ease: 'power3.out' },
               scrollTrigger: { trigger: item, start: 'top 75%' },
@@ -41,13 +41,15 @@ export default function Timeline() {
               { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'power4.inOut' },
               0,
             )
-            .from(item.querySelector('.tl-media img'), { scale: 1.25, duration: 1.8 }, 0)
             .from(item.querySelector('.tl-date'), { y: 30, opacity: 0, duration: 1 }, 0.2)
             .from(
               item.querySelectorAll('.tl-text > *'),
               { y: 30, opacity: 0, duration: 1, stagger: 0.12 },
               0.4,
             )
+          // Entries without a photo (a green panel) have no picture to zoom (QA D-21).
+          const img = item.querySelector('.tl-media img')
+          if (img) tl.from(img, { scale: 1.25, duration: 1.8 }, 0)
         })
 
         document.fonts.ready.then(() => ScrollTrigger.refresh())

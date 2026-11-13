@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import Accent from '../lib/Accent'
 import useHeroReveal from '../lib/useHeroReveal'
 import { logos } from '../content/logos'
+import MotionToggle from './MotionToggle'
 import { trustedHero } from '../content/trusted'
 
 // One row of white logo tiles that slides sideways. Two copies, side by side, make the loop
@@ -62,6 +63,9 @@ export default function TrustedHero() {
       <div className="ph-after mt-16 space-y-4 md:mt-24">
         <LogoRow items={logos.slice(0, half)} />
         <LogoRow items={logos.slice(half)} reverse />
+      </div>
+      <div className="mx-auto mt-6 flex max-w-[1400px] justify-end px-5 md:px-10">
+        <MotionToggle />
       </div>
     </section>
   )

@@ -28,14 +28,22 @@ function validate(v) {
   return errors
 }
 
+// Fields the visitor must fill in (validate() checks the same ones). Marked * and aria-required.
+const required = ['name', 'email', 'organisation', 'message']
+
 const inputClass =
   'w-full border bg-white px-4 py-3 text-base text-ink placeholder:text-muted/70 focus:border-ink'
 
-function Field({ id, label, error, hint, children }) {
+function Field({ id, label, error, hint, required = false, children }) {
   return (
     <div>
       <label htmlFor={id} className="text-ink block text-sm font-semibold">
         {label}
+        {required && (
+          <span aria-hidden="true">
+            {' '}*
+          </span>
+        )}
       </label>
       <div className="mt-2">{children}</div>
       {hint && (
@@ -70,6 +78,7 @@ export default function ConnectForm() {
     id: key,
     value: values[key],
     onChange: set(key),
+    'aria-required': required.includes(key) ? 'true' : undefined,
     'aria-invalid': errors[key] ? 'true' : undefined,
     'aria-describedby': errors[key] ? `${key}-error` : undefined,
     className: `${inputClass} ${errors[key] ? 'border-error' : 'border-line-strong'}`,
@@ -145,15 +154,18 @@ export default function ConnectForm() {
   return (
     <form ref={formRef} onSubmit={onSubmit} noValidate className={`${card} relative`}>
       <h2 className="font-display text-4xl tracking-wide uppercase md:text-5xl">{connectForm.title}</h2>
+      {connectForm.fields.requiredNote && (
+        <p className="text-muted mt-3 text-sm">{connectForm.fields.requiredNote}</p>
+      )}
 
       <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-        <Field id="name" label={connectForm.fields.name} error={errors.name}>
+        <Field id="name" label={connectForm.fields.name} error={errors.name} required>
           <input type="text" autoComplete="name" {...fieldProps('name')} />
         </Field>
-        <Field id="email" label={connectForm.fields.email} error={errors.email}>
+        <Field id="email" label={connectForm.fields.email} error={errors.email} required>
           <input type="email" autoComplete="email" {...fieldProps('email')} />
         </Field>
-        <Field id="organisation" label={connectForm.fields.organisation} error={errors.organisation}>
+        <Field id="organisation" label={connectForm.fields.organisation} error={errors.organisation} required>
           <input type="text" autoComplete="organization" {...fieldProps('organisation')} />
         </Field>
         <Field id="phone" label={connectForm.fields.phone}>
@@ -163,8 +175,13 @@ export default function ConnectForm() {
           <input type="date" {...fieldProps('eventDate')} aria-describedby="eventDate-hint" />
         </Field>
         {/* Four choices are easier to pick as buttons than from a hidden dropdown. */}
-        <fieldset>
-          <legend className="text-ink block text-sm font-semibold">{connectForm.fields.audience}</legend>
+        <fieldset role="radiogroup" aria-required="true">
+          <legend className="text-ink block text-sm font-semibold">
+            {connectForm.fields.audience}
+            <span aria-hidden="true">
+              {' '}*
+            </span>
+          </legend>
           <div className="mt-2 flex flex-wrap gap-2">
             {connectForm.audienceOptions.map((o, i) => {
               const selected = values.audience === o
@@ -202,7 +219,7 @@ export default function ConnectForm() {
       </div>
 
       <div className="mt-6">
-        <Field id="message" label={connectForm.fields.message} error={errors.message}>
+        <Field id="message" label={connectForm.fields.message} error={errors.message} required>
           <textarea rows={5} {...fieldProps('message')} />
         </Field>
       </div>

@@ -1,4 +1,5 @@
 import { formats } from '../content/speaking'
+import MotionToggle from './MotionToggle'
 
 // The formats he offers, as a huge slow ticker on the ink band. Formats are provisional
 // (see content/speaking.js). The ticker is decorative, so screen readers get a plain list.
@@ -7,9 +8,10 @@ export default function Formats() {
 
   return (
     <section className="bg-ink text-on-ink overflow-hidden py-16 md:py-24">
-      <p className="font-body text-on-ink-label px-5 text-[13px] tracking-[0.14em] uppercase md:px-10">
-        {formats.label}
-      </p>
+      <div className="flex items-center justify-between gap-4 px-5 md:px-10">
+        <p className="font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">{formats.label}</p>
+        <MotionToggle />
+      </div>
 
       <div aria-hidden="true" className="mt-6 whitespace-nowrap">
         <div className="slide-left-slow flex w-max">

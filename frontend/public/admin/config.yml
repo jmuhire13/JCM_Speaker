@@ -472,6 +472,7 @@ collections:
                   - { label: Event date hint, name: eventDateHint, widget: string }
                   - { label: Audience, name: audience, widget: string }
                   - { label: Message, name: message, widget: string }
+                  - { label: Required note (under the title), name: requiredNote, widget: string }
               - label: Audience choices
                 name: audienceOptions
                 widget: list

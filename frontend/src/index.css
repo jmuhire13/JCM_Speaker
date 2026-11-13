@@ -150,6 +150,34 @@ html.js .gate {
   }
 }
 
+/* The pause button (components/MotionToggle.jsx) stops every moving band at once. */
+html.motion-paused :is(.marquee-track, .drift-up, .drift-down, .slide-left-slow, .slide-right-slow) {
+  animation-play-state: paused;
+}
+
+/* Nothing moves for visitors who asked for reduced motion, so they need no pause button. */
+@media (prefers-reduced-motion: reduce) {
+  .motion-toggle {
+    display: none;
+  }
+}
+
+/* "Skip to content": hidden until a keyboard user presses Tab on a new page. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 60;
+  padding: 12px 18px;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-weight: 500;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
 /* Lenis (smooth scroll) recommended base styles */
 html.lenis,
 html.lenis body {

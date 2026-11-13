@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import useHeroReveal from '../lib/useHeroReveal'
 import { ghostYears, storyHero } from '../content/story'
+import MotionToggle from './MotionToggle'
 
 // My Story opens with "ghost years": outlined numerals of his timeline slide slowly across
 // the bottom, behind the headline. The portrait sits on a gold offset block.
@@ -56,6 +57,7 @@ export default function StoryHero() {
           ))}
         </div>
       </div>
+      <MotionToggle tone="light" className="absolute right-5 bottom-6 z-10 md:right-10" />
     </section>
   )
 }

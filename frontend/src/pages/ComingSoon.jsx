@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async'
 // and each is approved before the next begins.
 export default function ComingSoon() {
   return (
-    <main className="mx-auto grid min-h-svh max-w-[1400px] place-content-center px-5 text-center">
+    <section className="mx-auto grid min-h-svh max-w-[1400px] place-content-center px-5 text-center">
       <Helmet>
         <title>Coming soon | Jean Claude Muhire</title>
       </Helmet>
@@ -12,6 +12,6 @@ export default function ComingSoon() {
         Coming soon
       </h1>
       <p className="text-soft mt-4">This page is next in line.</p>
-    </main>
+    </section>
   )
 }

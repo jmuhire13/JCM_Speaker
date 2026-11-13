@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import Accent from '../lib/Accent'
 import useHeroReveal from '../lib/useHeroReveal'
 import TileMosaic from './TileMosaic'
+import MotionToggle from './MotionToggle'
 import Button from './Button'
 import { site } from '../content/site'
 import { speakingHero, speakingMosaic } from '../content/speaking'
@@ -33,6 +34,7 @@ export default function SpeakingHero() {
           </Button>
         </div>
       </div>
+      <MotionToggle className="absolute bottom-5 left-5 z-10 md:left-10" />
     </section>
   )
 }

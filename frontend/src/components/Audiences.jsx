@@ -36,7 +36,7 @@ export default function Audiences() {
         const descs = gsap.utils.toArray('.aud-desc')
         const imgs = gsap.utils.toArray('.aud-photo')
 
-        gsap.set(names.slice(1), { opacity: 0.22 })
+        gsap.set(names.slice(1), { opacity: 0.55 })
         gsap.set(descs.slice(1), { opacity: 0, y: 14 })
         gsap.set(imgs.slice(1), { opacity: 0, scale: 1.08 })
 
@@ -54,7 +54,7 @@ export default function Audiences() {
         // Move the spotlight from item i-1 to item i.
         for (let i = 1; i < names.length; i++) {
           const at = 0.5 + (i - 1)
-          tl.to(names[i - 1], { opacity: 0.22, duration: 0.4 }, at)
+          tl.to(names[i - 1], { opacity: 0.55, duration: 0.4 }, at)
             .to(descs[i - 1], { opacity: 0, y: -14, duration: 0.4 }, at)
             .to(imgs[i - 1], { opacity: 0, duration: 0.5 }, at)
             .to(names[i], { opacity: 1, duration: 0.4 }, at)

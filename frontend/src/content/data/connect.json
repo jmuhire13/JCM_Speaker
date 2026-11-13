@@ -15,7 +15,8 @@
       "eventDate": "Event date",
       "eventDateHint": "Leave empty if it is not fixed yet.",
       "audience": "Who is the audience?",
-      "message": "Tell us about your event"
+      "message": "Tell us about your event",
+      "requiredNote": "Fields marked * are required."
     },
     "audienceOptions": [
       "NGO",

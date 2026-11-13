@@ -60,7 +60,20 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      {/* Keyboard users can jump past the menu straight to the page (WCAG 2.4.1). */}
+      {/* Moves focus by hand: smooth scrolling (Lenis) takes over "#" links and would skip it. */}
+      <a
+        href="#content"
+        className="skip-link"
+        onClick={(e) => {
+          e.preventDefault()
+          document.getElementById('content')?.focus({ preventScroll: true })
+        }}
+      >
+        Skip to content
+      </a>
       <Navbar />
+      <main id="content" tabIndex={-1} className="outline-none">
       <Suspense fallback={<PageFallback />}>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -73,6 +86,7 @@ function App() {
         <Route path="*" element={<ComingSoon />} />
       </Routes>
       </Suspense>
+      </main>
       <Footer />
     </>
   )

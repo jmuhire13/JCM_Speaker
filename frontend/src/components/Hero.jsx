@@ -6,6 +6,7 @@ import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 import Button from './Button'
 import TileMosaic from './TileMosaic'
+import MotionToggle from './MotionToggle'
 import { hero, heroMosaic, site } from '../content/site'
 import heroPhoto from '../assets/photos/jc-portrait-studio.jpg'
 
@@ -143,6 +144,8 @@ export default function Hero() {
         {/* Room for the portrait on phones */}
         <div className="min-h-[44svh] flex-1 lg:min-h-0" aria-hidden="true" />
       </div>
+
+      <MotionToggle className="absolute bottom-5 left-5 z-10 md:left-10" />
     </section>
   )
 }

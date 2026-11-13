@@ -25,7 +25,7 @@ export default function HostedBy() {
               <div className="border-line flex aspect-[3/2] items-center justify-center rounded-[6px] border bg-white p-6">
                 <img
                   src={logo.src}
-                  alt={logo.name}
+                  alt="" // the name is printed just below, so screen readers would hear it twice
                   loading="lazy"
                   className="max-h-full max-w-full object-contain opacity-80 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                 />

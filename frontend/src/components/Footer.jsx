@@ -4,6 +4,7 @@ import Accent from '../lib/Accent'
 import Button from './Button'
 import Logo from './Logo'
 import SocialLinks from './SocialLinks'
+import MotionToggle from './MotionToggle'
 import { footer, navLinks, site } from '../content/site'
 
 const marqueeText = `${footer.marquee} · `.repeat(6)
@@ -27,7 +28,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Slowly scrolling band. Decorative, hidden from screen readers. */}
+      {/* Slowly scrolling band. Decorative, hidden from screen readers; the button pauses it. */}
+      <div className="relative">
       <div aria-hidden="true" className="bg-gold text-ink overflow-hidden py-2.5 whitespace-nowrap">
         <div className="marquee-track flex w-max">
           <p className="font-display pr-6 text-[clamp(1.25rem,2.2vw,1.75rem)] leading-none tracking-[0.12em] uppercase">
@@ -37,6 +39,8 @@ export default function Footer() {
             {marqueeText}
           </p>
         </div>
+      </div>
+        <MotionToggle className="absolute top-1/2 right-3 -translate-y-1/2 md:right-6" />
       </div>
 
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-16 md:grid-cols-[1.5fr_1fr_1.2fr] md:gap-10 md:px-10 md:py-20">
@@ -49,10 +53,10 @@ export default function Footer() {
 
         <nav aria-label="Footer">
           <p className={label}>{footer.exploreLabel}</p>
-          <ul className="mt-5 space-y-3 text-lg">
+          <ul className="mt-3 text-lg">
             {navLinks.map((l) => (
               <li key={l.to}>
-                <Link to={l.to} className="hover:text-cream transition-colors">
+                <Link to={l.to} className="hover:text-cream inline-block py-2 transition-colors">
                   {l.label}
                 </Link>
               </li>
@@ -62,8 +66,8 @@ export default function Footer() {
 
         <div>
           <p className={label}>{footer.contactLabel}</p>
-          <p className="mt-5 text-lg">
-            <a href={`mailto:${footer.email}`} className="hover:text-cream transition-colors">
+          <p className="mt-3 text-lg">
+            <a href={`mailto:${footer.email}`} className="hover:text-cream inline-block py-2 transition-colors">
               {footer.email}
             </a>
           </p>
@@ -74,17 +78,17 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="text-on-ink-label mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 px-5 py-6 text-sm md:px-10">
+        <div className="text-on-ink-label mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-x-4 px-5 py-3 text-sm md:px-10">
           <p>
             © {year} {site.name}
           </p>
-          <Link to={footer.privacyTo} className="hover:text-cream underline-offset-4 transition-colors hover:underline">
+          <Link to={footer.privacyTo} className="hover:text-cream inline-block py-3 underline-offset-4 transition-colors hover:underline">
             {footer.privacyLabel}
           </Link>
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="hover:text-cream inline-flex items-center gap-2 transition-colors"
+            className="hover:text-cream inline-flex items-center gap-2 py-3 transition-colors"
           >
             Back to top
             <ArrowUp className="size-4" aria-hidden="true" />
