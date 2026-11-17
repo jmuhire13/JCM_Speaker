@@ -37,6 +37,8 @@ export default function BeyondHero() {
               <div className="ph-after bg-cream p-2 shadow-2xl">
                 <img
                   src={p.photo}
+                  srcSet={p.photoSrcSet}
+                  sizes="(min-width: 1024px) 18vw, 45vw"
                   alt={p.photoAlt}
                   className="aspect-[4/5] w-full object-cover"
                   style={{ objectPosition: p.photoFocus }}

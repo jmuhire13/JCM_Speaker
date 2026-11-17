@@ -7,6 +7,7 @@ import { audiences } from '../content/site'
 import ngoPhoto from '../assets/photos/audience-ngo.jpg'
 import hospitalPhoto from '../assets/photos/audience-hospital.jpg'
 import schoolPhoto from '../assets/photos/audience-school.jpg'
+import { srcSet } from '../lib/media'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -14,9 +15,9 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 // provisional: stock photos (Unsplash), see src/assets/photos/CREDITS.md
 // "pos" chooses which part of a wide photo stays visible in a tall frame.
 const photos = [
-  { src: ngoPhoto, pos: 'object-[55%_50%]' },
-  { src: hospitalPhoto, pos: 'object-[72%_50%]' },
-  { src: schoolPhoto, pos: 'object-[22%_50%]' },
+  { src: ngoPhoto, set: srcSet('/src/assets/photos/audience-ngo.jpg'), pos: 'object-[55%_50%]' },
+  { src: hospitalPhoto, set: srcSet('/src/assets/photos/audience-hospital.jpg'), pos: 'object-[72%_50%]' },
+  { src: schoolPhoto, set: srcSet('/src/assets/photos/audience-school.jpg'), pos: 'object-[22%_50%]' },
 ]
 
 export default function Audiences() {
@@ -89,6 +90,8 @@ export default function Audiences() {
                 <img
                   key={item.name}
                   src={photos[i].src}
+                  srcSet={photos[i].set}
+                  sizes="(min-width: 1440px) 560px, 38vw"
                   alt={item.photoAlt}
                   loading="lazy"
                   className={`aud-photo absolute inset-0 size-full object-cover ${photos[i].pos}`}
@@ -130,6 +133,8 @@ export default function Audiences() {
             <article key={item.name} className="aud-card">
               <img
                 src={photos[i].src}
+                srcSet={photos[i].set}
+                sizes="(min-width: 768px) 33vw, 100vw"
                 alt={item.photoAlt}
                 loading="lazy"
                 className={`aspect-[4/3] w-full rounded-[6px] object-cover ${photos[i].pos}`}

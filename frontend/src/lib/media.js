@@ -27,3 +27,32 @@ export function tile(path) {
   const name = path.split('/').pop().replace(/\.(jpeg|png|webp)$/i, '.jpg')
   return files[`../assets/photos/tiles/${name}`] || media(path)
 }
+
+// Lighter copies of each photo (assets/photos/sizes/, made by tools/prepare-images.mjs before
+// every build): 480, 800, 1200 pixels wide and the photo's own width, all in WebP. `srcSet(path)`
+// lists them, so the browser downloads only the size the screen needs (QA D-15).
+// Use it with a `sizes` attribute that says how wide the picture is shown.
+const sized = import.meta.glob('../assets/photos/sizes/*.webp', { eager: true, import: 'default' })
+const fullWidths =
+  import.meta.glob('../assets/photos/sizes/widths.json', { eager: true, import: 'default' })[
+    '../assets/photos/sizes/widths.json'
+  ] || {}
+
+export function srcSet(path) {
+  if (!path || /^https?:\/\//.test(path)) return undefined
+  const base = path.split('/').pop().replace(/\.[^.]+$/, '')
+  const parts = []
+  for (const [key, url] of Object.entries(sized)) {
+    const m = key.match(/\/([^/]+)-(\d+)\.webp$/)
+    if (m && m[1] === base) parts.push([Number(m[2]), url])
+  }
+  // Older builds had no full-width WebP copy: then offer the original file as the largest choice.
+  const full = media(path)
+  const w = fullWidths[base]
+  if (full && w && !parts.some(([pw]) => pw === w)) parts.push([w, full])
+  if (parts.length < 2) return undefined
+  return parts
+    .sort((a, b) => a[0] - b[0])
+    .map(([w, url]) => `${url} ${w}w`)
+    .join(', ')
+}

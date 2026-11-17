@@ -97,6 +97,8 @@ export default function Timeline() {
                   {item.photo ? (
                     <img
                       src={item.photo}
+                      srcSet={item.photoSrcSet}
+                      sizes="(min-width: 768px) 50vw, 100vw"
                       alt={item.photoAlt}
                       loading="lazy"
                       className="size-full object-cover"

@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { bridge } from '../content/site'
 import texture from '../assets/photos/speaking-tedx.jpg'
+import { srcSet } from '../lib/media'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -63,6 +64,8 @@ export default function Bridge() {
       {/* Faint, tinted texture. Decorative only. */}
       <img
         src={texture}
+        srcSet={srcSet('/src/assets/photos/speaking-tedx.jpg')}
+        sizes="100vw"
         alt=""
         aria-hidden="true"
         loading="lazy"

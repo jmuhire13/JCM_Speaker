@@ -7,8 +7,8 @@
   saves changes back to the GitHub repository as commits. Cloudflare then rebuilds the site.
 
   The version below is pinned on purpose, so a new release can never change or break the editor
-  without us choosing to upgrade. To upgrade: change the number, test locally (see
-  OWNER_EDITOR.md), then push.
+  without us choosing to upgrade. To upgrade: change the number AND the integrity fingerprint,
+  test locally (see OWNER_EDITOR.md), then push.
 -->
 <html lang="en">
   <head>
@@ -19,6 +19,14 @@
     <title>Edit the site | Jean Claude Muhire</title>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"></script>
+    <!-- integrity = the file's fingerprint (QA D-22): the browser refuses the file if unpkg ever
+         serves anything different. Taken 2026-11-17 and checked against the official npm package
+         decap-cms@3.17.3 (identical). WHEN UPGRADING, the fingerprint must change too:
+         openssl dgst -sha384 -binary decap-cms.js | openssl base64 -A -->
+    <script
+      src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"
+      integrity="sha384-RWRzuHfiZSWCt3nEvG7B0v3cMgM1C2UuJmgBSL92GQh4uXmNSkbcthql/mNBqvjr"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

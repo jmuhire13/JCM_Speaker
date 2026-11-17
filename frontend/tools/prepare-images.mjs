@@ -5,6 +5,10 @@
 //     photo (often 3 to 10 MB) would slow the whole site down.
 //  2. Makes the small copies (480 x 600) used by the two background photo walls, in
 //     src/assets/photos/tiles/, for every photo the walls list in the content data.
+//  3. Makes lighter copies of every photo at 480, 800, 1200 pixels and its own width, in WebP, in
+//     src/assets/photos/sizes/ (not stored in git: made again by every build). Pictures on the
+//     site list them (srcset, see lib/media.js) so each phone or computer downloads only the
+//     size it needs (QA D-15). Run `npm run images` once after cloning to have them locally.
 //
 // It only ever rewrites a file that is too large, and only creates a tile that is missing or
 // older than its photo, so running it again changes nothing.
@@ -56,3 +60,31 @@ for (const p of new Set(wall)) {
     .toFile(out)
   console.log(`Made wall tile ${path.basename(out)} (${kB(fs.statSync(out).size)})`)
 }
+
+// --- 3: lighter copies for every screen size ------------------------------------------------
+const sizesDir = path.join(photos, 'sizes')
+const WIDTHS = [480, 800, 1200]
+fs.mkdirSync(sizesDir, { recursive: true })
+let made = 0
+const widths = {} // each photo's own width (lib/media.js uses it as a fallback)
+for (const name of fs.readdirSync(photos)) {
+  if (!/\.(jpe?g|png|webp)$/i.test(name)) continue
+  const file = path.join(photos, name)
+  const base = name.replace(/\.[^.]+$/, '')
+  const original = fs.readFileSync(file)
+  const { width } = await sharp(original).metadata()
+  widths[base] = width
+  // The fixed widths below the photo's own width, plus one copy at its own full width, so even
+  // the largest choice is the lighter WebP format. Never enlarge.
+  const targets = [...WIDTHS.filter((w) => width && w < width), ...(width ? [width] : [])]
+  for (const w of targets) {
+    const out = path.join(sizesDir, `${base}-${w}.webp`)
+    if (fs.existsSync(out) && fs.statSync(out).mtimeMs >= fs.statSync(file).mtimeMs) continue
+    await sharp(original).rotate().resize({ width: w }).webp({ quality: 72 }).toFile(out)
+    made++
+  }
+}
+const widthsFile = path.join(sizesDir, 'widths.json')
+const widthsJson = JSON.stringify(widths, null, 2)
+if (!fs.existsSync(widthsFile) || fs.readFileSync(widthsFile, 'utf8') !== widthsJson) fs.writeFileSync(widthsFile, widthsJson)
+if (made) console.log(`Made ${made} lighter copies in src/assets/photos/sizes/`)

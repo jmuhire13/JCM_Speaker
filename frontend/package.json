@@ -9,6 +9,8 @@
     "build": "vite build",
     "postbuild": "node tools/prerender-heads.mjs",
     "check:content": "node tools/check-content.mjs",
+    "images": "node tools/prepare-images.mjs",
+    "predev": "node tools/prepare-images.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },

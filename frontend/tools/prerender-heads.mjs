@@ -46,6 +46,7 @@ const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
 const stripped = template
   .replace(/<title[^>]*>[\s\S]*?<\/title>\s*/, '')
   .replace(/<(meta|link)\s+data-rh="true"[\s\S]*?\/>\s*/g, '')
+  .replace(/<link rel="preload" as="image"[\s\S]*?\/>\s*/g, '') // in case this step runs twice
 if (!stripped.includes('<meta property="og:type"')) fail('index.html no longer has the og:type tag this script inserts before.')
 
 function headFor(m, { robots = false } = {}) {
@@ -69,8 +70,33 @@ function headFor(m, { robots = false } = {}) {
 const write = (file, html) => fs.writeFileSync(path.join(dist, file), html)
 const build = (m, opts) => stripped.replace('<meta property="og:type"', headFor(m, opts) + '<meta property="og:type"')
 
+// Home: ask for the portrait (the biggest thing on the first screen) straight away, before the
+// site's code has even loaded. Same choices and `sizes` as the <img> in components/Hero.jsx.
+const HERO = 'jc-portrait-studio'
+const HERO_SIZES = '(min-width: 1024px) 62vh, 35vh'
+function heroPreload() {
+  const assets = fs.readdirSync(path.join(dist, 'assets'))
+  const list = []
+  for (const name of assets) {
+    // Built names look like jc-portrait-studio-480-BNdp6Omj.webp (480, 800 and full width 1000)
+    if (!name.startsWith(`${HERO}-`)) continue
+    const rest = name.slice(HERO.length + 1)
+    const sized = rest.match(/^(\d+)-[\w-]+\.webp$/)
+    if (sized) list.push([Number(sized[1]), name])
+  }
+  if (list.length < 2) {
+    fail(`Could not find the Home portrait (${HERO}) and its lighter copies in dist/assets to preload.`)
+    return ''
+  }
+  const set = list.sort((x, y) => x[0] - y[0]).map(([w, n]) => `/assets/${n} ${w}w`).join(', ')
+  return `<link rel="preload" as="image" imagesrcset="${set}" imagesizes="${HERO_SIZES}" fetchpriority="high" />
+    `
+}
+const homePreload = heroPreload()
+
 for (const p of pages) {
-  const html = build(p)
+  let html = build(p)
+  if (p.path === '/') html = html.replace('<meta property="og:type"', homePreload + '<meta property="og:type"')
   const count = (re) => (html.match(re) || []).length
   const checks = {
     title: count(/<title[ >]/g),

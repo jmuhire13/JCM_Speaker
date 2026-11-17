@@ -17,7 +17,7 @@
 //    (its site lists him as Immediate Past President). Queen's Young Leaders 2016: confirm.
 //  - PROVISIONAL: `today.reflections` are drawn from his bio, not his own recorded words.
 import data from './data/story.json'
-import { media } from '../lib/media'
+import { media, srcSet } from '../lib/media'
 
 // The years that slide behind the opening.
 export const ghostYears = data.ghostYears
@@ -25,7 +25,11 @@ export const ghostYears = data.ghostYears
 export const storyHero = {
   ...data.storyHero,
   portrait: data.storyHero.portrait?.src
-    ? { ...data.storyHero.portrait, src: media(data.storyHero.portrait.src) }
+    ? {
+        ...data.storyHero.portrait,
+        src: media(data.storyHero.portrait.src),
+        srcSet: srcSet(data.storyHero.portrait.src),
+      }
     : null,
 }
 
@@ -35,6 +39,7 @@ export const timeline = {
     ...item,
     place: item.place || null,
     photo: media(item.photo),
+    photoSrcSet: srcSet(item.photo),
   })),
 }
 

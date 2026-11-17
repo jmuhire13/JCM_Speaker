@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Lighter photo copies, made by tools/prepare-images.mjs before every build and dev start
+src/assets/photos/sizes/

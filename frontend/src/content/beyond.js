@@ -15,7 +15,7 @@
 //  - PROVISIONAL: project 01 uses a stock photo. The children photo needs the charity's
 //    permission. The intro line is written by us.
 import data from './data/beyond.json'
-import { media } from '../lib/media'
+import { media, srcSet } from '../lib/media'
 
 export const beyondHero = data.beyondHero
 
@@ -26,6 +26,7 @@ export const projects = data.projects.map((p, i) => ({
   tags: p.tags || [],
   link: p.link?.href ? p.link : null,
   photo: media(p.photo),
+  photoSrcSet: srcSet(p.photo),
 }))
 
 export const alsoBeyond = data.alsoBeyond || []

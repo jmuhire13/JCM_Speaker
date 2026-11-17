@@ -37,6 +37,8 @@ export default function StoryHero() {
             <div aria-hidden="true" className="bg-gold absolute inset-0 translate-x-3 translate-y-3 rounded-[6px]" />
             <img
               src={portrait.src}
+              srcSet={portrait.srcSet}
+              sizes="(min-width: 640px) 26rem, 100vw"
               alt={portrait.alt}
               className="relative aspect-[4/5] w-full rounded-[6px] object-cover object-[50%_30%]"
             />

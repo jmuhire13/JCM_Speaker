@@ -9,6 +9,7 @@ import TileMosaic from './TileMosaic'
 import MotionToggle from './MotionToggle'
 import { hero, heroMosaic, site } from '../content/site'
 import heroPhoto from '../assets/photos/jc-portrait-studio.jpg'
+import { srcSet } from '../lib/media'
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP)
 
@@ -99,6 +100,9 @@ export default function Hero() {
       {/* The portrait: straight in the section, so the blend can see the stage behind it */}
       <img
         src={heroPhoto}
+        srcSet={srcSet('/src/assets/photos/jc-portrait-studio.jpg')}
+        // Shown 92% of the screen height on laptops, 52% on phones; the photo is 2:3.
+        sizes="(min-width: 1024px) 62vh, 35vh"
         alt={hero.photoAlt}
         width="1000"
         height="1500"

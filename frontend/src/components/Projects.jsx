@@ -73,6 +73,8 @@ export default function Projects() {
             >
               <img
                 src={p.photo}
+                srcSet={p.photoSrcSet}
+                sizes="(min-width: 768px) 50vw, 100vw"
                 alt={p.photoAlt}
                 loading="lazy"
                 className="h-[118%] w-full object-cover"
