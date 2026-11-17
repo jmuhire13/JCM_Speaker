@@ -10,10 +10,12 @@ import { notFound } from '../content/pages'
 export default function NotFound() {
   return (
     <section className="bg-cream mx-auto min-h-svh max-w-[1400px] px-5 pt-36 pb-24 md:px-10 md:pt-44">
+      {typeof window !== 'undefined' && (
       <Helmet>
         <title>{notFound.title}</title>
         <meta name="description" content={notFound.description} />
       </Helmet>
+      )}
       <p className="font-body text-muted text-[13px] tracking-[0.14em] uppercase">{notFound.label}</p>
       <h1 className="font-hero text-ink mt-6 text-[clamp(3rem,9vw,8rem)] leading-[0.95] uppercase">
         {notFound.headline}

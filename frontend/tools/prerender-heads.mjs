@@ -16,7 +16,7 @@
 //     and og:url.
 import fs from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { buildPageMeta, notFound } from '../src/content/pageMeta.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -41,7 +41,31 @@ for (const p of pages) if (!sitemap.includes(`<loc>${p.url}</loc>`)) fail(`publi
 
 // 3. Write the files.
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
+// The empty page shell Vite made. Kept in dist-ssr/ so running this step twice never starts from
+// a page that already has content in it.
+const shellFile = path.join(root, 'dist-ssr', 'template.html')
+const fresh = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
+if (fresh.includes('<div id="root"></div>')) fs.writeFileSync(shellFile, fresh)
+const template = fs.readFileSync(shellFile, 'utf8')
+
+// Build-time rendering of each page's content (QA T-21), from the "server" build of the site.
+const { render } = await import(pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href)
+async function withBody(html, url, label) {
+  let body = ''
+  try {
+    body = await render(url)
+  } catch (e) {
+    fail(`${label}: rendering failed: ${String(e).slice(0, 200)}`)
+  }
+  // React adds "preload" links for the first images at the very start of its output. The images
+  // are now real <img> tags in the page, which browsers find on their own (and Home has its own
+  // portrait preload in the head), so drop them: they would also sit inside the part React takes
+  // over in the browser, where it does not expect them.
+  body = body.replace(/^(?:<link [^>]*\/?>)+/, '')
+  if (!/<h1[ >]/.test(body)) fail(`${label}: the rendered page has no headline (h1).`)
+  if (!html.includes('<div id="root"></div>')) fail(`${label}: the page shell has no empty <div id="root">.`)
+  return html.replace('<div id="root"></div>', `<div id="root">${body}</div>`)
+}
 // Remove the template's replaceable tags (title and every data-rh tag), then add the page's own.
 const stripped = template
   .replace(/<title[^>]*>[\s\S]*?<\/title>\s*/, '')
@@ -117,9 +141,9 @@ for (const p of pages) {
     'og:url': count(/property="og:url"/g),
   }
   for (const [k, n] of Object.entries(checks)) if (n !== 1) fail(`${p.file}: ${n} ${k} tags (expected exactly 1)`)
-  write(p.file, html)
+  write(p.file, await withBody(html, p.path, p.file))
 }
-write('404.html', build({ title: notFound.title, description: notFound.description }, { robots: true }))
+write('404.html', await withBody(build({ title: notFound.title, description: notFound.description }, { robots: true }), '/__not-found__', '404.html'))
 
 if (problems.length) {
   console.error('\nPage files check FAILED:\n - ' + problems.join('\n - ') + '\n')

@@ -39,8 +39,10 @@ export default function Navbar() {
         .timeline({ paused: true })
         .fromTo(
           panel.current,
-          { xPercent: 100 },
-          { xPercent: 0, duration: 0.9, ease: 'power4.inOut' },
+          // x: 0 clears the inline translateX(100%) the panel starts with (see the panel below),
+          // so only xPercent moves it.
+          { xPercent: 100, x: 0 },
+          { xPercent: 0, x: 0, duration: 0.9, ease: 'power4.inOut' },
         )
         .from(
           '.menu-item',
@@ -142,6 +144,11 @@ export default function Navbar() {
         aria-modal="true"
         aria-label="Menu"
         inert={!open}
+        // Starts off screen in the page's HTML itself, so the closed menu never covers the page
+        // while the code is still loading (pages are pre-rendered, QA T-21). GSAP takes over
+        // the movement once it runs. Inline transform, not a Tailwind translate class: GSAP
+        // would clash with the CSS "translate" property.
+        style={{ transform: 'translateX(100%)' }}
         className="bg-ink text-cream fixed inset-0 z-50 lg:hidden"
       >
         <button

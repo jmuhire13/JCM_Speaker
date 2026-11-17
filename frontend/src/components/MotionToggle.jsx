@@ -32,11 +32,14 @@ const tones = {
 }
 
 export default function MotionToggle({ tone = 'dark', className = '' }) {
-  const [paused, setPaused] = useState(isPaused)
+  // Starts as "playing" so the page built ahead of time (tools/prerender-heads.mjs) and the
+  // browser's first render match; the real, remembered state is applied right after.
+  const [paused, setPaused] = useState(false)
 
   // Keep every button on the page in step when one of them is pressed.
   useEffect(() => {
     const sync = () => setPaused(isPaused())
+    sync()
     window.addEventListener(EVENT, sync)
     return () => window.removeEventListener(EVENT, sync)
   }, [])

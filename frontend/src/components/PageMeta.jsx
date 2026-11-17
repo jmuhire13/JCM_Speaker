@@ -5,6 +5,9 @@ import { pageMeta } from '../content/pages'
 // address (canonical). Every tag here also exists in the ready-made page file, marked
 // data-rh="true", so this REPLACES it instead of adding a second copy (QA D-12, D-13).
 export default function PageMeta({ path }) {
+  // While the page is built ahead of time there is no browser: the page file already carries
+  // these tags (tools/prerender-heads.mjs), so render nothing here.
+  if (typeof window === 'undefined') return null
   const m = pageMeta[path]
   return (
     <Helmet>

@@ -79,7 +79,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="text-on-ink-label mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-x-4 px-5 py-3 text-sm md:px-10">
-          <p>
+          <p suppressHydrationWarning>
             © {year} {site.name}
           </p>
           <Link to={footer.privacyTo} className="hover:text-cream inline-block py-3 underline-offset-4 transition-colors hover:underline">
