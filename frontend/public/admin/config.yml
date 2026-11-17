@@ -436,7 +436,7 @@ collections:
               - { label: YouTube video ID, name: id, widget: string, hint: 'The part of the YouTube address after v= (for example sqjSPmyxTrI).' }
               - { label: Title, name: label, widget: string }
               - { label: Note, name: note, widget: string }
-              - { label: Cover picture, name: cover, widget: select, default: hqdefault, options: [{ label: "The channel's own cover", value: hqdefault }, { label: Frame from early in the video, value: hq1 }, { label: Frame from the middle of the video, value: hq2 }, { label: Frame from late in the video, value: hq3 }] }
+              - { label: Cover picture, name: cover, widget: select, default: hqdefault, options: [{ label: "The channel's own cover", value: hqdefault }, { label: Frame from early in the video, value: hq1 }, { label: Frame from the middle of the video, value: hq2 }, { label: "Frame from the middle, sharp (large videos only)", value: maxres2 }, { label: Frame from late in the video, value: hq3 }] }
               - { label: Start at (seconds), name: start, widget: number, value_type: int, min: 0, required: false, hint: 'Leave empty to play from the beginning. 2 minutes 10 seconds is 130.' }
               - { label: Stop at (seconds), name: end, widget: number, value_type: int, min: 0, required: false, hint: 'Leave empty to play to the end.' }
 
