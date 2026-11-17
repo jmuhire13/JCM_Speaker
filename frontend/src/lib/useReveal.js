@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import refreshAfterFonts from './scrollRefresh'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -31,7 +32,7 @@ export default function useReveal(scope, selector, { y = 40, stagger = 0.1, star
               overwrite: true,
             }),
         })
-        document.fonts.ready.then(() => ScrollTrigger.refresh())
+        refreshAfterFonts()
       })
 
       return () => mm.revert()

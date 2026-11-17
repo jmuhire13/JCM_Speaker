@@ -8,6 +8,7 @@ import ngoPhoto from '../assets/photos/audience-ngo.jpg'
 import hospitalPhoto from '../assets/photos/audience-hospital.jpg'
 import schoolPhoto from '../assets/photos/audience-school.jpg'
 import { srcSet } from '../lib/media'
+import refreshAfterFonts from '../lib/scrollRefresh'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -75,7 +76,7 @@ export default function Audiences() {
         })
       }
 
-      document.fonts.ready.then(() => ScrollTrigger.refresh())
+      refreshAfterFonts()
     },
     { scope: root, dependencies: [pinned, reduced], revertOnUpdate: true },
   )

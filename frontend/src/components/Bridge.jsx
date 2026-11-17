@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react'
 import { bridge } from '../content/site'
 import texture from '../assets/photos/speaking-tedx.jpg'
 import { srcSet } from '../lib/media'
+import refreshAfterFonts from '../lib/scrollRefresh'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -48,7 +49,7 @@ export default function Bridge() {
         })
 
         // Fonts change line widths, so measure the trigger positions again once they load.
-        document.fonts.ready.then(() => ScrollTrigger.refresh())
+        refreshAfterFonts()
       })
 
       return () => mm.revert()

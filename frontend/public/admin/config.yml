@@ -481,6 +481,31 @@ collections:
               - { label: Privacy sentence, name: privacy, widget: string, hint: 'Must stay true. See the Privacy policy page.' }
               - { label: Privacy link text, name: privacyLinkLabel, widget: string }
               - { name: privacyTo, widget: hidden }
+              - label: Form messages (errors, thank you, problems sending)
+                name: messages
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Error messages
+                    name: errors
+                    widget: object
+                    fields:
+                      - { label: Name missing, name: name, widget: string }
+                      - { label: Email missing or wrong, name: email, widget: string }
+                      - { label: Organization missing, name: organisation, widget: string }
+                      - { label: Audience not chosen, name: audience, widget: string }
+                      - { label: Message too short, name: message, widget: string }
+                  - { label: Button text while sending, name: sending, widget: string }
+                  - { label: Thank-you title, name: successTitle, widget: string }
+                  - { label: Thank-you sentence (the reply promise follows it), name: successText, widget: string }
+                  - { label: Title when sending failed, name: failedTitle, widget: string }
+                  - { label: Text when sending failed, name: failedText, widget: string }
+                  - { label: Title when the form service is off, name: notConnectedTitle, widget: string }
+                  - { label: Text when the form service is off, name: notConnectedText, widget: string }
+                  - { label: Email fallback sentence, name: emailFallbackText, widget: string }
+                  - { label: Email button text, name: openEmail, widget: string }
+                  - { label: Go back button text, name: goBack, widget: string }
+                  - { label: Words before the email address, name: orWriteTo, widget: string }
           - label: Reply promise
             name: reply
             widget: object

@@ -27,7 +27,27 @@
     "submit": "Book Jean Claude",
     "privacy": "We use your details only to reply to your enquiry.",
     "privacyLinkLabel": "Privacy policy",
-    "privacyTo": "/privacy"
+    "privacyTo": "/privacy",
+    "messages": {
+      "errors": {
+        "name": "Please tell us your name.",
+        "email": "Please enter an email address we can reply to.",
+        "organisation": "Please tell us the organization.",
+        "audience": "Please choose who the audience is.",
+        "message": "Please tell us a little about your event."
+      },
+      "sending": "Sending…",
+      "successTitle": "Thank you.",
+      "successText": "Your request is on its way.",
+      "failedTitle": "That did not send.",
+      "failedText": "Something went wrong, and we do not want to lose your message.",
+      "notConnectedTitle": "One more step.",
+      "notConnectedText": "Sending from this form is not switched on yet, and we do not want to lose your message.",
+      "emailFallbackText": "Open an email with everything you wrote already filled in, then press send.",
+      "openEmail": "Open my email",
+      "goBack": "Go back and edit",
+      "orWriteTo": "Or write to"
+    }
   },
   "reply": {
     "promise": "Jean Claude replies within two working days."

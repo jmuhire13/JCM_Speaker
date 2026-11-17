@@ -46,6 +46,12 @@
     accent-color: var(--color-green-deep);
   }
 
+  /* Buttons show the pointing hand, like links (Tailwind 4 no longer does this by itself). */
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+
   /*
     Keyboard focus ring: ink outside, cream inside. The two tones keep it visible on any
     background (light, dark or gold) without shouting in a loud colour.
@@ -185,6 +191,11 @@
 
 /* The pause button (components/MotionToggle.jsx) stops every moving band at once. */
 html.motion-paused :is(.marquee-track, .drift-up, .drift-down, .slide-left-slow, .slide-right-slow) {
+  animation-play-state: paused;
+}
+
+/* Bands out of view pause by themselves (lib/pauseOffscreen.js) and restart when seen again. */
+:is(.marquee-track, .drift-up, .drift-down, .slide-left-slow, .slide-right-slow).is-offscreen {
   animation-play-state: paused;
 }
 

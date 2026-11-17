@@ -47,6 +47,7 @@ const stripped = template
   .replace(/<title[^>]*>[\s\S]*?<\/title>\s*/, '')
   .replace(/<(meta|link)\s+data-rh="true"[\s\S]*?\/>\s*/g, '')
   .replace(/<link rel="preload" as="image"[\s\S]*?\/>\s*/g, '') // in case this step runs twice
+  .replace(/<link rel="preload" as="font"[\s\S]*?\/>\s*/g, '')
 if (!stripped.includes('<meta property="og:type"')) fail('index.html no longer has the og:type tag this script inserts before.')
 
 function headFor(m, { robots = false } = {}) {
@@ -67,8 +68,17 @@ function headFor(m, { robots = false } = {}) {
   return tags.join('\n    ') + '\n    '
 }
 
+// Every page: fetch the headline font (Anton) and the body font (Space Grotesk) straight away,
+// in parallel with the site's code, so text does not appear in a stand-in font and then jump
+// (QA T-09). Only the "latin" files: the other alphabets load only when a page needs them.
+const FONTS = [/^anton-latin-400-normal-[\w-]+\.woff2$/, /^space-grotesk-latin-wght-normal-[\w-]+\.woff2$/]
+const fontFiles = FONTS.map((re) => fs.readdirSync(path.join(dist, 'assets')).find((n) => re.test(n)))
+if (fontFiles.some((f) => !f)) fail(`Could not find the fonts to preload in dist/assets (${FONTS.join(', ')}).`)
+const fontPreload = fontFiles.filter(Boolean).map((f) => `<link rel="preload" as="font" type="font/woff2" href="/assets/${f}" crossorigin />
+    `).join('')
+
 const write = (file, html) => fs.writeFileSync(path.join(dist, file), html)
-const build = (m, opts) => stripped.replace('<meta property="og:type"', headFor(m, opts) + '<meta property="og:type"')
+const build = (m, opts) => stripped.replace('<meta property="og:type"', fontPreload + headFor(m, opts) + '<meta property="og:type"')
 
 // Home: ask for the portrait (the biggest thing on the first screen) straight away, before the
 // site's code has even loaded. Same choices and `sizes` as the <img> in components/Hero.jsx.

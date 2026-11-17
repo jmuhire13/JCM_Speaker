@@ -20,11 +20,13 @@ const looksLikeEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim())
 
 function validate(v) {
   const errors = {}
-  if (!v.name.trim()) errors.name = 'Please tell us your name.'
-  if (!looksLikeEmail(v.email)) errors.email = 'Please enter an email address we can reply to.'
-  if (!v.organisation.trim()) errors.organisation = 'Please tell us the organization.'
-  if (!v.audience) errors.audience = 'Please choose who the audience is.'
-  if (v.message.trim().length < 10) errors.message = 'Please tell us a little about your event.'
+  // The wording lives in content/data/connect.json (connectForm.messages), editable at /admin.
+  const say = connectForm.messages.errors
+  if (!v.name.trim()) errors.name = say.name
+  if (!looksLikeEmail(v.email)) errors.email = say.email
+  if (!v.organisation.trim()) errors.organisation = say.organisation
+  if (!v.audience) errors.audience = say.audience
+  if (v.message.trim().length < 10) errors.message = say.message
   return errors
 }
 
@@ -105,13 +107,14 @@ export default function ConnectForm() {
   }
 
   const card = 'bg-cream text-ink rounded-[6px] p-6 shadow-2xl md:p-10'
+  const msg = connectForm.messages
 
   if (status === 'success') {
     return (
       <div className={card} role="status">
-        <h2 className="font-hero text-5xl uppercase">Thank you.</h2>
+        <h2 className="font-hero text-5xl uppercase">{msg.successTitle}</h2>
         <p className="text-soft mt-4 text-lg leading-relaxed">
-          Your request is on its way. {reply.promise}
+          {msg.successText} {reply.promise}
         </p>
       </div>
     )
@@ -123,30 +126,29 @@ export default function ConnectForm() {
     return (
       <div className={card} role="alert">
         <h2 className="font-hero text-4xl uppercase md:text-5xl">
-          {status === 'failed' ? 'That did not send.' : 'One more step.'}
+          {status === 'failed' ? msg.failedTitle : msg.notConnectedTitle}
         </h2>
         <p className="text-soft mt-4 text-lg leading-relaxed">
-          {status === 'failed'
-            ? 'Something went wrong, and we do not want to lose your message.'
-            : 'Sending from this form is not switched on yet, and we do not want to lose your message.'}{' '}
-          Open an email with everything you wrote already filled in, then press send.
+          {status === 'failed' ? msg.failedText : msg.notConnectedText} {msg.emailFallbackText}
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
           <a
             href={mailtoHref(directContact.email, enquiry)}
             className="bg-ink text-cream inline-block px-7 py-[18px] text-[15px] font-semibold"
           >
-            Open my email
+            {msg.openEmail}
           </a>
           <button
             type="button"
             onClick={() => setStatus('idle')}
             className="decoration-gold-deep text-[15px] font-medium underline underline-offset-4"
           >
-            Go back and edit
+            {msg.goBack}
           </button>
         </div>
-        <p className="text-muted mt-5 text-sm">Or write to {directContact.email}.</p>
+        <p className="text-muted mt-5 text-sm">
+          {msg.orWriteTo} {directContact.email}.
+        </p>
       </div>
     )
   }
@@ -234,7 +236,7 @@ export default function ConnectForm() {
 
       <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
         <Button type="submit" disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending…' : connectForm.submit}
+          {status === 'sending' ? msg.sending : connectForm.submit}
         </Button>
         <p className="text-muted max-w-xs text-sm">
           {connectForm.privacy}{' '}

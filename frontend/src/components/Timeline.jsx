@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react'
 import { MapPin } from 'lucide-react'
 import useReveal from '../lib/useReveal'
 import { timeline } from '../content/story'
+import refreshAfterFonts from '../lib/scrollRefresh'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -52,7 +53,7 @@ export default function Timeline() {
           if (img) tl.from(img, { scale: 1.25, duration: 1.8 }, 0)
         })
 
-        document.fonts.ready.then(() => ScrollTrigger.refresh())
+        refreshAfterFonts()
       })
 
       return () => mm.revert()

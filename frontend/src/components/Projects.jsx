@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { ArrowUpRight } from 'lucide-react'
 import { projects, alsoBeyond } from '../content/beyond'
+import refreshAfterFonts from '../lib/scrollRefresh'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -50,7 +51,7 @@ export default function Projects() {
           )
         })
 
-        document.fonts.ready.then(() => ScrollTrigger.refresh())
+        refreshAfterFonts()
       })
 
       return () => mm.revert()

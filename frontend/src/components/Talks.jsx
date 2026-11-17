@@ -30,7 +30,7 @@ export default function Talks() {
               </h3>
               <div>
                 <p className="text-soft text-lg leading-relaxed md:text-xl">{talk.text}</p>
-                <p className="text-ink mt-5 text-lg leading-relaxed font-medium italic md:text-xl">
+                <p className="text-ink mt-5 text-lg leading-relaxed font-semibold md:text-xl">
                   {talk.leave}
                 </p>
               </div>

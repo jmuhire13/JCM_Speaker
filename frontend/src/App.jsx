@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar'
 import { darkOpenings } from './lib/darkOpenings'
+import startOffscreenPause from './lib/pauseOffscreen'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 
@@ -40,6 +41,9 @@ function PageFallback() {
 function App() {
   // Smooth scrolling, driven by GSAP's clock so scroll animations stay in sync.
   // Skipped for visitors who asked their device to reduce motion.
+  // Moving bands pause while they are off screen (saves work on phones).
+  useEffect(() => startOffscreenPause(), [])
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 

@@ -31,7 +31,7 @@ export function mailtoHref(email, values) {
     `Name: ${values.name}`,
     `Email: ${values.email}`,
     `Phone: ${values.phone || 'not given'}`,
-    `Organisation: ${values.organisation}`,
+    `Organization: ${values.organisation}`,
     `Event date: ${values.eventDate || 'not fixed yet'}`,
     `Audience: ${values.audience}`,
     '',
