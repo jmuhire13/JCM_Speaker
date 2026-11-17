@@ -22,7 +22,7 @@ function validate(v) {
   const errors = {}
   if (!v.name.trim()) errors.name = 'Please tell us your name.'
   if (!looksLikeEmail(v.email)) errors.email = 'Please enter an email address we can reply to.'
-  if (!v.organisation.trim()) errors.organisation = 'Please tell us the organisation.'
+  if (!v.organisation.trim()) errors.organisation = 'Please tell us the organization.'
   if (!v.audience) errors.audience = 'Please choose who the audience is.'
   if (v.message.trim().length < 10) errors.message = 'Please tell us a little about your event.'
   return errors

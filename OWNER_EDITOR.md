@@ -8,7 +8,7 @@ jcmuhire.com himself, at **https://jcmuhire.com/admin/**, without a developer.
 ### Changing something
 
 1. Open **jcmuhire.com/admin/** and sign in with your GitHub account.
-2. Pick the page you want (for example "Speaking page" or "Organisation logos").
+2. Pick the page you want (for example "Speaking page" or "Organization logos").
 3. Change the words, or click a photo to replace it. You can upload a photo straight from your
    phone or camera: the site makes it smaller by itself.
 4. Press **Publish**, then **Publish now**.

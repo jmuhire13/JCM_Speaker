@@ -3,14 +3,14 @@
     "label": "Trusted By",
     "headline": "The rooms he has been invited into.",
     "accent": "rooms",
-    "intro": "Organisations that have hosted, worked with, or honoured Jean Claude, and the honours his work has earned."
+    "intro": "Organizations that have hosted, worked with, or honoured Jean Claude, and the honours his work has earned."
   },
   "hosted": {
     "heading": "Worked with",
-    "intro": "Hosts, partners and programmes that have welcomed him, worked with him, or honoured his work."
+    "intro": "Hosts, partners and programs that have welcomed him, worked with him, or honoured his work."
   },
   "recognitions": {
-    "heading": "Recognised for the work",
+    "heading": "Recognized for the work",
     "items": [
       {
         "year": "2019",
@@ -38,5 +38,5 @@
       }
     ]
   },
-  "testimonialsHeading": "What organisers say"
+  "testimonialsHeading": "What organizers say"
 }

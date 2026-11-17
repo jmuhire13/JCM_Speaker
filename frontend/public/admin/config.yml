@@ -139,7 +139,7 @@ collections:
                   - { label: Quote, name: text, widget: text }
                   - { label: Name, name: name, widget: string }
                   - { label: Role, name: role, widget: string, required: false }
-                  - { label: Organisation, name: organisation, widget: string, required: false }
+                  - { label: Organization, name: organisation, widget: string, required: false }
           - label: Personal note
             name: note
             widget: object
@@ -368,7 +368,7 @@ collections:
               - { label: Headline, name: headline, widget: string }
               - { label: Words of the headline shown in gold, name: accent, widget: string, hint: 'Must be copied exactly from the headline above.' }
               - { label: Intro, name: intro, widget: text }
-          - label: Organisations heading
+          - label: Organizations heading
             name: hosted
             widget: object
             collapsed: true
@@ -393,13 +393,13 @@ collections:
 
       # ------------------------------------------------------------------ Logos
       - name: logos
-        label: Organisation logos
+        label: Organization logos
         file: frontend/src/content/data/logos.json
         fields:
-          - label: Organisations
+          - label: Organizations
             name: logos
             widget: list
-            hint: 'Shown on Home and on Trusted By, in this order. Only show a logo with the organisation''s permission.'
+            hint: 'Shown on Home and on Trusted By, in this order. Only show a logo with the organization''s permission.'
             summary: '{{fields.name}}'
             fields:
               - { label: Name, name: name, widget: string }
@@ -467,7 +467,7 @@ collections:
                   - { label: Name, name: name, widget: string }
                   - { label: Email, name: email, widget: string }
                   - { label: Phone, name: phone, widget: string }
-                  - { label: Organisation, name: organisation, widget: string }
+                  - { label: Organization, name: organisation, widget: string }
                   - { label: Event date, name: eventDate, widget: string }
                   - { label: Event date hint, name: eventDateHint, widget: string }
                   - { label: Audience, name: audience, widget: string }

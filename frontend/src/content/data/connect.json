@@ -11,7 +11,7 @@
       "name": "Your name",
       "email": "Your email",
       "phone": "Phone (optional)",
-      "organisation": "Organisation",
+      "organisation": "Organization",
       "eventDate": "Event date",
       "eventDateHint": "Leave empty if it is not fixed yet.",
       "audience": "Who is the audience?",
