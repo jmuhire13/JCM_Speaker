@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import Accent from '../lib/Accent'
-import useHeroReveal from '../lib/useHeroReveal'
 import { logos } from '../content/logos'
 import MotionToggle from './MotionToggle'
 import { trustedHero } from '../content/trusted'
@@ -36,11 +35,10 @@ function LogoRow({ items, reverse = false }) {
 // sliding in opposite directions across the full width.
 export default function TrustedHero() {
   const root = useRef(null)
-  useHeroReveal(root)
   const half = Math.ceil(logos.length / 2)
 
   return (
-    <section ref={root} className="gate bg-ink relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 [@media(max-height:500px)]:pt-24">
+    <section ref={root} className="opening bg-ink relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 [@media(max-height:500px)]:pt-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <p className="ph-label font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">
           {trustedHero.label}

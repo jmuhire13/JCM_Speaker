@@ -65,18 +65,51 @@
 }
 
 /*
-  "Gate": a section marked .gate is hidden for a moment while its animation
-  prepares, so visitors never see text jump. If JavaScript fails or is slow,
-  this fallback reveals it anyway after 2.5 seconds. Text is never lost.
+  Page openings (section class "opening"). The entrance is plain CSS, so it starts the moment
+  the page paints and never waits for the site's code: the headline, buttons and pictures are
+  never hidden while scripts load (QA T-01; this replaced a JavaScript "gate" that kept the
+  whole opening invisible for up to 4 seconds on slow phones).
+    .ph-label / .hero-roles  the small label            fades up first
+    .ph-title / .hero-title  the headline               rises into place
+    .ph-after / .hero-after  intro, buttons, pictures   fade up a moment later
+    .hero-photo              the Home portrait          rises, without fading, so it shows at once
+  Only "from" keyframes with fill-mode "backwards": when an entrance ends, the element returns to
+  its own styles, so the portrait's scroll drift (GSAP, Hero.jsx) is not overridden.
+  Nothing moves for visitors who asked for reduced motion.
 */
-html.js .gate {
-  visibility: hidden;
-  animation: gate-fallback 0s linear 2.5s forwards;
+@media (prefers-reduced-motion: no-preference) {
+  .opening :is(.ph-label, .hero-roles) {
+    animation: enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+  .opening :is(.ph-title, .hero-title) {
+    animation: enter-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s backwards;
+  }
+  .opening :is(.ph-after, .hero-after) {
+    animation: enter-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s backwards;
+  }
+  .opening :is(.ph-after, .hero-after) ~ :is(.ph-after, .hero-after) {
+    animation-delay: 0.5s;
+  }
+  .opening .hero-photo {
+    animation: enter-photo 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+  }
 }
 
-@keyframes gate-fallback {
-  to {
-    visibility: visible;
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+@keyframes enter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+}
+@keyframes enter-photo {
+  from {
+    transform: translateY(48px);
   }
 }
 

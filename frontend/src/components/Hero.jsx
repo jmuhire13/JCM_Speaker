@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
 import Button from './Button'
 import TileMosaic from './TileMosaic'
@@ -11,7 +10,7 @@ import { hero, heroMosaic, site } from '../content/site'
 import heroPhoto from '../assets/photos/jc-portrait-studio.jpg'
 import { srcSet } from '../lib/media'
 
-gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP)
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 // Home opens on a dark stage like Speaking (a faint wall of photos), but with a poster feel:
 // his studio portrait stands large in front and the headline rises on the left. (The giant
@@ -23,53 +22,20 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP)
 export default function Hero() {
   const root = useRef(null)
 
+  // The entrance (label, headline, portrait, intro and buttons) is plain CSS that starts the
+  // moment the page paints: see ".opening" in index.css. Nothing waits for this script, so the
+  // headline and portrait are never hidden while the code loads (QA T-01).
+  // Only the slow scroll drift of the portrait is done here.
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
-
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        const rest = gsap
-          .timeline({ paused: true })
-          .from('.hero-roles', { y: 20, opacity: 0, duration: 0.7, ease: 'power3.out' }, 0)
-          .from('.hero-photo', { opacity: 0, y: 60, duration: 1.4, ease: 'power3.out' }, 0.15)
-          .from(
-            '.hero-after',
-            { y: 24, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
-            0.7,
-          )
-
-        let started = false
-        SplitText.create('.hero-title', {
-          type: 'lines',
-          mask: 'lines',
-          autoSplit: true, // re-split if fonts load late or the window is resized
-          onSplit(self) {
-            gsap.set(root.current, { visibility: 'visible' })
-            if (!started) {
-              started = true
-              rest.play()
-            }
-            return gsap.from(self.lines, {
-              yPercent: 110,
-              duration: 1.1,
-              stagger: 0.1,
-              ease: 'power4.out',
-            })
-          },
-        })
-
-        // The portrait drifts slightly as you scroll past.
         gsap.to('.hero-photo', {
           yPercent: -5,
           ease: 'none',
           scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
         })
       })
-
-      mm.add('(prefers-reduced-motion: reduce)', () => {
-        gsap.set(root.current, { visibility: 'visible' })
-      })
-
       return () => mm.revert()
     },
     { scope: root },
@@ -78,7 +44,7 @@ export default function Hero() {
   return (
     <section
       ref={root}
-      className="gate bg-ink relative flex min-h-svh flex-col overflow-hidden lg:h-svh lg:min-h-[40rem]"
+      className="opening bg-ink relative flex min-h-svh flex-col overflow-hidden lg:h-svh lg:min-h-[40rem]"
     >
       <TileMosaic tiles={heroMosaic} />
       {/* Keep the wall faint, and darker where the words sit */}
@@ -97,7 +63,9 @@ export default function Hero() {
         style={{ background: 'radial-gradient(ellipse 70% 40% at 50% 80%, #1f1a1d 55%, transparent 100%)' }}
       />
 
-      {/* The portrait: straight in the section, so the blend can see the stage behind it */}
+      {/* The portrait: straight in the section, so the blend can see the stage behind it.
+          Centred on phones with left/right 0 and auto margins, never with a translate class:
+          GSAP's scroll drift on this image would overwrite a CSS translate and push it sideways. */}
       <img
         src={heroPhoto}
         srcSet={srcSet('/src/assets/photos/jc-portrait-studio.jpg')}
@@ -107,7 +75,7 @@ export default function Hero() {
         width="1000"
         height="1500"
         fetchPriority="high"
-        className="hero-photo pointer-events-none absolute right-1/2 bottom-0 h-[52svh] w-auto max-w-none translate-x-1/2 object-contain mix-blend-lighten lg:right-[3vw] lg:h-[92svh] lg:translate-x-0"
+        className="hero-photo pointer-events-none absolute inset-x-0 bottom-0 mx-auto h-[52svh] w-auto max-w-none object-contain mix-blend-lighten lg:right-[3vw] lg:left-auto lg:mx-0 lg:h-[92svh]"
         style={{
           maskImage:
             'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 82%, transparent)',

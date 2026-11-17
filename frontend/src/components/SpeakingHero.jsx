@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import Accent from '../lib/Accent'
-import useHeroReveal from '../lib/useHeroReveal'
 import TileMosaic from './TileMosaic'
 import MotionToggle from './MotionToggle'
 import Button from './Button'
@@ -10,10 +9,9 @@ import { speakingHero, speakingMosaic } from '../content/speaking'
 // Speaking opens on a dark stage: a slow wall of photo tiles, with the headline over it.
 export default function SpeakingHero() {
   const root = useRef(null)
-  useHeroReveal(root)
 
   return (
-    <section ref={root} className="gate relative flex min-h-svh items-center overflow-hidden bg-ink">
+    <section ref={root} className="opening relative flex min-h-svh items-center overflow-hidden bg-ink">
       <TileMosaic tiles={speakingMosaic} />
       <div className="from-ink via-ink/80 to-ink/30 absolute inset-0 bg-gradient-to-r from-25%" />
       <div className="from-ink absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t to-transparent" />

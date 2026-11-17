@@ -37,13 +37,13 @@ export default function Proof() {
           {logos.map((logo) => (
             <li
               key={logo.name}
-              className="logo-reveal group flex aspect-[3/2] items-center justify-center rounded-[6px] bg-white p-5"
+              className="logo-reveal group flex aspect-[3/2] items-center justify-center rounded-[6px] bg-white p-2 sm:p-4 lg:p-5"
             >
               <img
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
-                className="max-h-full max-w-full object-contain opacity-80 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                className="h-[64%] w-[80%] object-contain opacity-80 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0"
               />
             </li>
           ))}

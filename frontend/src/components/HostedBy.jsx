@@ -22,15 +22,18 @@ export default function HostedBy() {
         <ul className="mt-14 grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-3 md:mt-20 lg:grid-cols-4">
           {logos.map((logo) => (
             <li key={logo.name} className="hosted-card group">
-              <div className="border-line flex aspect-[3/2] items-center justify-center rounded-[6px] border bg-white p-6">
+              {/* Every logo is scaled into the same frame (80% x 64% of the box), keeping its own shape,
+                  so cards look even on phones (QA T-05). Less padding on small screens. */}
+              <div className="border-line flex aspect-[3/2] items-center justify-center rounded-[6px] border bg-white p-2 sm:p-4 lg:p-6">
                 <img
                   src={logo.src}
                   alt="" // the name is printed just below, so screen readers would hear it twice
                   loading="lazy"
-                  className="max-h-full max-w-full object-contain opacity-80 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                  className="h-[64%] w-[80%] object-contain opacity-80 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                 />
               </div>
-              <p className="text-ink mt-3 text-sm leading-snug md:text-base">{logo.name}</p>
+              {/* Room for three lines of name on every card, so rows line up. */}
+              <p className="text-ink mt-3 min-h-[4.125em] text-sm leading-snug md:text-base">{logo.name}</p>
               {hostedNotes[logo.name] && (
                 <p className="text-muted mt-1 text-sm leading-snug">{hostedNotes[logo.name]}</p>
               )}

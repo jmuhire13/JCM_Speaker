@@ -35,7 +35,7 @@ export default function VideoSection({ background = 'bg-cream' }) {
                     {String(i + 1).padStart(2, '0')}
                   </p>
                 )}
-                <h3 className="font-hero text-inktext-[clamp(2rem,4vw,3.75rem)] leading-[0.95] text-balance uppercase">
+                <h3 className="font-hero text-ink text-[clamp(2rem,4vw,3.75rem)] leading-[0.95] text-balance uppercase">
                   {v.label}
                 </h3>
                 <p className="text-muted mt-3 text-base">{v.note}</p>

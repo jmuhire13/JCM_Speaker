@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import Accent from '../lib/Accent'
-import useHeroReveal from '../lib/useHeroReveal'
 import { beyondHero, projects } from '../content/beyond'
 
 // Where each fanned print sits and how it tilts. The outer box holds the fixed tilt; the inner
@@ -14,10 +13,9 @@ const spots = [
 // Beyond the Stage opens on deep green, with the three projects fanned out like prints.
 export default function BeyondHero() {
   const root = useRef(null)
-  useHeroReveal(root)
 
   return (
-    <section ref={root} className="gate bg-green-deep relative overflow-hidden">
+    <section ref={root} className="opening bg-green-deep relative overflow-hidden">
       <div className="mx-auto grid min-h-svh max-w-[1400px] items-center gap-12 px-5 pt-32 pb-20 lg:grid-cols-[1.1fr_1fr] md:px-10">
         <div>
           <p className="ph-label font-body text-on-green-label text-[13px] tracking-[0.14em] uppercase">

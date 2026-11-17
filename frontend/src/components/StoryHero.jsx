@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import useHeroReveal from '../lib/useHeroReveal'
 import { ghostYears, storyHero } from '../content/story'
 import MotionToggle from './MotionToggle'
 
@@ -7,13 +6,12 @@ import MotionToggle from './MotionToggle'
 // the bottom, behind the headline. The portrait sits on a gold offset block.
 export default function StoryHero() {
   const root = useRef(null)
-  useHeroReveal(root)
 
   const { portrait } = storyHero
   const years = `${ghostYears.join('  ·  ')}  ·  `
 
   return (
-    <section ref={root} className="gate bg-cream relative min-h-svh overflow-hidden">
+    <section ref={root} className="opening bg-cream relative min-h-svh overflow-hidden">
       <div className="relative z-10 mx-auto grid max-w-[1400px] items-center gap-12 px-5 pt-36 pb-44 lg:grid-cols-[1.3fr_1fr] md:px-10 md:pt-44 md:pb-72">
         <div>
           <p className="ph-label font-body text-muted text-[13px] tracking-[0.14em] uppercase">
