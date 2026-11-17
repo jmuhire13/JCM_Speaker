@@ -7,6 +7,7 @@
     "dev": "vite",
     "prebuild": "node tools/prepare-images.mjs && node tools/check-content.mjs",
     "build": "vite build",
+    "postbuild": "node tools/prerender-heads.mjs",
     "check:content": "node tools/check-content.mjs",
     "lint": "oxlint",
     "preview": "vite preview"

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import PageMeta from '../components/PageMeta'
 import Accent from '../lib/Accent'
 import { privacy } from '../content/privacy'
 
@@ -8,12 +8,7 @@ import { privacy } from '../content/privacy'
 export default function Privacy() {
   return (
     <>
-      <Helmet>
-        <title>Privacy policy | Jean Claude Muhire</title>
-        <meta name="description" content={privacy.description} />
-        <meta property="og:title" content="Privacy policy | Jean Claude Muhire" />
-        <meta property="og:description" content={privacy.description} />
-      </Helmet>
+      <PageMeta path="/privacy" />
 
       <section className="bg-cream">
         <div className="mx-auto grid max-w-[1400px] gap-12 px-5 pt-36 pb-24 md:grid-cols-[1fr_1.4fr] md:gap-20 md:px-10 md:pt-48 md:pb-40">

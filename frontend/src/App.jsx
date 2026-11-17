@@ -16,7 +16,7 @@ const BeyondTheStage = lazy(() => import('./pages/BeyondTheStage'))
 const TrustedBy = lazy(() => import('./pages/TrustedBy'))
 const Connect = lazy(() => import('./pages/Connect'))
 const Privacy = lazy(() => import('./pages/Privacy'))
-const ComingSoon = lazy(() => import('./pages/ComingSoon'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -83,7 +83,7 @@ function App() {
         <Route path="/trusted-by" element={<TrustedBy />} />
         <Route path="/connect" element={<Connect />} />
         <Route path="/privacy" element={<Privacy />} />
-        <Route path="*" element={<ComingSoon />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </Suspense>
       </main>

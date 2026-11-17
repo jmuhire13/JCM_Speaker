@@ -1,20 +1,14 @@
-import { Helmet } from 'react-helmet-async'
+import PageMeta from '../components/PageMeta'
 import StoryHero from '../components/StoryHero'
 import Timeline from '../components/Timeline'
 import Today from '../components/Today'
 import VideoSection from '../components/VideoSection'
 import Invitation from '../components/Invitation'
-import { storyHero } from '../content/story'
 
 export default function MyStory() {
   return (
     <>
-      <Helmet>
-        <title>My Story | Jean Claude Muhire</title>
-        <meta name="description" content={storyHero.description} />
-        <meta property="og:title" content="My Story | Jean Claude Muhire" />
-        <meta property="og:description" content={storyHero.description} />
-      </Helmet>
+      <PageMeta path="/my-story" />
       <StoryHero />
       <Timeline />
       <VideoSection />

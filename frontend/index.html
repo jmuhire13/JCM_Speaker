@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- STAGING ONLY: asks Google not to list the site yet. REMOVE this line before launch. -->
     <meta name="robots" content="noindex, nofollow" />
-    <title>Jean Claude Muhire | Lived Experience Advocate, Community Builder, Social Impact Leader</title>
+    <title data-rh="true">Jean Claude Muhire | Lived Experience Advocate, Community Builder, Social Impact Leader</title>
     <meta data-rh="true"
       name="description"
       content="Leadership through lived experience. Jean Claude Muhire shares stories that foster belonging, strengthen connections, and inspire action for NGOs, hospitals and schools."
     />
     <!--
       The share card: what WhatsApp, LinkedIn, Facebook, X and email show when a link to the site
-      is pasted. Those apps read only this file and do not run the site's code, so every page
-      shares this one card until the pages are pre-rendered. The picture is public/og-image.jpg,
-      made from tools/og-card.html. Keep these words in step with content/site.js.
+      is pasted. Those apps read only the page file and do not run the site's code. This file is
+      the template: at build time tools/prerender-heads.mjs copies it once per page and fills in
+      that page's title, description, address (og:url, canonical) from src/content/pageMeta.js.
+      Tags marked data-rh="true" are replaced by the page's own tags once the site runs, so each
+      exists only once. The picture is public/og-image.jpg, made from tools/og-card.html.
     -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Jean Claude Muhire" />
@@ -24,7 +26,8 @@
       property="og:description"
       content="Sharing stories that foster belonging, strengthen connections, and inspire action. For NGOs, hospitals and schools."
     />
-    <meta property="og:url" content="https://jcmuhire.com/" />
+    <meta data-rh="true" property="og:url" content="https://jcmuhire.com/" />
+    <link data-rh="true" rel="canonical" href="https://jcmuhire.com/" />
     <meta property="og:image" content="https://jcmuhire.com/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

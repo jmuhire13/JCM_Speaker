@@ -11,9 +11,12 @@
     // The folder that "npm run build" creates: the finished website files.
     "directory": "./dist",
 
-    // Our site changes pages inside the browser (React Router). If someone opens or refreshes
-    // an address like /speaking, there is no file with that name, so serve the main page and
-    // let the site show the right page. Without this, refreshing any page except Home breaks.
-    "not_found_handling": "single-page-application"
+    // Each page has its own ready-made file (speaking.html, my-story.html...), written at build
+    // time by tools/prerender-heads.mjs, so /speaking is served from speaking.html and refreshing
+    // any page works. Any other address gets 404.html with a real "404 not found" status, so
+    // search engines never treat a wrong address as a page (QA D-07).
+    // A NEW PAGE needs an entry in src/content/pageMeta.js, or it will answer "not found";
+    // the build checks this and fails if one is missing.
+    "not_found_handling": "404-page"
   }
 }

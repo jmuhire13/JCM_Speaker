@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import PageMeta from '../components/PageMeta'
 import Hero from '../components/Hero'
 import HomeVideo from '../components/HomeVideo'
 import Bridge from '../components/Bridge'
@@ -11,18 +11,7 @@ import Invitation from '../components/Invitation'
 export default function Home() {
   return (
     <>
-      <Helmet>
-        <title>Jean Claude Muhire | Lived Experience Advocate, Community Builder, Social Impact Leader</title>
-        <meta
-          name="description"
-          content="Leadership through lived experience. Jean Claude Muhire shares stories that foster belonging, strengthen connections, and inspire action for NGOs, hospitals and schools."
-        />
-        <meta property="og:title" content="Jean Claude Muhire" />
-        <meta
-          property="og:description"
-          content="Sharing stories that foster belonging, strengthen connections, and inspire action."
-        />
-      </Helmet>
+      <PageMeta path="/" />
       <Hero />
       <HomeVideo />
       <Bridge />
