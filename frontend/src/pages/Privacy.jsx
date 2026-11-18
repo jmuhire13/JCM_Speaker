@@ -13,7 +13,7 @@ export default function Privacy() {
       <section className="bg-cream">
         <div className="mx-auto grid max-w-[1400px] gap-12 px-5 pt-36 pb-24 md:grid-cols-[1fr_1.4fr] md:gap-20 md:px-10 md:pt-48 md:pb-40">
           <div className="md:sticky md:top-32 md:self-start">
-            <p className="font-body text-muted text-[13px] tracking-[0.14em] uppercase">
+            <p className="font-body text-muted text-sm md:text-[13px] tracking-[0.14em] uppercase">
               {privacy.label}
             </p>
             <h1 className="font-hero text-ink mt-6 text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[0.95] text-balance uppercase">

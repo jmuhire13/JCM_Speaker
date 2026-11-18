@@ -2,14 +2,15 @@ import { formats } from '../content/speaking'
 import MotionToggle from './MotionToggle'
 
 // The formats he offers, as a huge slow ticker on the ink band. Formats are provisional
-// (see content/speaking.js). The ticker is decorative, so screen readers get a plain list.
+// (see content/speaking.js). The ticker is decorative (hidden from screen readers); the same
+// formats follow as a plain visible list.
 export default function Formats() {
   const line = `${formats.items.join('  /  ')}  /  `
 
   return (
     <section className="bg-ink text-on-ink overflow-hidden py-16 md:py-24">
       <div className="flex items-center justify-between gap-4 px-5 md:px-10">
-        <p className="font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">{formats.label}</p>
+        <p className="font-body text-on-ink-label text-sm md:text-[13px] tracking-[0.14em] uppercase">{formats.label}</p>
         <MotionToggle />
       </div>
 
@@ -26,12 +27,19 @@ export default function Formats() {
         </div>
       </div>
 
-      <ul className="sr-only">
+      {/* The same formats as a plain list anyone can read at a glance, without waiting for the
+          moving line or pausing it (QA T-20). */}
+      <ul className="mt-10 flex flex-wrap gap-3 px-5 md:px-10">
         {formats.items.map((item) => (
-          <li key={item}>{item}</li>
+          <li
+            key={item}
+            className="border-cream/30 text-cream rounded-full border px-4 py-2 text-[15px] font-medium"
+          >
+            {item}
+          </li>
         ))}
       </ul>
-      <p className="text-on-ink-label mt-8 px-5 text-base md:px-10">{formats.note}</p>
+      <p className="text-on-ink-label mt-6 px-5 text-base md:px-10">{formats.note}</p>
     </section>
   )
 }

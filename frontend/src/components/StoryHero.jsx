@@ -14,7 +14,7 @@ export default function StoryHero() {
     <section ref={root} className="opening bg-cream relative min-h-svh overflow-hidden">
       <div className="relative z-10 mx-auto grid max-w-[1400px] items-center gap-12 px-5 pt-36 pb-44 lg:grid-cols-[1.3fr_1fr] md:px-10 md:pt-44 md:pb-72">
         <div>
-          <p className="ph-label font-body text-muted text-[13px] tracking-[0.14em] uppercase">
+          <p className="ph-label font-body text-muted text-sm md:text-[13px] tracking-[0.14em] uppercase">
             {storyHero.label}
           </p>
           <h1 className="ph-title font-hero text-ink mt-6 text-[clamp(2.5rem,6vw,6rem)] leading-[0.95] uppercase">

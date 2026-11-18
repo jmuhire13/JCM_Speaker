@@ -31,7 +31,7 @@ export default function NextSteps() {
         </ol>
 
         <div className="ns-reveal border-line-strong mt-20 flex flex-wrap items-center gap-x-10 gap-y-4 border-t pt-8">
-          <p className="font-body text-muted text-[13px] tracking-[0.14em] uppercase">
+          <p className="font-body text-muted text-sm md:text-[13px] tracking-[0.14em] uppercase">
             {directContact.label}
           </p>
           <a
@@ -44,7 +44,7 @@ export default function NextSteps() {
           {closing.summaryUrl && (
             <a
               href={closing.summaryUrl}
-              className="text-ink decoration-gold-deep text-[15px] font-medium underline underline-offset-4"
+              className="text-ink decoration-gold-deep inline-block py-1 text-[15px] font-medium underline underline-offset-4"
             >
               {closing.summaryLabel}
             </a>

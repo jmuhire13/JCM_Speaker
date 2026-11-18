@@ -72,6 +72,7 @@ const stripped = template
   .replace(/<(meta|link)\s+data-rh="true"[\s\S]*?\/>\s*/g, '')
   .replace(/<link rel="preload" as="image"[\s\S]*?\/>\s*/g, '') // in case this step runs twice
   .replace(/<link rel="preload" as="font"[\s\S]*?\/>\s*/g, '')
+  .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '')
 if (!stripped.includes('<meta property="og:type"')) fail('index.html no longer has the og:type tag this script inserts before.')
 
 function headFor(m, { robots = false } = {}) {
@@ -128,9 +129,34 @@ function heroPreload() {
 }
 const homePreload = heroPreload()
 
+// Structured data for search engines (QA T-11): who the site is about, in schema.org terms,
+// built from the content files so it never drifts from the page. Confirmed facts only. Social
+// profiles: only those confirmed as his and open to visitors (LinkedIn and Instagram wait for
+// the owner, Report 2 C-25); add them to SAME_AS when confirmed.
+const SITE = 'https://jcmuhire.com'
+const SAME_AS = ['X (Twitter)', 'Facebook']
+function structuredData() {
+  const site = readJson('site')
+  const sameAs = site.socials.filter((x) => SAME_AS.includes(x.name)).map((x) => x.href)
+  const person = {
+    '@type': 'Person',
+    '@id': `${SITE}/#person`,
+    name: site.site.name,
+    url: `${SITE}/`,
+    jobTitle: site.site.roles.split('·').map((r) => r.trim()),
+    description: site.hero.subtitle,
+    image: `${SITE}/og-image.jpg`,
+    sameAs,
+  }
+  const website = { '@type': 'WebSite', '@id': `${SITE}/#website`, name: site.site.name, url: `${SITE}/`, about: { '@id': `${SITE}/#person` } }
+  const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': [person, website] }).replace(/</g, '\\u003c')
+  return `<script type="application/ld+json">${json}</script>
+    `
+}
+
 for (const p of pages) {
   let html = build(p)
-  if (p.path === '/') html = html.replace('<meta property="og:type"', homePreload + '<meta property="og:type"')
+  if (p.path === '/') html = html.replace('<meta property="og:type"', homePreload + structuredData() + '<meta property="og:type"')
   const count = (re) => (html.match(re) || []).length
   const checks = {
     title: count(/<title[ >]/g),
@@ -144,6 +170,17 @@ for (const p of pages) {
   write(p.file, await withBody(html, p.path, p.file))
 }
 write('404.html', await withBody(build({ title: notFound.title, description: notFound.description }, { robots: true }), '/__not-found__', '404.html'))
+
+// The security policy (public/_headers, report-only) allows the page's one small inline script
+// by its fingerprint. If that script's text ever changes, the fingerprint must change too.
+{
+  const { createHash } = await import('node:crypto')
+  const headers = fs.readFileSync(path.join(root, 'public/_headers'), 'utf8')
+  for (const [, code] of template.matchAll(/<script>([\s\S]*?)<\/script>/g)) {
+    const hash = `'sha256-${createHash('sha256').update(code).digest('base64')}'`
+    if (!headers.includes(hash)) console.warn(`WARNING: public/_headers script-src is missing ${hash} for an inline script in index.html.`)
+  }
+}
 
 if (problems.length) {
   console.error('\nPage files check FAILED:\n - ' + problems.join('\n - ') + '\n')

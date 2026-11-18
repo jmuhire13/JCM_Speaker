@@ -101,7 +101,7 @@ export default function Audiences() {
             </div>
 
             <div>
-              <p className="font-body text-muted text-[13px] tracking-[0.14em] uppercase">
+              <p className="font-body text-muted text-sm md:text-[13px] tracking-[0.14em] uppercase">
                 {audiences.label}
               </p>
               <ul className="mt-6">
@@ -126,7 +126,7 @@ export default function Audiences() {
   return (
     <section ref={root} className="bg-cream">
       <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-32">
-        <p className="font-body text-muted text-[13px] tracking-[0.14em] uppercase">
+        <p className="font-body text-muted text-sm md:text-[13px] tracking-[0.14em] uppercase">
           {audiences.label}
         </p>
         <div className="mt-10 grid gap-14 md:grid-cols-3 md:gap-8">

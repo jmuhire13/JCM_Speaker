@@ -62,11 +62,14 @@ export default function Navbar() {
     if (open) {
       wasOpen.current = true
       tl.current.timeScale(1).play()
-      window.__lenis?.stop()
+      // Lock the page behind the menu (Lenis on computers; plain CSS on phones, which have no Lenis).
+      if (window.__lenis) window.__lenis.stop()
+      else document.documentElement.style.overflow = 'hidden'
       closeBtn.current?.focus()
     } else {
       tl.current.timeScale(1.4).reverse()
-      window.__lenis?.start()
+      if (window.__lenis) window.__lenis.start()
+      else document.documentElement.style.overflow = ''
       if (wasOpen.current) openBtn.current?.focus()
     }
   }, [open])

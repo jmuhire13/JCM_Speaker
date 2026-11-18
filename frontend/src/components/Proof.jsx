@@ -13,7 +13,7 @@ export default function Proof() {
   return (
     <section ref={root} className="bg-ink text-on-ink">
       <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
-        <p className="proof-reveal font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">
+        <p className="proof-reveal font-body text-on-ink-label text-sm md:text-[13px] tracking-[0.14em] uppercase">
           {proof.label}
         </p>
         <h2 className="proof-reveal font-hero text-cream mt-6 text-[clamp(2.5rem,6.5vw,6.5rem)] leading-[0.95] uppercase">

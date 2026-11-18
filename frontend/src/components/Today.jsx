@@ -35,7 +35,7 @@ export default function Today() {
               key={r.label}
               className="today-reveal border-line-strong grid gap-3 border-t py-8 last:border-b md:grid-cols-[1fr_1.4fr] md:gap-10 md:py-10"
             >
-              <p className="font-body text-muted self-center text-[13px] tracking-[0.14em] uppercase">
+              <p className="font-body text-muted self-center text-sm md:text-[13px] tracking-[0.14em] uppercase">
                 {r.label}
               </p>
               <p className="font-display text-ink text-3xl leading-tight uppercase md:text-5xl">

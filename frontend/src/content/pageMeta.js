@@ -17,7 +17,7 @@ export const NAME = 'Jean Claude Muhire'
 const home = {
   title: `${NAME} | Lived Experience Advocate, Community Builder, Social Impact Leader`,
   description:
-    'Leadership through lived experience. Jean Claude Muhire shares stories that foster belonging, strengthen connections, and inspire action for NGOs, hospitals and schools.',
+    'Jean Claude Muhire shares stories that foster belonging, strengthen connections, and inspire action, for NGOs, hospitals and schools.',
   shareTitle: `${NAME} | Leadership through lived experience`,
   shareDescription:
     'Sharing stories that foster belonging, strengthen connections, and inspire action. For NGOs, hospitals and schools.',

@@ -28,5 +28,16 @@ const app = (
 // (src/entry-server.jsx, QA T-21): take it over without rebuilding it. In development the
 // container is empty, so build it from scratch.
 const root = document.getElementById('root')
-if (root.hasChildNodes()) hydrateRoot(root, app)
-else createRoot(root).render(app)
+if (!root.hasChildNodes()) createRoot(root).render(app)
+else {
+  // The page is already on screen and its links already work. Starting the code is a big job
+  // for a slow phone, so first let the opening's pictures (the Home portrait above all) load
+  // and paint, then take over. Capped at 1.5 s so the menu and buttons are never kept waiting
+  // long (QA T-03, Home LCP render delay).
+  const pics = [...root.querySelectorAll('.opening img')].filter((i) => i.loading !== 'lazy').slice(0, 4)
+  const painted = Promise.all(pics.map((i) => i.decode().catch(() => {})))
+  const cap = new Promise((r) => setTimeout(r, 1500))
+  Promise.race([painted, cap]).then(() =>
+    requestAnimationFrame(() => setTimeout(() => hydrateRoot(root, app), 0)),
+  )
+}

@@ -40,7 +40,7 @@ export default function TrustedHero() {
   return (
     <section ref={root} className="opening bg-ink relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 [@media(max-height:500px)]:pt-24">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-        <p className="ph-label font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">
+        <p className="ph-label font-body text-on-ink-label text-sm md:text-[13px] tracking-[0.14em] uppercase">
           {trustedHero.label}
         </p>
         <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-end md:gap-14 [@media(max-height:500px)]:mt-4 [@media(max-height:500px)]:flex-row [@media(max-height:500px)]:items-end">

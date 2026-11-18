@@ -36,7 +36,13 @@ export default function Bridge() {
             '-=0.4',
           )
 
-        // The statement drifts a little slower than the page, for depth.
+        // Fonts change line widths, so measure the trigger positions again once they load.
+        refreshAfterFonts()
+      })
+
+      // The statement drifts a little slower than the page, for depth. Large screens only:
+      // on phones it is hardly visible and costs scrolling smoothness (QA T-02).
+      mm.add('(prefers-reduced-motion: no-preference) and (min-width: 1024px)', () => {
         gsap.to('.bridge-statement', {
           yPercent: -6,
           ease: 'none',
@@ -47,9 +53,6 @@ export default function Bridge() {
             scrub: true,
           },
         })
-
-        // Fonts change line widths, so measure the trigger positions again once they load.
-        refreshAfterFonts()
       })
 
       return () => mm.revert()
@@ -74,7 +77,7 @@ export default function Bridge() {
       />
 
       <div className="relative mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-40">
-        <p className="bridge-label font-body text-on-green-label text-[13px] tracking-[0.14em] uppercase">
+        <p className="bridge-label font-body text-on-green-label text-sm md:text-[13px] tracking-[0.14em] uppercase">
           {bridge.label}
         </p>
 

@@ -29,7 +29,8 @@ export default function Hero() {
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Large screens only: on phones the drift is hardly visible and costs scrolling smoothness (QA T-02).
+      mm.add('(prefers-reduced-motion: no-preference) and (min-width: 1024px)', () => {
         gsap.to('.hero-photo', {
           yPercent: -5,
           ease: 'none',
@@ -88,7 +89,7 @@ export default function Hero() {
 
       <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-5 pt-32 pb-8 md:px-10 md:pt-40 md:pb-16">
         <div className="max-w-[58rem] lg:max-w-[54%]">
-          <p className="hero-roles font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">
+          <p className="hero-roles font-body text-on-ink-label text-sm md:text-[13px] tracking-[0.14em] uppercase">
             {site.roles}
           </p>
 
@@ -106,7 +107,7 @@ export default function Hero() {
             </Button>
             <Link
               to={hero.secondaryTo}
-              className="text-cream decoration-gold text-[15px] font-medium underline underline-offset-4"
+              className="text-cream decoration-gold inline-block py-1 text-[15px] font-medium underline underline-offset-4"
             >
               {hero.secondaryLabel}
             </Link>

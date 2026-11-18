@@ -1,7 +1,20 @@
 # Extra instructions Cloudflare sends to the browser with each file (QA defects D-03 and D-16).
 # Cloudflare already adds HSTS and "nosniff" from the dashboard (SSL/TLS, Edge Certificates).
-# Content-Security-Policy is left out on purpose: add it later in report-only mode, because the
-# site loads GSAP, YouTube, Formspree and the editor's scripts (unpkg, GitHub).
+# Content-Security-Policy-Report-Only (QA T-18): a list of where the site may load things from.
+# "Report-Only" means the browser BLOCKS NOTHING; it only writes a warning in its console if
+# something outside the list loads. Once a few weeks pass with no warnings (site and editor),
+# rename it to Content-Security-Policy to enforce it. What each part allows:
+#   script-src  our files; the one inline script in index.html (by fingerprint; the build warns
+#               if it changes); the editor's script from unpkg (/admin/)
+#   style-src   our files; inline styles (animations and the editor set styles directly)
+#   img-src     our files; YouTube video covers; GitHub pictures in the editor
+#   connect-src our files; Formspree (the booking form); GitHub (the editor saving changes)
+#   frame-src   the YouTube player (youtube-nocookie.com)
+#   form-action where forms may send: here and Formspree
+#
+# Block 3, the editor (/admin/): no policy. Decap CMS evaluates code at run time ("eval"),
+# which a policy would have to allow for every page. The editor is protected instead by its
+# GitHub sign-in and the fingerprint lock on its script (QA D-22). "!" removes a header.
 #
 # Block 1, every page and file:
 # - X-Frame-Options: other websites may not show this site inside a frame (clickjacking).
@@ -17,6 +30,10 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'sha256-k8ZoqoS/qHVRhkcvg0oiWri9mxhXHtdBYt1phVUaxW8=' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://i.ytimg.com https://avatars.githubusercontent.com https://raw.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://formspree.io https://api.github.com https://unpkg.com; frame-src https://www.youtube-nocookie.com; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/admin/*
+  ! Content-Security-Policy-Report-Only

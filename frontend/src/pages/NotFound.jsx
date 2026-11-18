@@ -16,7 +16,7 @@ export default function NotFound() {
         <meta name="description" content={notFound.description} />
       </Helmet>
       )}
-      <p className="font-body text-muted text-[13px] tracking-[0.14em] uppercase">{notFound.label}</p>
+      <p className="font-body text-muted text-sm md:text-[13px] tracking-[0.14em] uppercase">{notFound.label}</p>
       <h1 className="font-hero text-ink mt-6 text-[clamp(3rem,9vw,8rem)] leading-[0.95] uppercase">
         {notFound.headline}
       </h1>

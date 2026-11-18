@@ -10,7 +10,7 @@ import { footer, navLinks, site } from '../content/site'
 const marqueeText = `${footer.marquee} · `.repeat(6)
 const year = new Date().getFullYear()
 
-const label = 'font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase'
+const label = 'font-body text-on-ink-label text-sm md:text-[13px] tracking-[0.14em] uppercase'
 
 // The closing statement and the Book button, a slim moving band, then logo, links and contact,
 // and a bottom bar. All words are in content/site.js.

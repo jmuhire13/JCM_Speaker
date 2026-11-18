@@ -46,6 +46,9 @@ function App() {
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    // Phones and tablets keep their own (native) touch scrolling: Lenis does not smooth touch,
+    // but its per-frame work still cost scrolling smoothness on slower phones (QA T-02).
+    if (window.matchMedia('(pointer: coarse)').matches) return
 
     const lenis = new Lenis({ lerp: 0.08, wheelMultiplier: 0.9, anchors: true })
     lenis.on('scroll', ScrollTrigger.update)

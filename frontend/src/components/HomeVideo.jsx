@@ -20,7 +20,7 @@ export default function HomeVideo() {
         </div>
 
         <div>
-          <p className="hv-reveal font-body text-muted text-[13px] tracking-[0.14em] uppercase">
+          <p className="hv-reveal font-body text-muted text-sm md:text-[13px] tracking-[0.14em] uppercase">
             Watch
           </p>
           <p className="hv-reveal font-hero text-ink mt-4 text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[0.95] text-balance uppercase">
@@ -31,7 +31,7 @@ export default function HomeVideo() {
           </p>
           <Link
             to="/my-story"
-            className="hv-reveal decoration-gold-deep mt-8 inline-block text-[15px] font-medium underline underline-offset-4"
+            className="hv-reveal decoration-gold-deep mt-8 inline-block py-1 text-[15px] font-medium underline underline-offset-4"
           >
             Read and watch more of his story
           </Link>

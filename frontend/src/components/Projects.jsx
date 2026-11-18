@@ -39,7 +39,9 @@ export default function Projects() {
               0.3,
             )
 
-          // The photo drifts a little slower than the page.
+          // The photo drifts a little slower than the page. Large screens only: on phones it is
+          // hardly visible and costs scrolling smoothness (QA T-02).
+          if (!window.matchMedia('(min-width: 1024px)').matches) return
           gsap.fromTo(
             img,
             { yPercent: -7 },
@@ -85,7 +87,7 @@ export default function Projects() {
 
             <div className="proj-text">
               <p className="font-hero text-gold-deep text-6xl leading-none md:text-7xl">{p.number}</p>
-              <p className="font-body text-muted mt-5 text-[13px] tracking-[0.14em] uppercase">
+              <p className="font-body text-muted mt-5 text-sm md:text-[13px] tracking-[0.14em] uppercase">
                 {p.label}
               </p>
               <h2 className="font-hero text-ink mt-3 text-[clamp(1.75rem,3.4vw,3.25rem)] leading-[1] text-balance uppercase">

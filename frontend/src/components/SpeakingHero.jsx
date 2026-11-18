@@ -17,7 +17,7 @@ export default function SpeakingHero() {
       <div className="from-ink absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t to-transparent" />
 
       <div className="relative mx-auto w-full max-w-[1400px] px-5 pt-36 pb-24 md:px-10">
-        <p className="ph-label font-body text-on-ink-label text-[13px] tracking-[0.14em] uppercase">
+        <p className="ph-label font-body text-on-ink-label text-sm md:text-[13px] tracking-[0.14em] uppercase">
           {speakingHero.label}
         </p>
         <h1 className="ph-title font-hero text-cream mt-6 max-w-5xl text-[clamp(3rem,9vw,9rem)] leading-[0.95] text-balance uppercase">

@@ -12,7 +12,7 @@ export default function ConnectHero() {
     <section ref={root} className="opening bg-gold-deep text-cream relative overflow-hidden">
       <div className="mx-auto grid min-h-svh max-w-[1400px] items-center gap-12 px-5 pt-32 pb-20 lg:items-start lg:grid-cols-[1.05fr_1fr] md:px-10">
         <div className="lg:pt-12">
-          <p className="ph-label font-body text-cream text-[13px] tracking-[0.14em] uppercase">
+          <p className="ph-label font-body text-cream text-sm md:text-[13px] tracking-[0.14em] uppercase">
             {connectHero.label}
           </p>
           <h1 className="ph-title font-hero text-cream mt-6 text-[clamp(3rem,7.5vw,7.5rem)] leading-[0.95] text-balance uppercase">
